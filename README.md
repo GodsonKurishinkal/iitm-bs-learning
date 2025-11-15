@@ -108,10 +108,14 @@ iitm-bs-learning/
 │   ├── notes/
 │   └── resources/
 │
-└── 99-Resources/                      # Shared resources
-    ├── templates/                     # Note templates for consistency
-    ├── cheatsheets/                   # Quick references
-    └── datasets/                      # Practice datasets
+└── 99-Resources/                      # 📚 Shared Resources
+    ├── README.md                      # Resources overview
+    ├── cheatsheets/                   # Quick reference guides
+    │   ├── python-basics.md           # Python syntax & operations
+    │   ├── numpy-essentials.md        # NumPy operations
+    │   └── git-commands.md            # Git workflow
+    ├── datasets/                      # Practice datasets
+    └── snippets/                      # Reusable code snippets
 ```
 
 ## 🎯 Program Path (Foundation → MTech)
