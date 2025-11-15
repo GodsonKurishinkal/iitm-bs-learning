@@ -1,0 +1,64 @@
+{
+  "code": "BSCS1002",
+  "name": "",
+  "description": "Interested in joining our January 2026 batch?",
+  "credits": "",
+  "level": "",
+  "prerequisites": "",
+  "instructors": [],
+  "learning_objectives": [],
+  "weeks": [
+    {
+      "week": "WEEK 1",
+      "topics": "Introduction to algorithms"
+    },
+    {
+      "week": "WEEK 2",
+      "topics": "Conditionals"
+    },
+    {
+      "week": "WEEK 3",
+      "topics": "Conditionals (Continued)"
+    },
+    {
+      "week": "WEEK 4",
+      "topics": "Iterations and Ranges"
+    },
+    {
+      "week": "WEEK 5",
+      "topics": "Iterations and Ranges (Continued)"
+    },
+    {
+      "week": "WEEK 6",
+      "topics": "Basic Collections in Python"
+    },
+    {
+      "week": "WEEK 7",
+      "topics": "Basic Collections in Python (Continued)"
+    },
+    {
+      "week": "WEEK 8",
+      "topics": "Basic Collections in Python (Continued)"
+    },
+    {
+      "week": "WEEK 9",
+      "topics": "File Operations"
+    },
+    {
+      "week": "WEEK 10",
+      "topics": "File Operations (Continued)"
+    },
+    {
+      "week": "WEEK 11",
+      "topics": "Module system in python"
+    },
+    {
+      "week": "WEEK 12",
+      "topics": "Basic Pandas and Numpy processing of data"
+    }
+  ],
+  "references": [],
+  "textbooks": [],
+  "youtube_link": "https://www.youtube.com/playlist?list=PLZ2ps__7DhBb2cXAu5PevO_mzgS3Fj3Fs",
+  "fetched_date": "2025-11-15T07:55:20.205380"
+}

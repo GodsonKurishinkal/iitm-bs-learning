@@ -1,0 +1,64 @@
+{
+  "code": "BSMA1004",
+  "name": "",
+  "description": "Interested in joining our January 2026 batch?",
+  "credits": "",
+  "level": "",
+  "prerequisites": "",
+  "instructors": [],
+  "learning_objectives": [],
+  "weeks": [
+    {
+      "week": "WEEK 1",
+      "topics": "Multiple random variables - Two random variables, Multiple random variables and distributions"
+    },
+    {
+      "week": "WEEK 2",
+      "topics": "Multiple random variables - Independence, Functions of random variables - Visualization, functions of multiple random variables"
+    },
+    {
+      "week": "WEEK 3",
+      "topics": "Expectations Casino math, Expected value of a random variable, Scatter plots and spread, Variance and standard deviation, Covariance and correlation, Inequalities"
+    },
+    {
+      "week": "WEEK 4",
+      "topics": "Continuous random variables Discrete vs continuous, Weight data, Density functions, Expectations"
+    },
+    {
+      "week": "WEEK 5",
+      "topics": "Multiple continuous random variables - Height and weight data, Two continuous random variables, Averages of random variables - Colab\nillustration, Limit theorems, IPL data - histograms and approximate distributions, Jointly Gaussian random variables Probability models for data - Simple models, Models based on other distributions, Models with multiple random variables, dependency, Models for IPL powerplay, Models from data"
+    },
+    {
+      "week": "WEEK 6",
+      "topics": "Refresher week"
+    },
+    {
+      "week": "WEEK 7",
+      "topics": "Estimation and Inference I"
+    },
+    {
+      "week": "WEEK 8",
+      "topics": "Estimation and Inference II"
+    },
+    {
+      "week": "WEEK 9",
+      "topics": "Bayesian estimation"
+    },
+    {
+      "week": "WEEK 10",
+      "topics": "Hypothesis testing I"
+    },
+    {
+      "week": "WEEK 11",
+      "topics": "Hypothesis Testing II"
+    },
+    {
+      "week": "WEEK 12",
+      "topics": "Revision week"
+    }
+  ],
+  "references": [],
+  "textbooks": [],
+  "youtube_link": "https://www.youtube.com/playlist?list=PLZ2ps__7DhBbLZ6RdNTIXvFdaMpvqagt0",
+  "fetched_date": "2025-11-15T07:55:18.950042"
+}

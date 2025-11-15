@@ -1,0 +1,60 @@
+{
+  "code": "BSMA1003",
+  "name": "",
+  "description": "Interested in joining our January 2026 batch?",
+  "credits": "",
+  "level": "",
+  "prerequisites": "",
+  "instructors": [],
+  "learning_objectives": [],
+  "weeks": [
+    {
+      "week": "WEEK 1",
+      "topics": "Vector and matrices -        \nVectors;\nMatrices;\nSystems of Linear Equations;\nDeterminants (part 1);\nDeterminants (part 2)"
+    },
+    {
+      "week": "WEEK 2",
+      "topics": "Solving linear equations -        \nDeterminants (part 3);\nCramer's Rule;\n\"Solutions to a system of linear equations\nwith an invertible coefficient matrix\";\nThe echelon form;\nRow reduction;\nThe Gaussian elimination method"
+    },
+    {
+      "week": "WEEK 3",
+      "topics": "Introduction to vector spaces -        \nIntroduction to vector spaces;\nSome properties of vector spaces;\nLinear dependence;\nLinear independence - Part ;\nLinear independence - Part 2"
+    },
+    {
+      "week": "WEEK 4",
+      "topics": "Basis and dimension -        \nWhat is a basis for a vector space?;\nFinding bases for vector spaces;\nWhat is the rank/dimension for a vector space;\nRank and dimension using Gaussian elimination"
+    },
+    {
+      "week": "WEEK 5",
+      "topics": "Rank and Nullity of a matrix;\nIntroduction to Linear transformation -        \nThe null space of a matrix : finding nullity and a basis - Part 1;\nThe null space of a matrix : finding nullity and a basis - Part 2;\nWhat is a linear mapping - Part 1;\nWhat is a linear mapping - Part 2;\nWhat is a linear transformation"
+    },
+    {
+      "week": "WEEK 6",
+      "topics": "Linear transformation, Kernel and Images -        \nLinear transformations, ordered bases and matrices;\nImage and kernel of linear transformations;\nExamples of finding bases for the kernel and image of a linear transformation"
+    },
+    {
+      "week": "WEEK 7",
+      "topics": "Equivalent and Similar matrices;\nIntroduction to inner products -        \nEquivalence and similarity of matrices;\nAffine subspaces and affine mappings;\nLengths and angles;\nInner products and norms on a vector space"
+    },
+    {
+      "week": "WEEK 8",
+      "topics": "Orthogonality, Orthonormality;\nGram-schmidt method - \nOrthgonality and linear independence;\nWhat is an orthonormal basis?\nProjections using inner products;\nThe Gram-Schmidt process;\nOrthogonal transformations and rotations"
+    },
+    {
+      "week": "WEEK 9",
+      "topics": "Multivariable functions, Partial derivatives,\nLimit, continuity and directional derivatives -        \nMultivariable functions : visualization;\nPartial derivatives;\nDirectional derivatives;\nLimits for scalar-valued multivariable functions;\nContinuity for multivariable functions;\nDirectional derivatives in terms of the gradient"
+    },
+    {
+      "week": "WEEK 10",
+      "topics": "Directional ascent and descent,\nTangent (hyper) plane,\nCritical points -         \nThe directional of steepest ascent/descent;\nTangents for scalar-valued multivariable functions;\nFinding the tangent hyper(plane);\nCritical points for multivariable functions"
+    },
+    {
+      "week": "WEEK 11",
+      "topics": "Higher order partial derivatives,\nHessian Matrix and local extrema,\nDifferentiability -        \nHigher order partial derivatives and the Hessian matrix;\nThe Hessian matrix and local extrema for f(x,y);\nThe Hessian matrix and local extrema for f(x,y,z);\nDifferentiability for Multivariable Functions;\nReview of Maths - 2"
+    }
+  ],
+  "references": [],
+  "textbooks": [],
+  "youtube_link": "https://www.youtube.com/playlist?list=PLZ2ps__7DhBboGlwPVSsWP8loAJCLrKc8",
+  "fetched_date": "2025-11-15T07:55:17.576322"
+}

@@ -1,0 +1,64 @@
+{
+  "code": "BSMA1001",
+  "name": "",
+  "description": "Interested in joining our January 2026 batch?",
+  "credits": "",
+  "level": "",
+  "prerequisites": "",
+  "instructors": [],
+  "learning_objectives": [],
+  "weeks": [
+    {
+      "week": "WEEK 1",
+      "topics": "Set Theory - Number system, Sets and their operations, Relations and functions - Relations and their types, Functions and their types"
+    },
+    {
+      "week": "WEEK 2",
+      "topics": "Rectangular coordinate system, Straight Lines - Slope of a line, Parallel and perpendicular lines, Representations of a Line, General equations of a line, Straight-line fit"
+    },
+    {
+      "week": "WEEK 3",
+      "topics": "Quadratic Functions - Quadratic functions, Minima, maxima, vertex, and slope, Quadratic Equations"
+    },
+    {
+      "week": "WEEK 4",
+      "topics": "Algebra of Polynomials - Addition, subtraction, multiplication, and division, Algorithms, Graphs of Polynomials - X-intercepts, multiplicities, end behavior, and turning points, Graphing & polynomial creation"
+    },
+    {
+      "week": "WEEK 5",
+      "topics": "Functions - Horizontal and vertical line tests, Exponential functions, Composite functions, Inverse functions"
+    },
+    {
+      "week": "WEEK 6",
+      "topics": "Logarithmic Functions - Properties, Graphs, Exponential equations, Logarithmic equations"
+    },
+    {
+      "week": "WEEK 7",
+      "topics": "Sequence and Limits - Function of One variable - â¢ Function of one variable â¢ Graphs and Tangents â¢ Limits for sequences â¢ Limits for function of one variable â¢ Limits and Continuity"
+    },
+    {
+      "week": "WEEK 8",
+      "topics": "Derivatives, Tangents and Critical points - â¢ Differentiability and the derivative â¢ Computing derivatives and LâHËopitalâs rule â¢ Derivatives, tangents and linear approximation â¢ Critical points: local maxima and minima"
+    },
+    {
+      "week": "WEEK 9",
+      "topics": "Integral of a function of one variable - â¢ Computing areas, Computing areas under a curve, The integral of a function of one variable â¢ Derivatives and integrals for functions of one variable"
+    },
+    {
+      "week": "WEEK 10",
+      "topics": "Graph Theory - Representation of graphs, Breadth-first search, Depth-first search, Applications of BFS and DFS; Directed Acyclic Graphs - Complexity of BFS and DFS, Topological sorting"
+    },
+    {
+      "week": "WEEK 11",
+      "topics": "Longest path, Transitive closure, Matrix multiplication Graph theory Algorithms - Single-source shortest paths, Dijkstra's algorithm, Bellman-Ford algorithm, All-pairs shortest paths, FloydâWarshall algorithm, Minimum cost spanning trees, Prim's algorithm, Kruskal's algorithm"
+    },
+    {
+      "week": "WEEK 12",
+      "topics": "Revision"
+    }
+  ],
+  "references": [],
+  "textbooks": [],
+  "youtube_link": "https://www.youtube.com/playlist?list=PLZ2ps__7DhBZYDZo9A0pZ_i0xhstrk5cR",
+  "fetched_date": "2025-11-15T07:55:12.204738"
+}

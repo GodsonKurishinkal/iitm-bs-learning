@@ -1,0 +1,64 @@
+{
+  "code": "BSCS1001",
+  "name": "",
+  "description": "Interested in joining our January 2026 batch?",
+  "credits": "",
+  "level": "",
+  "prerequisites": "",
+  "instructors": [],
+  "learning_objectives": [],
+  "weeks": [
+    {
+      "week": "WEEK 1",
+      "topics": "Variables, Initialization, Iterators, Filtering, Datatypes, Flowcharts, Sanity of data"
+    },
+    {
+      "week": "WEEK 2",
+      "topics": "Iteration, Filtering, Selection, Pseudocode, Finding max and min, AND operator"
+    },
+    {
+      "week": "WEEK 3",
+      "topics": "Multiple iterations (non-nested), Three prizes problem, Procedures, Parameters, Side effects, OR operator"
+    },
+    {
+      "week": "WEEK 4",
+      "topics": "Nested iterations, Birthday paradox, Binning"
+    },
+    {
+      "week": "WEEK 5",
+      "topics": "List, Insertion sort"
+    },
+    {
+      "week": "WEEK 6",
+      "topics": "Table, Dictionar"
+    },
+    {
+      "week": "WEEK 7",
+      "topics": "Graph, Matrix"
+    },
+    {
+      "week": "WEEK 8",
+      "topics": "Adjacency matrix, Edge labelled graph"
+    },
+    {
+      "week": "WEEK 9",
+      "topics": "Backtracking, Tree, Depth First Search (DFS), Recursion"
+    },
+    {
+      "week": "WEEK 10",
+      "topics": "Object oriented programming, Class, Object, Encapsulation, Abstraction, Information hiding, Access specifiers"
+    },
+    {
+      "week": "WEEK 11",
+      "topics": "Message passing, Remote Procedure Call (RPC), Cache memory, Parallelism, Concurrency, Polling, Preemption, Multithreading, Producer Consumer, Atomicity, Consistency, Race condition, Deadlock, Broadcasting"
+    },
+    {
+      "week": "WEEK 12",
+      "topics": "Top-down approach, Bottom-up approach, Decision tree, Numerical prediction, Behaviour analysis, Classification"
+    }
+  ],
+  "references": [],
+  "textbooks": [],
+  "youtube_link": "https://www.youtube.com/playlist?list=PLZ2ps__7DhBYSzaAFqpyQKqmoni-EefS7",
+  "fetched_date": "2025-11-15T07:55:14.845539"
+}

@@ -1,0 +1,64 @@
+{
+  "code": "BSHS1002",
+  "name": "",
+  "description": "Interested in joining our January 2026 batch?",
+  "credits": "",
+  "level": "",
+  "prerequisites": "",
+  "instructors": [],
+  "learning_objectives": [],
+  "weeks": [
+    {
+      "week": "WEEK 1",
+      "topics": "Patterns in Sentences"
+    },
+    {
+      "week": "WEEK 2",
+      "topics": "Patterns in Sentences (Continued)"
+    },
+    {
+      "week": "WEEK 3",
+      "topics": "Patterns in Sentences (Continued)"
+    },
+    {
+      "week": "WEEK 4",
+      "topics": "Listening Skills"
+    },
+    {
+      "week": "WEEK 5",
+      "topics": "Listening Skills (Continued)"
+    },
+    {
+      "week": "WEEK 6",
+      "topics": "Speaking Skills"
+    },
+    {
+      "week": "WEEK 7",
+      "topics": "Speaking Skills (Continued)"
+    },
+    {
+      "week": "WEEK 8",
+      "topics": "Reading Skills"
+    },
+    {
+      "week": "WEEK 9",
+      "topics": "Writing Skills"
+    },
+    {
+      "week": "WEEK 10",
+      "topics": "Writing Skills (Continued)"
+    },
+    {
+      "week": "WEEK 11",
+      "topics": "Social Skills"
+    },
+    {
+      "week": "WEEK 12",
+      "topics": "Social Skills (Continued)"
+    }
+  ],
+  "references": [],
+  "textbooks": [],
+  "youtube_link": "https://www.youtube.com/playlist?list=PLZ2ps__7DhBbWy3GL4oWKXGrwf6Ul8Cry",
+  "fetched_date": "2025-11-15T07:55:21.635250"
+}

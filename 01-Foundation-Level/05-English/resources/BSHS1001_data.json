@@ -1,0 +1,64 @@
+{
+  "code": "BSHS1001",
+  "name": "",
+  "description": "Interested in joining our January 2026 batch?",
+  "credits": "",
+  "level": "",
+  "prerequisites": "",
+  "instructors": [],
+  "learning_objectives": [],
+  "weeks": [
+    {
+      "week": "WEEK 1",
+      "topics": "Sounds and Words (Vowel and Consonant sounds)"
+    },
+    {
+      "week": "WEEK 2",
+      "topics": "Parts of Speech"
+    },
+    {
+      "week": "WEEK 3",
+      "topics": "Sentences (Phrases and Idioms)"
+    },
+    {
+      "week": "WEEK 4",
+      "topics": "Speaking Skills (Spoken English Preliminaries)"
+    },
+    {
+      "week": "WEEK 5",
+      "topics": "Tenses and Agreement in English Sentences"
+    },
+    {
+      "week": "WEEK 6",
+      "topics": "Reading Skills (Skimming, Scanning and Comprehension)"
+    },
+    {
+      "week": "WEEK 7",
+      "topics": "Listening Skills"
+    },
+    {
+      "week": "WEEK 8",
+      "topics": "Aspiration, Word Stress and Syllabification"
+    },
+    {
+      "week": "WEEK 9",
+      "topics": "Speaking Skills (Presentation and Group Discussion)"
+    },
+    {
+      "week": "WEEK 10",
+      "topics": "Grammar (Common Errors in English) and Writing Skills"
+    },
+    {
+      "week": "WEEK 11",
+      "topics": "Writing Skills (Basics of Writing)"
+    },
+    {
+      "week": "WEEK 12",
+      "topics": "Writing Skills (Professional Writing)"
+    }
+  ],
+  "references": [],
+  "textbooks": [],
+  "youtube_link": "https://www.youtube.com/playlist?list=PLZ2ps__7DhBbf28nnkgAuFwaWjGtjaNck",
+  "fetched_date": "2025-11-15T07:55:16.215611"
+}

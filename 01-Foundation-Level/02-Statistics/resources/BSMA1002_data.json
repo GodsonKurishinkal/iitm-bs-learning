@@ -1,0 +1,64 @@
+{
+  "code": "BSMA1002",
+  "name": "",
+  "description": "Interested in joining our January 2026 batch?",
+  "credits": "",
+  "level": "",
+  "prerequisites": "",
+  "instructors": [],
+  "learning_objectives": [],
+  "weeks": [
+    {
+      "week": "WEEK 1",
+      "topics": "Introduction and type of data, Types of data, Descriptive and Inferential\nstatistics, Scales of measurement"
+    },
+    {
+      "week": "WEEK 2",
+      "topics": "Describing categorical data\nFrequency distribution of\ncategorical data, Best practices for\ngraphing categorical data, Mode and median for\ncategorical variable"
+    },
+    {
+      "week": "WEEK 3",
+      "topics": "Describing numerical data\nFrequency tables for numerical data, Measures of central tendency - Mean, median and mode, Quartiles and percentiles, Measures of dispersion - Range, variance, standard deviation and IQR, Five number summary"
+    },
+    {
+      "week": "WEEK 4",
+      "topics": "Association between two variables - \nAssociation between two categorical variables - Using relative frequencies in contingency tables, Association between two numerical variables - Scatterplot, covariance, Pearson correlation coefficient, Point bi-serial correlation coefficient"
+    },
+    {
+      "week": "WEEK 5",
+      "topics": "Basic principles of counting and factorial concepts - \nAddition rule of counting, Multiplication rule of\ncounting, Factorials"
+    },
+    {
+      "week": "WEEK 6",
+      "topics": "Permutations and combinations"
+    },
+    {
+      "week": "WEEK 7",
+      "topics": "Probability\nBasic definitions of\nprobability, Events, Properties of probability"
+    },
+    {
+      "week": "WEEK 8",
+      "topics": "Conditional probability - \nMultiplication rule, Independence, Law of total probability, Bayesâ theorem"
+    },
+    {
+      "week": "WEEK 9",
+      "topics": "Random Variables - \nRandom experiment, sample space and random variable, Discrete and continuous random variable, Probability mass function, Cumulative density function"
+    },
+    {
+      "week": "WEEK 10",
+      "topics": "Expectation and Variance -\nExpectation of a discrete random variable, Variance and standard deviation of a discrete random variable"
+    },
+    {
+      "week": "WEEK 11",
+      "topics": "Binomial and poisson random variables  - \nBernoulli trials, Independent and identically distributed random variable, Binomial random variable, Expectation and variance of abinomial random variable, Poisson distribution"
+    },
+    {
+      "week": "WEEK 12",
+      "topics": "Introduction to continous random variables - \nArea under the curve, Properties of pdf, Uniform distribution, Exponential distribution"
+    }
+  ],
+  "references": [],
+  "textbooks": [],
+  "youtube_link": "https://www.youtube.com/playlist?list=PLZ2ps__7DhBYrMs3zybOqr1DzMFCX49xG",
+  "fetched_date": "2025-11-15T07:55:13.534180"
+}
