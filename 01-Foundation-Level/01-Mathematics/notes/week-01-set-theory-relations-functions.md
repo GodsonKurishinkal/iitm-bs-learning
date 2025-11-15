@@ -394,22 +394,95 @@ Segments:
 ## Practice Problems
 
 ### Basic Level
-1. Let A = {1,3,5,7}, B = {2,3,5,8}. Find A ∪ B, A ∩ B, A − B, B − A
-2. If |A| = 20, |B| = 15, |A ∪ B| = 28, find |A ∩ B|
-3. List all subsets of {a, b, c}
-4. Find |P({1,2,3,4})|
+1. **Set Operations**: Let A = {1,3,5,7}, B = {2,3,5,8}. Find:
+   - (a) A ∪ B
+   - (b) A ∩ B
+   - (c) A − B
+   - (d) B − A
+   - (e) A △ B (symmetric difference)
+
+2. **Inclusion-Exclusion**: If |A| = 20, |B| = 15, |A ∪ B| = 28, find |A ∩ B|
+
+3. **Power Sets**: List all subsets of {a, b, c}. Verify |P(A)| = 2³
+
+4. **Cardinality**: Find |P({1,2,3,4})| without listing all elements
+
+5. **Complement**: If U = {1,2,3,4,5,6,7,8,9,10} and A = {2,4,6,8}, find Aᶜ
 
 ### Intermediate Level
-5. Prove that A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C) using Venn diagrams
-6. Let R = {(1,1), (2,2), (3,3), (1,2), (2,3), (1,3)} on A = {1,2,3}. Check if R is an equivalence relation
-7. Determine if f(x) = 3x − 5 is injective, surjective, bijective for f: ℝ → ℝ
-8. In a survey of 100 people: 60 like tea, 50 like coffee, 30 like both. How many like neither?
+
+6. **Distributive Law**: Prove that A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C) using:
+   - (a) Venn diagrams
+   - (b) Element argument (show x ∈ LHS ⟺ x ∈ RHS)
+
+7. **Relation Properties**: Let R = {(1,1), (2,2), (3,3), (1,2), (2,3), (1,3)} on A = {1,2,3}
+   - Check if R is reflexive
+   - Check if R is symmetric
+   - Check if R is transitive
+   - Is R an equivalence relation? Why or why not?
+
+8. **Function Analysis**: Determine if f(x) = 3x − 5 is injective, surjective, bijective for f: ℝ → ℝ
+   - Prove your answer for injectivity
+   - Prove your answer for surjectivity
+   - Find the inverse function if it exists
+
+9. **Survey Problem**: In a survey of 100 people:
+   - 60 like tea
+   - 50 like coffee
+   - 30 like both
+   - How many like neither?
+   - How many like only tea?
+   - How many like only coffee?
+
+10. **Cartesian Product**: If A = {1,2}, B = {x,y,z}, find:
+    - A × B
+    - B × A
+    - |A × B|
+    - Is A × B = B × A?
 
 ### Advanced Level
-9. Prove De Morgan's Law: (A ∪ B)ᶜ = Aᶜ ∩ Bᶜ
-10. Define relation R on ℤ×ℤ by: (a,b) R (c,d) if a+d = b+c. Prove R is an equivalence relation
-11. For f: A → B and g: B → C, prove: If f and g are injective, then g∘f is injective
-12. Give an example of a function that is injective but not surjective
+
+11. **De Morgan's Laws**: Prove (A ∪ B)ᶜ = Aᶜ ∩ Bᶜ using element argument
+
+12. **Equivalence Relation on ℤ×ℤ**: Define relation R on ℤ×ℤ by: 
+    (a,b) R (c,d) if a+d = b+c
+    - Prove R is reflexive
+    - Prove R is symmetric
+    - Prove R is transitive
+    - Describe the equivalence classes
+
+13. **Composition of Functions**: For f: A → B and g: B → C, prove:
+    If f and g are injective, then g∘f is injective
+
+14. **Function Construction**: Give an example of a function that is:
+    - (a) Injective but not surjective
+    - (b) Surjective but not injective
+    - (c) Neither injective nor surjective
+    - (d) Bijective
+
+15. **Modular Arithmetic**: Define R on ℤ by: a R b if (a − b) is divisible by 5
+    - Prove R is an equivalence relation
+    - Find all equivalence classes
+    - How many equivalence classes exist?
+
+### Challenge Problems
+
+16. **Three Sets**: In a college of 200 students:
+    - 120 study Python
+    - 90 study SQL
+    - 80 study R
+    - 50 study both Python and SQL
+    - 40 study both Python and R
+    - 35 study both SQL and R
+    - 20 study all three
+    How many students study:
+    - (a) At least one language?
+    - (b) Exactly one language?
+    - (c) None of the languages?
+
+17. **Function Properties**: Prove that if f: A → B is bijective, then f has an inverse function f⁻¹: B → A that is also bijective
+
+18. **Partition**: Let A = {1,2,3,4,5,6,7,8,9,10}. Create a partition of A into equivalence classes using the relation "has the same remainder when divided by 3"
 
 ---
 
