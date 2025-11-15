@@ -14,17 +14,17 @@
 | Week | Topic | Note File | Status | Date Created |
 |------|-------|-----------|--------|--------------|
 | 1 | Set Theory & Relations | [week-01-set-theory-relations-functions.md](../01-Foundation-Level/01-Mathematics/notes/week-01-set-theory-relations-functions.md) | ✅ Complete | 2025-11-15 |
-| 2 | Coordinate Systems 2D | week-02-coordinate-systems-2d.md | 📝 Planned | - |
-| 3 | Straight Lines | week-03-straight-lines-slopes.md | 📝 Planned | - |
-| 4 | Distance & Midpoint | week-04-distance-midpoint.md | 📝 Planned | - |
-| 5 | Quadratic Functions | week-05-quadratic-functions.md | 📝 Planned | - |
-| 6 | Polynomial Functions | week-06-polynomial-functions.md | 📝 Planned | - |
-| 7 | Coordinate Systems 3D | week-07-coordinate-systems-3d.md | 📝 Planned | - |
-| 8 | Transformations | week-08-transformations.md | 📝 Planned | - |
-| 9 | Conic Sections | week-09-conic-sections.md | 📝 Planned | - |
-| 10 | Graph Theory - Basics | week-10-graph-theory-basics.md | 📝 Planned | - |
-| 11 | Graph Theory - Trees | week-11-graph-theory-trees.md | 📝 Planned | - |
-| 12 | Applications | week-12-applications-review.md | 📝 Planned | - |
+| 2 | Coordinate Systems & Straight Lines | week-02-coordinate-systems-straight-lines.md | 📝 Template | 2025-11-15 |
+| 3 | Quadratic Functions | week-03-quadratic-functions.md | 📝 Template | 2025-11-15 |
+| 4 | Algebra of Polynomials | week-04-algebra-polynomials.md | 📝 Template | 2025-11-15 |
+| 5 | Functions - Exponential & Inverse | week-05-functions-exponential-inverse.md | 📝 Template | 2025-11-15 |
+| 6 | Logarithmic Functions | week-06-logarithmic-functions.md | 📝 Template | 2025-11-15 |
+| 7 | Sequences, Limits & Continuity | week-07-sequences-limits-continuity.md | 📝 Template | 2025-11-15 |
+| 8 | Derivatives & Critical Points | week-08-derivatives-critical-points.md | 📝 Template | 2025-11-15 |
+| 9 | Integrals & Areas | week-09-integrals-areas.md | 📝 Template | 2025-11-15 |
+| 10 | Graph Theory - BFS & DFS | week-10-graph-theory-bfs-dfs.md | 📝 Template | 2025-11-15 |
+| 11 | Shortest Paths & Spanning Trees | week-11-shortest-paths-spanning-trees.md | 📝 Template | 2025-11-15 |
+| 12 | Review & Revision | week-12-review-revision.md | 📝 Template | 2025-11-15 |
 
 **Progress:** 1/12 notes (8%)
 
