@@ -13,19 +13,18 @@
 
 | Week | Topic | Note File | Status | Date Created |
 |------|-------|-----------|--------|--------------|
-| 1 | Set Theory & Relations | [Week-01-SetTheory-Relations.md](../01-Foundation-Level/01-Mathematics/notes/Week-01-SetTheory-Relations.md) | ✅ Complete | 2025-11-14 |
-| 1 | Functions Basics | Week-01-Functions-Basics.md | 📝 Planned | - |
-| 2 | Coordinate Systems 2D | Week-02-CoordinateSystems-2D.md | 📝 Planned | - |
-| 3 | Straight Lines | Week-03-StraightLines.md | 📝 Planned | - |
-| 4 | Distance & Midpoint | Week-04-Distance-Midpoint.md | 📝 Planned | - |
-| 5 | Quadratic Functions | Week-05-QuadraticFunctions.md | 📝 Planned | - |
-| 6 | Polynomial Functions | Week-06-PolynomialFunctions.md | 📝 Planned | - |
-| 7 | Coordinate Systems 3D | Week-07-CoordinateSystems-3D.md | 📝 Planned | - |
-| 8 | Transformations | Week-08-Transformations.md | 📝 Planned | - |
-| 9 | Conic Sections | Week-09-ConicSections.md | 📝 Planned | - |
-| 10 | Graph Theory - Basics | Week-10-GraphTheory-Basics.md | 📝 Planned | - |
-| 11 | Graph Theory - Trees | Week-11-GraphTheory-Trees.md | 📝 Planned | - |
-| 12 | Applications | Week-12-Applications.md | 📝 Planned | - |
+| 1 | Set Theory & Relations | [week-01-set-theory-relations-functions.md](../01-Foundation-Level/01-Mathematics/notes/week-01-set-theory-relations-functions.md) | ✅ Complete | 2025-11-15 |
+| 2 | Coordinate Systems 2D | week-02-coordinate-systems-2d.md | 📝 Planned | - |
+| 3 | Straight Lines | week-03-straight-lines-slopes.md | 📝 Planned | - |
+| 4 | Distance & Midpoint | week-04-distance-midpoint.md | 📝 Planned | - |
+| 5 | Quadratic Functions | week-05-quadratic-functions.md | 📝 Planned | - |
+| 6 | Polynomial Functions | week-06-polynomial-functions.md | 📝 Planned | - |
+| 7 | Coordinate Systems 3D | week-07-coordinate-systems-3d.md | 📝 Planned | - |
+| 8 | Transformations | week-08-transformations.md | 📝 Planned | - |
+| 9 | Conic Sections | week-09-conic-sections.md | 📝 Planned | - |
+| 10 | Graph Theory - Basics | week-10-graph-theory-basics.md | 📝 Planned | - |
+| 11 | Graph Theory - Trees | week-11-graph-theory-trees.md | 📝 Planned | - |
+| 12 | Applications | week-12-applications-review.md | 📝 Planned | - |
 
 **Progress:** 1/12 notes (8%)
 
@@ -208,12 +207,13 @@
 ## 📝 Note Creation Checklist
 
 When creating a new note:
-- [ ] Use correct naming: `Week-{N}-{Topic}-{Subtopic}.md`
+- [ ] Use correct naming: `week-{nn}-{topic-description}.md` (lowercase with hyphens)
+- [ ] Include 2-4 word topic description in filename
 - [ ] Save in course folder: `XX-Level/YY-CourseName/notes/`
 - [ ] Include complete metadata with course code, level, week
 - [ ] Add tags: `#CourseCode #Topic #WeekN #Level`
 - [ ] Follow RAG template structure
-- [ ] Include Python implementations
+- [ ] Include Python implementations where applicable
 - [ ] Add practice problems
 - [ ] Update this index file
 - [ ] Create companion notebook if needed (in `notebooks/`)

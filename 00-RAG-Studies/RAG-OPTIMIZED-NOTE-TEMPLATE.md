@@ -56,35 +56,42 @@ Learning/
 
 **For Notes:**
 ```
-Week-{WeekNumber}-{MainTopic}-{SubTopic}.md
+week-{number}-{topic-description}.md
 ```
 
+Use lowercase with hyphens, include a brief topic description (2-4 words) that captures the main content.
+
 **Examples:**
-- ✅ `Week-01-SetTheory-Relations.md`
-- ✅ `Week-02-Functions-Composition.md`
-- ✅ `Week-03-CoordinateSystems-2D.md`
-- ✅ `Week-10-GraphTheory-Trees.md`
-- ❌ `BSMA1001-Week01-SetTheory-Relations.md` (course code not needed in filename)
-- ❌ `set_theory.md` (use proper naming convention)
+- ✅ `week-01-set-theory-relations-functions.md`
+- ✅ `week-02-coordinate-geometry-2d.md`
+- ✅ `week-03-straight-lines-slopes.md`
+- ✅ `week-10-graph-theory-trees.md`
+- ✅ `week-05-polynomial-functions.md`
+- ❌ `BSMA1001-Week01.md` (course code not needed in filename)
+- ❌ `week-01-notes.md` (not descriptive enough)
+- ❌ `set_theory.md` (missing week number)
 
 **For Notebooks:**
 ```
-Week-{WeekNumber}-{Topic}-Practice.ipynb
-Week-{WeekNumber}-{Topic}-Assignment.ipynb
+week-{number}-{topic}-practice.ipynb
+week-{number}-{topic}-assignment.ipynb
 ```
 
 **Examples:**
-- ✅ `Week-01-SetTheory-Practice.ipynb`
-- ✅ `Week-05-LinearRegression-Assignment.ipynb`
+- ✅ `week-01-set-theory-practice.ipynb`
+- ✅ `week-05-linear-regression-assignment.ipynb`
+- ✅ `week-03-coordinate-systems-practice.ipynb`
 
 ### Organization Rules
 
 1. **Course-Specific Notes** → Always in course folder: `XX-Level/YY-CourseName/notes/`
 2. **Week-Aligned** → Use week number from study guide
-3. **Templates Only** → Keep `00-RAG-Studies/` for templates and meta-docs
-4. **Notebooks** → In `notebooks/` subfolder, aligned with note topics
-5. **Assignments** → In `assignments/` subfolder
-6. **Practice** → In `practice/` subfolder for extra exercises
+3. **Descriptive Names** → Include 2-4 word topic description in filename
+4. **Lowercase with Hyphens** → Use `week-01-topic-name.md` format
+5. **Templates Only** → Keep `00-RAG-Studies/` for templates and meta-docs
+6. **Notebooks** → In `notebooks/` subfolder, aligned with note topics
+7. **Assignments** → In `assignments/` subfolder
+8. **Practice** → In `practice/` subfolder for extra exercises
 
 ### Metadata Requirements
 
@@ -112,11 +119,11 @@ Week-{WeekNumber}-{Topic}-Assignment.ipynb
 - None (first topic)
 
 **Related Notes:**
-- [Functions Basics](Week-02-Functions-Basics.md)
-- [Probability Foundations](../../02-Statistics/notes/Week-05-Probability.md)
+- [Functions Basics](week-02-functions-domain-range.md)
+- [Probability Foundations](../../02-Statistics/notes/week-05-probability-basics.md)
 
 **Next Topic:**
-- [Week 2: Functions - Domain and Range](Week-02-Functions-Basics.md)
+- [Week 2: Functions - Domain and Range](week-02-functions-domain-range.md)
 ```
 
 ---

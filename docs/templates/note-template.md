@@ -5,6 +5,9 @@
 **Course**: [Course Code] - [Course Name]  
 **Tags**: #topic #category #important
 
+**File Naming Convention**: `week-{nn}-{topic-description}.md` (lowercase with hyphens)  
+**Example**: `week-01-set-theory-relations-functions.md`
+
 ---
 
 ## 📚 Overview

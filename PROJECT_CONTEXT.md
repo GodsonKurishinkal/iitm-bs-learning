@@ -188,14 +188,15 @@ iitm-bs-learning/
 ### File Naming Conventions
 ```
 ✅ Good:
-- week-01-set-theory.md
-- week-02-coordinate-geometry.md
-- week-01-practice.ipynb
-- 00-BSMA1001-overview.md
+- week-01-set-theory-relations-functions.md
+- week-02-coordinate-systems-2d.md
+- week-03-straight-lines-slopes.md
+- week-10-graph-theory-basics.md
 
 ❌ Avoid:
 - notes.md (too generic)
-- stuff.ipynb (not descriptive)
+- Week-01-Notes.md (use lowercase, not descriptive)
+- BSMA1001-week-01.md (no course code in filename)
 - final_v2.md (confusing)
 ```
 

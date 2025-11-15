@@ -151,21 +151,21 @@ Learning/
 
 ### ✅ Correct Names
 ```
-Week-01-SetTheory-Relations.md
-Week-02-CoordinateSystems-2D.md
-Week-03-StraightLines-Slopes.md
-Week-10-GraphTheory-Trees.md
-Week-01-DataTypes-Scales.md
-Week-05-LinearRegression.md
+week-01-set-theory-relations-functions.md
+week-02-coordinate-systems-2d.md
+week-03-straight-lines-slopes.md
+week-10-graph-theory-trees.md
+week-01-data-types-scales.md
+week-05-linear-regression-intro.md
 ```
 
 ### ❌ Incorrect Names
 ```
 BSMA1001-Week01.md              # No course code in filename
-set_theory.md                   # Not week-aligned
-Week-1-Sets.md                  # Use 2-digit week numbers
-notes_week1.md                  # Not descriptive
-SetTheoryAndRelations.md        # Missing week number
+week-01-notes.md                # Not descriptive enough
+Week-1-Sets.md                  # Use lowercase, 2-digit week numbers
+notes_week1.md                  # Improper format
+final_v2.md                     # Confusing
 ```
 
 ---
