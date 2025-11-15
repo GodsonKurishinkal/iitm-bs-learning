@@ -31,32 +31,84 @@ Welcome to your Foundation Level study folder! This directory contains all mater
 
 ## 📁 Folder Organization
 
-Each subject follows this structure:
+Each subject follows this structure with **clear separation**:
 
 ```
 Subject/
-├── notes/           # Study notes (Markdown, PDFs)
-├── notebooks/       # Jupyter notebooks for practice
+├── notes/           # 📝 Study content: theory, concepts, formulas (Markdown)
+│   └── week-01-topic.md
+│
+├── notebooks/       # 💻 Practice: examples, applications, code (Jupyter)
+│   └── week-01-practice.ipynb
+│
 ├── assignments/     # Course assignments and solutions
 ├── practice/        # Additional practice problems
 ├── projects/        # Mini-projects (where applicable)
 └── resources/       # Reference materials, links, cheatsheets
 ```
 
+### 📝 Notes vs 💻 Notebooks
+
+**Notes** (`notes/` folder):
+- **Content**: Theory, concepts, definitions, theorems, formulas
+- **Format**: Markdown (.md)
+- **Purpose**: Study and understand concepts
+- **When**: During/after lectures, while reading textbooks
+- **Example**: Mathematical proofs, statistical theorems, algorithm explanations
+
+**Notebooks** (`notebooks/` folder):
+- **Content**: Code examples, implementations, visualizations, applications
+- **Format**: Jupyter Notebook (.ipynb)
+- **Purpose**: Practice and apply concepts through coding
+- **When**: After understanding theory from notes
+- **Example**: Implementing algorithms, plotting functions, solving computational problems
+
 ## 📝 Note-Taking Tips
 
+### For Notes (Theory)
 1. **Use Markdown** for text notes in the `notes/` folder
-2. **Use Jupyter Notebooks** for code and computational practice
-3. **Date your notes** - Use format: `YYYY-MM-DD-topic-name.md`
-4. **Tag your notes** - Add tags like `#week1`, `#important`, `#exam`
-5. **Review regularly** - Revisit notes weekly
+2. **Capture concepts** - definitions, theorems, formulas
+3. **Write explanations** in your own words
+4. **Include derivations** and proofs step-by-step
+5. **Date your notes** - Format: `week-XX-topic.md` or `YYYY-MM-DD-topic.md`
+6. **Tag your notes** - Add tags like `#week1`, `#important`, `#exam`
 
-## 💻 Jupyter Notebook Workflow
+### For Notebooks (Practice)
+1. **Start with concepts** from your notes
+2. **Implement in code** - translate theory to Python
+3. **Visualize** - create plots and graphs
+4. **Experiment** - try variations and edge cases
+5. **Document** - add markdown cells explaining what you're doing
+6. **Save outputs** before closing to track your progress
 
-1. **Start with template notebooks** in each subject's `notebooks/` folder
-2. **Create weekly practice notebooks**: `week-01-practice.ipynb`
-3. **Document your learning** in the notes section at the end
-4. **Save outputs** before closing to track your progress
+## 💻 Study Workflow
+
+### Step 1: Learn Theory (Notes)
+```
+Read textbook/watch lecture
+    ↓
+Take notes in notes/week-XX-topic.md
+    ↓
+Understand concepts, formulas, theorems
+```
+
+### Step 2: Apply Through Code (Notebooks)
+```
+Open notebooks/week-XX-practice.ipynb
+    ↓
+Implement concepts from notes
+    ↓
+Create visualizations and examples
+    ↓
+Solve practice problems
+```
+
+### Step 3: Reinforce (Practice)
+```
+Complete assignments/
+Solve additional problems in practice/
+Build mini-projects in projects/
+```
 
 ## 🎯 Study Strategy
 

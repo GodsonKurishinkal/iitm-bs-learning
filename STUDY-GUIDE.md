@@ -65,28 +65,43 @@ Learning/
 
 ### Daily Workflow
 
-#### 1. **During Lectures** (Real-time)
+#### 1. **During Lectures** (Theory & Concepts)
 ```
 01-Foundation-Level/
 └── [Subject]/
     └── notes/
         └── week-XX-topic.md
 ```
-- Take notes in Markdown format
-- Use template: Date, Topic, Key Points, Questions
-- Save as: `week-01-introduction.md`
+- Take notes on **concepts and theory** in Markdown
+- Focus on definitions, theorems, formulas
+- Write explanations in your own words
+- Save as: `week-01-introduction.md` or `YYYY-MM-DD-topic.md`
 
-#### 2. **After Lectures** (Review)
+#### 2. **After Lectures** (Practice & Application)
 ```
 01-Foundation-Level/
 └── [Subject]/
     └── notebooks/
         └── week-XX-practice.ipynb
 ```
-- Open relevant Jupyter notebook
-- Practice coding examples
-- Complete exercises
-- Document learnings in notebook
+- Open Jupyter notebook for **hands-on practice**
+- Implement concepts from notes in code
+- Work through examples and visualizations
+- Solve practice problems computationally
+- Experiment with code variations
+
+#### 3. **Study Flow**
+```
+📖 Read/Attend Lecture
+    ↓
+📝 Take Notes (Theory) → notes/week-XX-topic.md
+    ↓
+💻 Practice with Code → notebooks/week-XX-practice.ipynb
+    ↓
+📊 Visualize & Experiment
+    ↓
+✅ Complete Assignment
+```
 
 #### 3. **Assignments** (Submission)
 ```
@@ -109,31 +124,40 @@ Learning/
 
 ### Weekly Workflow
 
-**Monday - Wednesday**: Lectures + Notes
+**Monday - Wednesday**: Lectures + Theory
 - Attend live/recorded sessions
-- Take notes in `/notes` folder
+- Take **notes** in `/notes` folder (Markdown)
+  - Capture concepts, definitions, theorems
+  - Write formulas and derivations
+  - Understand the "why" behind concepts
 - Clarify doubts immediately
 
-**Thursday - Friday**: Practice + Code
-- Work through Jupyter notebooks
+**Thursday - Friday**: Practice + Implementation
+- Work through **Jupyter notebooks** in `/notebooks` folder
+  - Implement concepts from notes in code
+  - Create visualizations
+  - Solve computational problems
+  - Experiment with variations
 - Complete practice problems
-- Apply concepts in code
 
-**Saturday**: Assignments
+**Saturday**: Assignments + Projects
 - Complete course assignments
+- Apply concepts to projects
 - Submit on time
 - Document solution approach
 
-**Sunday**: Review + Plan
-- Review week's material
+**Sunday**: Review + Integration
+- Review week's **notes** (theory)
+- Run through **notebooks** (practice)
+- Connect theory to application
 - Update progress tracker
 - Plan next week
 
 ## 📝 Note-Taking System
 
-### Markdown Notes Template
+### Markdown Notes Template (Theory/Concepts)
 
-Create this in each subject's `/notes` folder:
+Create this in each subject's `/notes` folder for **study content**:
 
 ```markdown
 # Topic Name
@@ -144,64 +168,115 @@ Create this in each subject's `/notes` folder:
 **Tags**: #algebra #basics #important
 
 ## Lecture Summary
-Brief overview of what was covered
+Brief overview of what was covered in lecture/reading
+
+## Key Definitions
+- **Term 1**: Clear definition
+- **Term 2**: Clear definition
+
+## Theorems & Formulas
+### Theorem 1: Name
+Statement of theorem
+- Conditions
+- Conclusion
+
+### Important Formulas
+- Formula 1: $y = mx + b$
+- Formula 2: $a^2 + b^2 = c^2$
+
+## Proofs & Derivations
+Step-by-step mathematical reasoning
+
+## Conceptual Explanations
+Explain WHY things work, not just HOW
 
 ## Key Concepts
+- **Concept 1**: Detailed explanation
+- **Concept 2**: Detailed explanation
 
-### Concept 1
-Explanation with examples
-
-### Concept 2
-Explanation with examples
-
-## Important Formulas
-- Formula 1: explanation
-- Formula 2: explanation
-
-## Examples
-### Example 1
-Problem statement
-Solution steps
+## Examples (Worked Problems)
+### Example 1: Problem Type
+**Problem**: State the problem
+**Solution**: Step-by-step solution (manual/theoretical)
 
 ## Questions/Doubts
-- [ ] Question 1
-- [ ] Question 2
+- [ ] Question about concept X
+- [ ] Clarify theorem Y
 
-## Action Items
-- [ ] Practice problems 1-5
-- [ ] Review chapter 2
-- [ ] Complete assignment
+## Next Class Preview
+What topics are coming next
 
-## Links & Resources
-- [Resource 1](URL)
-- Video: Link
-
----
-**Next Class**: Topic name
+## References
+- Textbook: Chapter X, Pages Y-Z
+- Video: [Link]
 ```
 
-### Jupyter Notebook Template
+### Jupyter Notebook Template (Examples/Applications)
 
-Each notebook should have:
+Each notebook should have this structure for **hands-on practice**:
 
-1. **Header Cell** (Markdown)
-   - Title
-   - Date
-   - Topics covered
+```python
+# Cell 1: Markdown Header
+"""
+# Week X: [Topic Name]
+**Date**: 2025-11-14
+**Subject**: [Subject Name]
+**Concepts**: List the concepts from notes being implemented
 
-2. **Setup Cell** (Code)
-   - Import libraries
-   - Load data
+**Prerequisites**: 
+- Review notes/week-XX-topic.md first
+- Concepts covered: [list]
+"""
 
-3. **Learning Sections** (Markdown + Code)
-   - Concept explanation
-   - Code examples
-   - Practice exercises
+# Cell 2: Setup
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
 
-4. **Notes Section** (Markdown)
-   - What you learned
-   - Questions
-   - Next steps
+# Cell 3: Example 1 - Basic Implementation
+"""
+## Example 1: [Concept from Notes]
+Implementing the concept from lecture notes
+"""
+# Code demonstrating concept
+
+# Cell 4: Visualization
+"""
+## Visualization
+Visual representation of the concept
+"""
+# Plotting code
+
+# Cell 5: Example 2 - Real-world Application
+"""
+## Example 2: Real-World Application
+Applying concept to actual problem
+"""
+# Application code
+
+# Cell 6: Practice Problems
+"""
+## Practice Problems
+Solve these to reinforce understanding
+"""
+# TODO: Problem 1
+# TODO: Problem 2
+
+# Cell 7: Experiments
+"""
+## Experiments
+Try variations and explore edge cases
+"""
+# Experimental code
+
+# Cell 8: Summary
+"""
+## Key Takeaways
+- What you learned from coding
+- Insights from visualizations
+- Connections between theory and practice
+"""
+```
 
 ## 🗂️ File Naming Conventions
 

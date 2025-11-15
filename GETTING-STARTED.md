@@ -59,29 +59,70 @@ jupyter notebook
 
 ## 📖 How to Use This System
 
+### Clear Separation: Notes vs Notebooks
+
+#### 📝 **Notes** = Theory & Study Content
+- **Location**: `[Subject]/notes/`
+- **Format**: Markdown (.md)
+- **Contains**: Concepts, definitions, theorems, formulas, proofs
+- **Purpose**: Understand the "what" and "why"
+- **Example**: `notes/week-01-set-theory.md`
+
+#### 💻 **Notebooks** = Examples & Applications
+- **Location**: `[Subject]/notebooks/`
+- **Format**: Jupyter (.ipynb)
+- **Contains**: Code, implementations, visualizations, experiments
+- **Purpose**: Practice the "how" through coding
+- **Example**: `notebooks/week-01-set-operations.ipynb`
+
 ### Daily Routine
-1. **Morning**: Review previous day's notes (10 mins)
-2. **Class Time**: Take notes in `/notes` folder
-3. **Evening**: Practice in Jupyter notebooks (30-60 mins)
-4. **Before Bed**: Update progress tracker (5 mins)
+
+**Theory Phase** (30-60 mins):
+1. **Read/Watch**: Lecture or textbook chapter
+2. **Take Notes**: Write concepts in `notes/week-XX-topic.md`
+3. **Understand**: Focus on definitions, theorems, formulas
+
+**Practice Phase** (30-60 mins):
+1. **Open Notebook**: `notebooks/week-XX-practice.ipynb`
+2. **Implement**: Code the concepts from your notes
+3. **Visualize**: Create plots to see concepts in action
+4. **Experiment**: Try variations and explore
+
+**Review** (10 mins):
+- Update progress tracker
+- Note questions or unclear concepts
+- Plan tomorrow's topics
 
 ### Weekly Routine
-- **Mon-Wed**: Lectures + Notes
-- **Thu-Fri**: Practice + Assignments
-- **Sat**: Extra practice + Projects
-- **Sun**: Review + Plan next week
+- **Mon-Wed**: Lectures + Theory
+  - Attend classes
+  - Take **notes** (concepts, formulas, theory)
+  - Read textbook chapters
+- **Thu-Fri**: Practice + Implementation
+  - Work through **notebooks** (code examples)
+  - Solve computational problems
+  - Create visualizations
+- **Sat**: Assignments + Projects
+  - Complete assignments
+  - Work on mini-projects
+  - Apply concepts to real problems
+- **Sun**: Review + Integration
+  - Review theory from **notes**
+  - Run through code in **notebooks**
+  - Connect theory to practice
+  - Plan next week
 
 ## 📁 Quick Navigation
 
 ### Where to Put What?
 
-| Content Type | Location | Format |
-|--------------|----------|--------|
-| Lecture notes | `[Subject]/notes/` | Markdown (.md) |
-| Code practice | `[Subject]/notebooks/` | Jupyter (.ipynb) |
-| Assignments | `[Subject]/assignments/` | Folder with files |
-| Extra problems | `[Subject]/practice/` | Any format |
-| Resources | `[Subject]/resources/` | PDFs, links, etc. |
+| Content Type | Location | Format | Purpose |
+|--------------|----------|--------|---------|
+| **Theory & Concepts** | `[Subject]/notes/` | Markdown (.md) | Study content, definitions, formulas |
+| **Code Examples** | `[Subject]/notebooks/` | Jupyter (.ipynb) | Implementations, visualizations |
+| **Assignments** | `[Subject]/assignments/` | Various | Course work submissions |
+| **Extra Problems** | `[Subject]/practice/` | Any format | Additional practice |
+| **Resources** | `[Subject]/resources/` | PDFs, links | Reference materials |
 
 ### File Naming
 ```

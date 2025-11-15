@@ -148,12 +148,63 @@ This repository is structured to work seamlessly with AI assistants:
 
 ### Folder Structure
 Each subject follows this consistent pattern:
-- `notes/` - Lecture notes and concept summaries
-- `notebooks/` - Jupyter notebooks for hands-on practice
-- `assignments/` - Course assignments and solutions
-- `practice/` - Additional practice problems
-- `projects/` - Applied learning projects
-- `resources/` - Reference materials and links
+- **`notes/`** - Study content, theory, concepts, formulas (Markdown)
+- **`notebooks/`** - Examples, applications, hands-on practice (Jupyter)
+- **`assignments/`** - Course assignments and solutions
+- **`practice/`** - Additional practice problems
+- **`projects/`** - Applied learning projects
+- **`resources/`** - Reference materials and links
+
+### Clear Separation: Notes vs Notebooks
+
+#### 📝 Notes (Theory & Concepts)
+**Purpose**: Study content and theoretical understanding  
+**Format**: Markdown (.md)  
+**Contains**:
+- Lecture summaries and key concepts
+- Definitions and theorems
+- Formulas and equations
+- Proofs and derivations
+- Conceptual explanations
+- Theory from textbooks/lectures
+
+**Example**: `notes/week-01-set-theory.md`
+```markdown
+# Set Theory Basics
+
+## Definitions
+- Set: A collection of distinct objects
+- Union: A ∪ B = {x | x ∈ A or x ∈ B}
+- Intersection: A ∩ B = {x | x ∈ A and x ∈ B}
+
+## Theorems
+1. De Morgan's Laws: (A ∪ B)' = A' ∩ B'
+...
+```
+
+#### 💻 Notebooks (Examples & Applications)
+**Purpose**: Hands-on practice and implementation  
+**Format**: Jupyter Notebook (.ipynb)  
+**Contains**:
+- Code examples demonstrating concepts
+- Worked solutions to problems
+- Visualizations and plots
+- Computational experiments
+- Practice exercises with code
+- Real-world applications
+
+**Example**: `notebooks/week-01-set-operations.ipynb`
+```python
+# Implementing set operations in Python
+A = {1, 2, 3, 4, 5}
+B = {4, 5, 6, 7, 8}
+
+# Union
+print(A | B)  # {1, 2, 3, 4, 5, 6, 7, 8}
+
+# Intersection
+print(A & B)  # {4, 5}
+```
 
 ### Note-Taking Format
 I use a standardized Markdown template for all notes:
