@@ -38,9 +38,21 @@ Think of it as a "second brain" that AI assistants can read to provide better, m
 ```
 iitm-bs-learning/
 ├── README.md                          # This file - Repository overview
-├── STUDY-GUIDE.md                     # 📖 Complete study organization guide
-├── GETTING-STARTED.md                 # 🚀 Quick start for Foundation level
+├── PROJECT_CONTEXT.md                 # ⭐ Master context for AI assistants
 ├── PROGRAM-OVERVIEW.md                # 🎓 Complete program structure (Foundation→MTech)
+│
+├── docs/                              # 📚 Documentation
+│   ├── SETUP.md                       # Environment setup guide
+│   ├── STUDY_GUIDE.md                 # Study strategies and workflows
+│   ├── CONTENT_STRATEGY.md            # Content creation approach
+│   ├── GETTING_STARTED.md             # Quick start for Foundation level
+│   └── templates/                     # Standard templates
+│       ├── note-template.md           # Template for weekly notes
+│       └── README-template.md         # Template for course READMEs
+│
+├── .venv/                             # 🐍 Python virtual environment
+├── activate.sh                        # Quick activation script
+├── requirements.txt                   # Python dependencies
 │
 ├── 00-RAG-Studies/                    # AI Context & Organization
 │   ├── notes/                         # Notes about using AI for learning
@@ -113,9 +125,11 @@ iitm-bs-learning/
 5. **PG Diploma** (20cr) → PG Diploma in AI & ML (requires CGPA ≥ 8.0)
 6. **MTech** (20cr) → BS + MTech in AI & ML
 
-**📘 See [PROGRAM-OVERVIEW.md](./PROGRAM-OVERVIEW.md) for complete details!**  
-**📘 See [STUDY-GUIDE.md](./STUDY-GUIDE.md) for organization strategies!**  
-**📘 See [GETTING-STARTED.md](./GETTING-STARTED.md) to begin your Foundation level!**
+**📘 See [PROJECT_CONTEXT.md](./PROJECT_CONTEXT.md) for complete context!** ⭐  
+**📘 See [PROGRAM-OVERVIEW.md](./PROGRAM-OVERVIEW.md) for program structure!**  
+**📘 See [docs/STUDY_GUIDE.md](./docs/STUDY_GUIDE.md) for study strategies!**  
+**📘 See [docs/GETTING_STARTED.md](./docs/GETTING_STARTED.md) for quick start!**  
+**📘 See [docs/SETUP.md](./docs/SETUP.md) for environment setup!**
 
 ## 🛠️ Key Technologies
 
