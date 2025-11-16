@@ -96,6 +96,12 @@ A **set** is a well-defined collection of distinct objects.
 - Elements in either set but not both
 - **Example**: {1,2,3} △ {3,4,5} = {1,2,4,5}
 
+#### Visual Representation
+
+![Venn Diagrams](../notebooks/venn_diagrams.png)
+
+*Figure 1: Venn diagrams showing set operations (Union, Intersection, Difference) with two and three sets. These visual representations help understand how different sets overlap and combine.*
+
 ### 4. Relations
 
 A **relation** R from set A to set B is a subset of A × B (Cartesian product).
@@ -169,6 +175,15 @@ A **function** f from A to B is a relation where each element in A is related to
 **5. Constant Function**
 - f(x) = c for all x (c is constant)
 - All inputs give same output
+
+#### Visual Representation
+
+![Function Types](../notebooks/function_types.png)
+
+*Figure 2: Three types of functions visualized:*
+- *Left: f(x) = x² (Not Injective) - horizontal line crosses twice, fails horizontal line test*
+- *Center: f(x) = 2x + 3 (Bijective) - one-to-one and onto, passes horizontal line test*
+- *Right: f(x) = x³ (Bijective) - strictly increasing, passes horizontal line test*
 
 ---
 
@@ -388,6 +403,15 @@ Segments:
 - Email-responsive: B − A (clicked but didn't buy)
 - Inactive: Aᶜ ∩ Bᶜ ∩ Cᶜ
 ```
+
+#### Visual Analysis
+
+![Customer Segmentation](../notebooks/customer_segmentation.png)
+
+*Figure 3: Customer segmentation using set operations:*
+- *Left chart: Bar graph showing the size of each customer segment*
+- *Right chart: Pie chart showing the distribution of customers across segments*
+- *Key insight: 32.1% are potential churn (high-value but not engaged)*
 
 ---
 
