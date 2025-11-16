@@ -88,6 +88,16 @@ $$(0, c)$$
 - Found using quadratic formula
 - May be 0, 1, or 2 real roots
 
+#### Visual Representation
+
+![Parabola Parameters](../notebooks/parabola_parameters.png)
+
+*Figure 1: Effects of parameters a, b, c on parabola shape:*
+- *Top-left: Parameter 'a' controls opening direction (upward/downward) and width*
+- *Top-right: Parameter 'c' shifts parabola vertically (y-intercept)*
+- *Bottom-left: Parameter 'b' shifts axis of symmetry horizontally*
+- *Bottom-right: Complete example showing all key features (vertex, axis, y-intercept)*
+
 ### 4. Finding the Vertex
 
 **Method 1: From Standard Form**
@@ -121,6 +131,12 @@ Read directly: (h, k)
 
 **Result**: Vertex form with h = -b/(2a), k = c - b²/(4a)
 
+#### Visual Representation
+
+![Completing the Square](../notebooks/completing_square.png)
+
+*Figure 2: Completing the square demonstrated with three examples showing how to convert standard form to vertex form. Each graph shows the vertex clearly marked and the parabola's key features.*
+
 ### 6. Quadratic Formula
 
 **Solves**: ax² + bx + c = 0
@@ -135,6 +151,12 @@ $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
 - **Δ < 0**: No real roots (two complex roots)
 
 **Geometric Meaning**: X-intercepts of parabola
+
+#### Visual Representation
+
+![Discriminant Cases](../notebooks/discriminant_cases.png)
+
+*Figure 3: Three cases of discriminant showing how Δ determines the number and nature of roots. Left: Two distinct roots (Δ>0), Center: One repeated root (Δ=0), Right: No real roots (Δ<0).*
 
 ### 7. Optimization (Max/Min)
 
@@ -153,6 +175,12 @@ $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
 - Maximizing profit/revenue
 - Minimizing cost/error
 - Projectile motion (max height)
+
+#### Visual Representation
+
+![Optimization Problems](../notebooks/optimization_problems.png)
+
+*Figure 4: Three real-world optimization problems solved using quadratic functions. Left: Revenue maximization, Center: Projectile motion (max height), Right: Area optimization with constraints.*
 
 ### 8. Transformations
 
@@ -406,6 +434,15 @@ Trajectory of objects under gravity:
 $$y = v_0 \sin(\theta) \cdot t - \frac{1}{2}gt^2$$
 
 Quadratic in time!
+
+#### Visual Representation
+
+![ML Applications](../notebooks/ml_applications.png)
+
+*Figure 5: Quadratics in machine learning:*
+- *Left: Polynomial regression - linear model fails (R²=0.809), quadratic model succeeds (R²=0.953)*
+- *Right: MSE as quadratic function - parabola shape guarantees unique minimum for gradient descent optimization*
+- *Key insight: Quadratic loss functions make ML optimization reliable and convergent!*
 
 ---
 

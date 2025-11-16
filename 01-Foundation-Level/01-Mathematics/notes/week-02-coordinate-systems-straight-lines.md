@@ -42,6 +42,12 @@ Quadrant III (-,-) |  Quadrant IV (+,-)
 
 **Why important for DS**: Every data point can be plotted; scatter plots visualize relationships
 
+#### Visual Representation
+
+![Cartesian Plane](../notebooks/cartesian_plane.png)
+
+*Figure 1: The Cartesian coordinate system showing all four quadrants, axes, and sample points. This is the foundation for plotting any data visualization.*
+
 ### 2. Distance Formula
 
 The **distance** between two points P₁ = (x₁, y₁) and P₂ = (x₂, y₂):
@@ -55,6 +61,12 @@ $$d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$
 - K-Nearest Neighbors (KNN) algorithm
 - Clustering algorithms (K-Means)
 - Similarity measures
+
+#### Visual Representation
+
+![Distance Formula](../notebooks/distance_formula.png)
+
+*Figure 2: Distance formula illustrated with the Pythagorean theorem. Shows how to calculate distance between two points (1,2) and (5,5) using d = √[(x₂-x₁)² + (y₂-y₁)²] = 5.0 units.*
 
 ### 3. Midpoint Formula
 
@@ -78,6 +90,16 @@ $$m = \frac{y_2 - y_1}{x_2 - x_1} = \frac{\text{rise}}{\text{run}} = \frac{\Delt
 
 **Why important for DS**: Slope = rate of change = derivative = gradient in ML!
 
+#### Visual Representation
+
+![Slope Types](../notebooks/slope_types.png)
+
+*Figure 3: Four types of slopes visualized:*
+- *Positive slope (m=2): Line rises from left to right*
+- *Negative slope (m=-1.5): Line falls from left to right*
+- *Zero slope (m=0): Horizontal line*
+- *Undefined slope: Vertical line*
+
 ### 5. Parallel Lines
 
 Two non-vertical lines are **parallel** if and only if:
@@ -99,9 +121,15 @@ $$m_1 \cdot m_2 = -1 \quad \text{or} \quad m_2 = -\frac{1}{m_1}$$
 - **Example**: y = 2x + 1 ⊥ y = -½x + 3
 
 **Special cases**:
-- Horizontal (m=0) ⊥ Vertical (undefined)
+- Horizontal line (m = 0) ⊥ Vertical line (undefined)
 
-### 7. Equations of Lines
+#### Visual Representation
+
+![Parallel and Perpendicular Lines](../notebooks/parallel_perpendicular.png)
+
+*Figure 4: Parallel lines (left) have equal slopes, while perpendicular lines (right) have slopes that multiply to -1 (negative reciprocals).*
+
+### 7. Forms of Line Equations
 
 #### Point-Slope Form
 Given point (x₁, y₁) and slope m:
@@ -140,6 +168,12 @@ Given x-intercept a and y-intercept b:
 
 $$\frac{x}{a} + \frac{y}{b} = 1$$
 
+#### Visual Representation
+
+![Line Equations](../notebooks/line_equations.png)
+
+*Figure 5: All forms of line equations demonstrated with examples showing how to represent the same line in multiple ways - from point-slope to intercept form.*
+
 ### 8. Special Lines
 
 - **Horizontal**: y = k (slope = 0)
@@ -163,6 +197,16 @@ $$b = \frac{\sum y - m\sum x}{n}$$
 where n = number of data points
 
 **Why fundamental**: Basis of all linear models in ML!
+
+#### Visual Representation
+
+![Linear Regression](../notebooks/linear_regression.png)
+
+*Figure 6: Linear regression comparison showing manual implementation vs sklearn. Both find the optimal best-fit line that minimizes prediction errors (MSE). The R² score of 0.951 indicates excellent fit.*
+
+![Regression Problem](../notebooks/regression_problem.png)
+
+*Figure 7: Practical application - predicting exam scores from study hours. Shows data points, fitted line (Score = 6.94×Hours + 50.74), and how to use the model for predictions.*
 
 ---
 
