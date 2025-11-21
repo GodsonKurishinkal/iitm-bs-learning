@@ -1,8 +1,8 @@
 # IIT Madras BS Data Science - Project Context
 
-**Last Updated**: November 15, 2025  
-**Student**: Godson Kurishinkal  
-**Program**: BS in Data Science and Applications  
+**Last Updated**: November 15, 2025
+**Student**: Godson Kurishinkal
+**Program**: BS in Data Science and Applications
 **Current Level**: Foundation (Term 1)
 
 ---
@@ -167,82 +167,20 @@ iitm-bs-learning/
 
 ---
 
-## 📖 Study System
+## 📖 Study System and Conventions
 
-### Clear Separation: Notes vs Notebooks
+For complete details on:
+- File naming conventions
+- Notes vs Notebooks separation
+- Quality standards and checklists
+- Code standards and documentation
+- RAG optimization guidelines
 
-#### 📝 Notes (Theory)
-- **Location**: `[Subject]/notes/`
-- **Format**: Markdown (.md)
-- **Purpose**: Understand concepts, definitions, theorems
-- **Contains**: Theory, formulas, proofs, worked examples
-- **When**: During/after lectures, reading textbooks
+**See**: [conventions-and-standards.md](./conventions-and-standards.md) (single source of truth)
 
-#### 💻 Notebooks (Practice)
-- **Location**: `[Subject]/notebooks/`
-- **Format**: Jupyter (.ipynb)
-- **Purpose**: Implement concepts, visualize, experiment
-- **Contains**: Code, visualizations, real-world applications
-- **When**: After understanding theory, for practice
+For daily/weekly workflows and study strategies:
 
-### File Naming Conventions
-```
-✅ Good:
-- week-01-set-theory-relations-functions.md
-- week-02-coordinate-systems-2d.md
-- week-03-straight-lines-slopes.md
-- week-10-graph-theory-basics.md
-
-❌ Avoid:
-- notes.md (too generic)
-- Week-01-Notes.md (use lowercase, not descriptive)
-- BSMA1001-week-01.md (no course code in filename)
-- final_v2.md (confusing)
-```
-
-### Daily Workflow
-1. **Watch** → IIT Madras lecture videos
-2. **Note** → Create `notes/week-XX-topic.md`
-3. **Code** → Implement in `notebooks/week-XX-practice.ipynb`
-4. **Visualize** → Create plots and diagrams
-5. **Apply** → Work through practice problems
-6. **Review** → Update progress tracker
-
----
-
-## 🤖 AI Assistant Guidelines
-
-### Context for AI Tools
-
-This repository is **RAG-optimized** for AI assistants. When helping me study:
-
-#### Always Check
-1. **Current Level**: Foundation Level, BSMA1001 Week 1
-2. **Quality Standard**: Use Week 1 exemplar as template
-3. **Structure**: Follow established folder organization
-4. **Naming**: Use consistent file naming conventions
-5. **Progress**: Check COMPLETION-STATUS.md before suggesting work
-
-#### File Organization
-- **Notes** go in `notes/` as Markdown
-- **Notebooks** go in `notebooks/` as Jupyter
-- **Assignments** go in `assignments/`
-- **Templates** are in `docs/templates/`
-
-#### Content Creation
-- Use Week 1 exemplar as quality benchmark
-- Include mathematical notation (LaTeX)
-- Add visualizations where applicable
-- Provide real-world data science examples
-- Include practice problems at multiple levels
-- Cross-reference related topics
-
-#### Code Standards
-- All code must be tested and functional
-- Include docstrings and comments
-- Follow PEP 8 style guidelines
-- Use type hints where appropriate
-- Verify visualizations render correctly
+**See**: [study-guide.md](./study-guide.md)
 
 ---
 
@@ -288,7 +226,7 @@ This repository is **RAG-optimized** for AI assistants. When helping me study:
 - Better retention
 - Natural pace
 
-**Timeline**: 
+**Timeline**:
 - Per course: 12 weeks
 - Foundation level: 6-8 months
 
@@ -384,16 +322,16 @@ git pull
 
 ## 🎓 Program Roadmap
 
-**Foundation** (32cr) → Foundation Certificate  
-↓  
-**Diploma** (54cr) → Diploma in Programming / Data Science  
-↓  
-**BSc** (28cr) → BSc in Programming & Data Science  
-↓  
-**BS** (28cr) → BS in Data Science & Applications  
-↓  
-**PG Diploma** (20cr) → PG Diploma in AI & ML (CGPA ≥ 8.0 required)  
-↓  
+**Foundation** (32cr) → Foundation Certificate
+↓
+**Diploma** (54cr) → Diploma in Programming / Data Science
+↓
+**BSc** (28cr) → BSc in Programming & Data Science
+↓
+**BS** (28cr) → BS in Data Science & Applications
+↓
+**PG Diploma** (20cr) → PG Diploma in AI & ML (CGPA ≥ 8.0 required)
+↓
 **MTech** (20cr) → MTech in AI & ML
 
 **Total Journey**: 182 credits over 4-8 years
@@ -402,5 +340,5 @@ git pull
 
 **This context file is the master reference for AI assistants helping with this repository. It should be consulted before any major content creation or organizational decisions.**
 
-**Last Updated**: November 15, 2025  
+**Last Updated**: November 15, 2025
 **Next Review**: After completing BSMA1001 (12 weeks)

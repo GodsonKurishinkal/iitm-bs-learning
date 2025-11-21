@@ -1,0 +1,944 @@
+#!/usr/bin/env python3
+"""
+Generate Week 10 Jupyter Notebook: Derivatives
+Creates comprehensive interactive notebook with derivative visualizations and optimization.
+"""
+
+import json
+
+def create_markdown_cell(content):
+    """Create a markdown cell."""
+    return {
+        "cell_type": "markdown",
+        "metadata": {},
+        "source": content.split('\n')
+    }
+
+def create_code_cell(code, outputs=None):
+    """Create a code cell with optional outputs."""
+    cell = {
+        "cell_type": "code",
+        "execution_count": None,
+        "metadata": {},
+        "outputs": outputs or [],
+        "source": code.split('\n')
+    }
+    return cell
+
+# Build notebook structure
+notebook = {
+    "cells": [],
+    "metadata": {
+        "kernelspec": {
+            "display_name": "Python 3",
+            "language": "python",
+            "name": "python3"
+        },
+        "language_info": {
+            "codemirror_mode": {"name": "ipython", "version": 3},
+            "file_extension": ".py",
+            "mimetype": "text/x-python",
+            "name": "python",
+            "nbconvert_exporter": "python",
+            "pygments_lexer": "ipython3",
+            "version": "3.9.6"
+        }
+    },
+    "nbformat": 4,
+    "nbformat_minor": 4
+}
+
+# Cell 1: Title
+notebook["cells"].append(create_markdown_cell("""# Week 10: Derivatives - Practice Notebook
+
+---
+**Date**: 2025-11-22
+**Course**: BSMA1001 - Mathematics for Data Science I
+**Level**: Foundation
+**Week**: 10 of 12
+**Topic Area**: Calculus - Derivatives
+---
+
+## Learning Objectives
+
+This notebook provides hands-on practice with:
+- Visualizing derivatives as tangent lines and slopes
+- Computing derivatives using differentiation rules
+- Finding and classifying critical points
+- Solving optimization problems
+- Implementing gradient descent
+- Applying derivatives to machine learning concepts
+
+## Prerequisites
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy.optimize import minimize_scalar, minimize
+from scipy.misc import derivative
+```"""))
+
+# Cell 2: Setup
+notebook["cells"].append(create_code_cell("""import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy.optimize import minimize_scalar, minimize
+from scipy.misc import derivative
+import warnings
+warnings.filterwarnings('ignore')
+
+# Set random seed
+np.random.seed(42)
+
+# Configure plotting
+plt.style.use('seaborn-v0_8-darkgrid')
+sns.set_palette("husl")
+
+print("✓ Libraries imported successfully")
+print(f"NumPy version: {np.__version__}")"""))
+
+# Cell 3: Tangent line visualization
+notebook["cells"].append(create_markdown_cell("""## 1. Visualizing Derivatives as Tangent Lines
+
+The derivative $f'(a)$ is the **slope of the tangent line** at point $(a, f(a))$.
+
+Tangent line equation: $y - f(a) = f'(a)(x - a)$"""))
+
+# Cell 4: Tangent visualization
+notebook["cells"].append(create_code_cell("""def plot_tangent_line(f, f_prime, a, x_range):
+    \"\"\"Plot function with tangent line at x=a.\"\"\"
+    x = np.linspace(x_range[0], x_range[1], 1000)
+    y = f(x)
+
+    # Point of tangency
+    fa = f(a)
+    slope = f_prime(a)
+
+    # Tangent line: y - f(a) = f'(a)(x - a)
+    tangent_x = x
+    tangent_y = fa + slope * (tangent_x - a)
+
+    # Secant lines approaching tangent
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+
+    # Left plot: Tangent line
+    ax1.plot(x, y, 'b-', linewidth=2.5, label='f(x)')
+    ax1.plot(tangent_x, tangent_y, 'r--', linewidth=2, label=f"Tangent at x={a}")
+    ax1.plot(a, fa, 'ro', markersize=12, zorder=5)
+    ax1.set_xlabel('x', fontsize=12)
+    ax1.set_ylabel('y', fontsize=12)
+    ax1.set_title(f"Tangent Line (slope = f'({a}) = {slope:.2f})",
+                  fontsize=13, fontweight='bold')
+    ax1.legend(fontsize=11)
+    ax1.grid(True, alpha=0.3)
+    ax1.set_ylim(np.min(y)-1, np.max(y)+1)
+
+    # Right plot: Secant lines approaching tangent
+    h_values = [1, 0.5, 0.25, 0.1]
+    colors = plt.cm.viridis(np.linspace(0.3, 0.9, len(h_values)))
+
+    ax2.plot(x, y, 'b-', linewidth=2.5, label='f(x)', zorder=10)
+    ax2.plot(a, fa, 'ro', markersize=12, zorder=11)
+
+    for h, color in zip(h_values, colors):
+        # Secant line through (a, f(a)) and (a+h, f(a+h))
+        secant_slope = (f(a + h) - fa) / h
+        secant_y = fa + secant_slope * (x - a)
+        ax2.plot(x, secant_y, '--', color=color, linewidth=1.5,
+                alpha=0.7, label=f'h={h:.2f}, slope={secant_slope:.2f}')
+        ax2.plot(a + h, f(a + h), 'o', color=color, markersize=8, zorder=5)
+
+    # True tangent
+    ax2.plot(tangent_x, tangent_y, 'r-', linewidth=2.5,
+             label=f'Tangent (h→0), slope={slope:.2f}', zorder=9)
+
+    ax2.set_xlabel('x', fontsize=12)
+    ax2.set_ylabel('y', fontsize=12)
+    ax2.set_title('Secant Lines → Tangent Line', fontsize=13, fontweight='bold')
+    ax2.legend(fontsize=9, loc='best')
+    ax2.grid(True, alpha=0.3)
+    ax2.set_ylim(np.min(y)-1, np.max(y)+1)
+
+    plt.tight_layout()
+    plt.show()
+
+# Example: f(x) = x^2
+f = lambda x: x**2
+f_prime = lambda x: 2*x
+
+plot_tangent_line(f, f_prime, a=2, x_range=(0, 4))
+
+print("Observation: As h → 0, secant line → tangent line")
+print("The derivative is the limit of the difference quotient!")"""))
+
+# Cell 5: Numerical differentiation
+notebook["cells"].append(create_markdown_cell("""## 2. Computing Derivatives Numerically
+
+**Limit definition:** $f'(a) = \\lim_{h \\to 0} \\frac{f(a+h) - f(a)}{h}$
+
+Let's approximate derivatives for decreasing values of $h$:"""))
+
+# Cell 6: Numerical derivative computation
+notebook["cells"].append(create_code_cell("""def numerical_derivative(f, a, h_values):
+    \"\"\"Compute numerical derivative for various h values.\"\"\"
+    print(f"Approximating f'({a}) using difference quotient:")
+    print("=" * 70)
+    print(f"{'h':<12} {'[f(a+h) - f(a)]/h':<25} {'Error':<15}")
+    print("=" * 70)
+
+    # True derivative (if known)
+    true_deriv = 2 * a  # For f(x) = x^2
+
+    approximations = []
+    for h in h_values:
+        approx = (f(a + h) - f(a)) / h
+        error = abs(approx - true_deriv)
+        approximations.append(approx)
+        print(f"{h:<12.6f} {approx:<25.10f} {error:<15.2e}")
+
+    print("=" * 70)
+    print(f"True derivative: f'({a}) = {true_deriv}")
+
+    return approximations
+
+# Test with f(x) = x^2 at x = 3
+f = lambda x: x**2
+a = 3
+h_values = [0.1, 0.01, 0.001, 0.0001, 0.00001]
+
+approx_derivs = numerical_derivative(f, a, h_values)
+
+# Visualize convergence
+fig, ax = plt.subplots(figsize=(10, 6))
+true_deriv = 2 * a
+ax.semilogx(h_values, approx_derivs, 'bo-', markersize=8, linewidth=2, label='Approximations')
+ax.axhline(y=true_deriv, color='r', linestyle='--', linewidth=2, label=f"True f'({a}) = {true_deriv}")
+ax.set_xlabel('h (step size)', fontsize=12)
+ax.set_ylabel("Derivative approximation", fontsize=12)
+ax.set_title('Convergence of Numerical Derivative', fontsize=14, fontweight='bold')
+ax.legend(fontsize=11)
+ax.grid(True, alpha=0.3)
+plt.show()
+
+print("\\nAs h → 0, numerical approximation → true derivative!")"""))
+
+# Cell 7: Differentiation rules
+notebook["cells"].append(create_markdown_cell("""## 3. Differentiation Rules
+
+Let's implement and verify the basic differentiation rules:
+
+- **Power Rule:** $\\frac{d}{dx}[x^n] = nx^{n-1}$
+- **Product Rule:** $(uv)' = u'v + uv'$
+- **Quotient Rule:** $(u/v)' = \\frac{u'v - uv'}{v^2}$
+- **Chain Rule:** $(f \\circ g)' = f'(g(x)) \\cdot g'(x)$"""))
+
+# Cell 8: Rule verification
+notebook["cells"].append(create_code_cell("""def verify_power_rule(n, x_val):
+    \"\"\"Verify power rule: d/dx[x^n] = n*x^(n-1).\"\"\"
+    f = lambda x: x**n
+    f_prime_formula = lambda x: n * x**(n-1)
+    f_prime_numerical = lambda x: derivative(f, x, dx=1e-8)
+
+    analytical = f_prime_formula(x_val)
+    numerical = f_prime_numerical(x_val)
+
+    print(f"Power Rule: f(x) = x^{n}")
+    print(f"  Analytical: f'({x_val}) = {n} * {x_val}^{n-1} = {analytical:.6f}")
+    print(f"  Numerical:  f'({x_val}) = {numerical:.6f}")
+    print(f"  Match: {np.isclose(analytical, numerical)}")
+
+# Test power rule
+verify_power_rule(n=3, x_val=2)
+print()
+verify_power_rule(n=0.5, x_val=4)
+
+print("\\n" + "=" * 70)
+
+# Product rule verification
+print("\\nProduct Rule: f(x) = x^2 * sin(x)")
+x_val = np.pi/4
+
+# Analytical
+u = lambda x: x**2
+v = lambda x: np.sin(x)
+u_prime = lambda x: 2*x
+v_prime = lambda x: np.cos(x)
+
+product_prime_analytical = lambda x: u_prime(x)*v(x) + u(x)*v_prime(x)
+analytical = product_prime_analytical(x_val)
+
+# Numerical
+f_product = lambda x: x**2 * np.sin(x)
+numerical = derivative(f_product, x_val, dx=1e-8)
+
+print(f"  Analytical: {analytical:.6f}")
+print(f"  Numerical:  {numerical:.6f}")
+print(f"  Match: {np.isclose(analytical, numerical)}")
+
+print("\\n" + "=" * 70)
+
+# Chain rule verification
+print("\\nChain Rule: f(x) = sin(x^2)")
+x_val = 1.5
+
+# Analytical: f'(x) = cos(x^2) * 2x
+chain_prime_analytical = lambda x: np.cos(x**2) * 2*x
+analytical = chain_prime_analytical(x_val)
+
+# Numerical
+f_chain = lambda x: np.sin(x**2)
+numerical = derivative(f_chain, x_val, dx=1e-8)
+
+print(f"  Analytical: cos({x_val}^2) * 2*{x_val} = {analytical:.6f}")
+print(f"  Numerical:  {numerical:.6f}")
+print(f"  Match: {np.isclose(analytical, numerical)}")"""))
+
+# Cell 9: Critical points
+notebook["cells"].append(create_markdown_cell("""## 4. Finding Critical Points
+
+**Critical points** occur where $f'(x) = 0$ or $f'(x)$ is undefined.
+
+**Classification:**
+- **Local maximum:** $f'$ changes from + to − (or $f'' < 0$)
+- **Local minimum:** $f'$ changes from − to + (or $f'' > 0$)
+- **Inflection point:** $f'$ doesn't change sign (or $f'' = 0$ with sign change)"""))
+
+# Cell 10: Critical point analysis
+notebook["cells"].append(create_code_cell("""def analyze_critical_points(f, f_prime, f_double_prime, x_range, critical_points):
+    \"\"\"Analyze and classify critical points.\"\"\"
+    x = np.linspace(x_range[0], x_range[1], 1000)
+    y = f(x)
+    y_prime = f_prime(x)
+
+    fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+
+    # Plot 1: Function
+    ax = axes[0, 0]
+    ax.plot(x, y, 'b-', linewidth=2.5)
+
+    for cp in critical_points:
+        fcp = f(cp)
+        ax.plot(cp, fcp, 'ro', markersize=12, zorder=5)
+        ax.text(cp, fcp + 1, f'x={cp:.2f}', ha='center', fontsize=10)
+
+    ax.set_xlabel('x', fontsize=12)
+    ax.set_ylabel('f(x)', fontsize=12)
+    ax.set_title('Function f(x)', fontsize=13, fontweight='bold')
+    ax.grid(True, alpha=0.3)
+
+    # Plot 2: First derivative
+    ax = axes[0, 1]
+    ax.plot(x, y_prime, 'g-', linewidth=2.5, label="f'(x)")
+    ax.axhline(y=0, color='k', linestyle='-', linewidth=1, alpha=0.5)
+
+    for cp in critical_points:
+        ax.plot(cp, 0, 'ro', markersize=12, zorder=5)
+        ax.axvline(x=cp, color='r', linestyle='--', alpha=0.5)
+
+    ax.set_xlabel('x', fontsize=12)
+    ax.set_ylabel("f'(x)", fontsize=12)
+    ax.set_title("First Derivative f'(x)", fontsize=13, fontweight='bold')
+    ax.legend(fontsize=11)
+    ax.grid(True, alpha=0.3)
+
+    # Plot 3: Second derivative
+    ax = axes[1, 0]
+    y_double_prime = f_double_prime(x)
+    ax.plot(x, y_double_prime, 'm-', linewidth=2.5, label="f''(x)")
+    ax.axhline(y=0, color='k', linestyle='-', linewidth=1, alpha=0.5)
+
+    for cp in critical_points:
+        second_deriv = f_double_prime(cp)
+        ax.plot(cp, second_deriv, 'ro', markersize=12, zorder=5)
+        ax.axvline(x=cp, color='r', linestyle='--', alpha=0.5)
+
+    ax.set_xlabel('x', fontsize=12)
+    ax.set_ylabel("f''(x)", fontsize=12)
+    ax.set_title("Second Derivative f''(x)", fontsize=13, fontweight='bold')
+    ax.legend(fontsize=11)
+    ax.grid(True, alpha=0.3)
+
+    # Plot 4: Summary table
+    ax = axes[1, 1]
+    ax.axis('off')
+
+    # Classification
+    classifications = []
+    for cp in critical_points:
+        second_deriv = f_double_prime(cp)
+        if second_deriv > 0:
+            class_type = "Local MIN"
+            color = 'lightgreen'
+        elif second_deriv < 0:
+            class_type = "Local MAX"
+            color = 'lightcoral'
+        else:
+            class_type = "Inconclusive"
+            color = 'lightyellow'
+
+        classifications.append([f'{cp:.2f}', f'{f(cp):.2f}',
+                               f'{second_deriv:.2f}', class_type])
+
+    # Create table
+    table_data = [['x', 'f(x)', "f''(x)", 'Type']] + classifications
+    table = ax.table(cellText=table_data, cellLoc='center', loc='center',
+                     colWidths=[0.2, 0.25, 0.25, 0.3])
+    table.auto_set_font_size(False)
+    table.set_fontsize(11)
+    table.scale(1, 2)
+
+    # Color header
+    for i in range(4):
+        table[(0, i)].set_facecolor('lightblue')
+        table[(0, i)].set_text_props(weight='bold')
+
+    # Color classifications
+    for i, (cp_data, color) in enumerate(zip(classifications,
+                                             ['lightgreen' if c[3]=='Local MIN'
+                                              else 'lightcoral' if c[3]=='Local MAX'
+                                              else 'lightyellow' for c in classifications])):
+        table[(i+1, 3)].set_facecolor(color)
+
+    ax.set_title('Critical Point Classification', fontsize=13, fontweight='bold', pad=20)
+
+    plt.tight_layout()
+    plt.show()
+
+    # Print detailed analysis
+    print("Critical Point Analysis:")
+    print("=" * 70)
+    for cp in critical_points:
+        f_val = f(cp)
+        second_deriv = f_double_prime(cp)
+
+        if second_deriv > 0:
+            class_type = "Local MINIMUM"
+        elif second_deriv < 0:
+            class_type = "Local MAXIMUM"
+        else:
+            class_type = "Inconclusive (use first derivative test)"
+
+        print(f"x = {cp:.4f}:")
+        print(f"  f({cp:.4f}) = {f_val:.4f}")
+        print(f"  f''({cp:.4f}) = {second_deriv:.4f}")
+        print(f"  Classification: {class_type}")
+        print()
+
+# Example: f(x) = x^3 - 3x^2 - 9x + 5
+f = lambda x: x**3 - 3*x**2 - 9*x + 5
+f_prime = lambda x: 3*x**2 - 6*x - 9
+f_double_prime = lambda x: 6*x - 6
+
+# Find critical points: 3x^2 - 6x - 9 = 0 => x^2 - 2x - 3 = 0 => (x-3)(x+1) = 0
+critical_points = [-1, 3]
+
+analyze_critical_points(f, f_prime, f_double_prime,
+                       x_range=(-3, 5), critical_points=critical_points)"""))
+
+# Cell 11: Optimization
+notebook["cells"].append(create_markdown_cell("""## 5. Optimization Problems
+
+**Strategy:**
+1. Define objective function
+2. Find critical points
+3. Evaluate at critical points and boundaries
+4. Select maximum/minimum
+
+**Example:** Maximize area of rectangle with perimeter 100 m."""))
+
+# Cell 12: Optimization example
+notebook["cells"].append(create_code_cell("""def optimize_rectangle():
+    \"\"\"Find rectangle dimensions maximizing area given perimeter 100m.\"\"\"
+    # Let x = width, y = length
+    # Constraint: 2x + 2y = 100, so y = 50 - x
+    # Objective: A(x) = xy = x(50 - x) = 50x - x^2
+
+    A = lambda x: 50*x - x**2
+    A_prime = lambda x: 50 - 2*x
+
+    # Find critical point: A'(x) = 0
+    # 50 - 2x = 0 => x = 25
+    x_opt = 25
+    y_opt = 50 - x_opt
+    A_max = A(x_opt)
+
+    # Visualize
+    x_vals = np.linspace(0, 50, 1000)
+    A_vals = A(x_vals)
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+
+    # Plot area function
+    ax1.plot(x_vals, A_vals, 'b-', linewidth=2.5)
+    ax1.plot(x_opt, A_max, 'ro', markersize=15, label=f'Max at x={x_opt}')
+    ax1.axvline(x=x_opt, color='r', linestyle='--', alpha=0.5)
+    ax1.axhline(y=A_max, color='r', linestyle='--', alpha=0.5)
+    ax1.set_xlabel('Width x (m)', fontsize=12)
+    ax1.set_ylabel('Area A(x) (m²)', fontsize=12)
+    ax1.set_title('Area vs Width', fontsize=13, fontweight='bold')
+    ax1.legend(fontsize=11)
+    ax1.grid(True, alpha=0.3)
+    ax1.text(x_opt, A_max + 50, f'Max Area = {A_max} m²',
+             ha='center', fontsize=11, bbox=dict(boxstyle='round', facecolor='lightgreen'))
+
+    # Plot derivative
+    A_prime_vals = A_prime(x_vals)
+    ax2.plot(x_vals, A_prime_vals, 'g-', linewidth=2.5, label="A'(x)")
+    ax2.axhline(y=0, color='k', linestyle='-', linewidth=1)
+    ax2.plot(x_opt, 0, 'ro', markersize=15, label=f"A'({x_opt}) = 0")
+    ax2.axvline(x=x_opt, color='r', linestyle='--', alpha=0.5)
+    ax2.set_xlabel('Width x (m)', fontsize=12)
+    ax2.set_ylabel("A'(x)", fontsize=12)
+    ax2.set_title("Derivative A'(x) = 50 - 2x", fontsize=13, fontweight='bold')
+    ax2.legend(fontsize=11)
+    ax2.grid(True, alpha=0.3)
+
+    plt.tight_layout()
+    plt.show()
+
+    print("Rectangle Optimization:")
+    print("=" * 70)
+    print(f"Constraint: Perimeter = 100 m (2x + 2y = 100)")
+    print(f"Objective: Maximize Area A = xy")
+    print(f"\\nExpress in one variable: y = 50 - x")
+    print(f"Area function: A(x) = x(50 - x) = 50x - x²")
+    print(f"\\nDerivative: A'(x) = 50 - 2x")
+    print(f"Critical point: A'(x) = 0 => x = {x_opt} m")
+    print(f"\\nSecond derivative: A''(x) = -2 < 0 => Maximum ✓")
+    print(f"\\nOptimal dimensions:")
+    print(f"  Width:  x = {x_opt} m")
+    print(f"  Length: y = {y_opt} m")
+    print(f"  Maximum Area = {A_max} m²")
+    print(f"\\nNote: Square gives maximum area for fixed perimeter!")
+
+optimize_rectangle()"""))
+
+# Cell 13: Gradient descent
+notebook["cells"].append(create_markdown_cell("""## 6. Gradient Descent Implementation
+
+**Algorithm:** Minimize $f(x)$ by iteratively moving in direction of negative gradient.
+
+$$x_{n+1} = x_n - \\alpha \\cdot f'(x_n)$$
+
+where $\\alpha$ is the learning rate."""))
+
+# Cell 14: Gradient descent code
+notebook["cells"].append(create_code_cell("""def gradient_descent(f, f_prime, x0, learning_rate=0.1, max_iters=100, tol=1e-6):
+    \"\"\"Implement gradient descent to find minimum.\"\"\"
+    x_history = [x0]
+    f_history = [f(x0)]
+
+    x = x0
+    for i in range(max_iters):
+        gradient = f_prime(x)
+        x_new = x - learning_rate * gradient
+
+        x_history.append(x_new)
+        f_history.append(f(x_new))
+
+        # Check convergence
+        if abs(x_new - x) < tol:
+            print(f"Converged in {i+1} iterations")
+            break
+
+        x = x_new
+
+    return np.array(x_history), np.array(f_history)
+
+# Test function: f(x) = x^4 - 4x^2 + 4 (has two minima)
+f = lambda x: x**4 - 4*x**2 + 4
+f_prime = lambda x: 4*x**3 - 8*x
+
+# Try different starting points
+starting_points = [-2, -0.5, 0.5, 2]
+learning_rate = 0.1
+
+fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+axes = axes.flatten()
+
+x_plot = np.linspace(-3, 3, 1000)
+y_plot = f(x_plot)
+
+for idx, x0 in enumerate(starting_points):
+    ax = axes[idx]
+
+    # Run gradient descent
+    x_hist, f_hist = gradient_descent(f, f_prime, x0, learning_rate=learning_rate,
+                                      max_iters=50)
+
+    # Plot function
+    ax.plot(x_plot, y_plot, 'b-', linewidth=2, alpha=0.7, label='f(x)')
+
+    # Plot gradient descent path
+    ax.plot(x_hist, f_hist, 'ro-', markersize=8, linewidth=1.5,
+            alpha=0.7, label='GD path')
+    ax.plot(x_hist[0], f_hist[0], 'go', markersize=12, label=f'Start: x={x0}')
+    ax.plot(x_hist[-1], f_hist[-1], 'r*', markersize=15, label=f'End: x={x_hist[-1]:.3f}')
+
+    ax.set_xlabel('x', fontsize=12)
+    ax.set_ylabel('f(x)', fontsize=12)
+    ax.set_title(f'Start: x₀={x0}, lr={learning_rate}', fontsize=12, fontweight='bold')
+    ax.legend(fontsize=9)
+    ax.grid(True, alpha=0.3)
+    ax.set_ylim(-5, 10)
+
+plt.tight_layout()
+plt.show()
+
+print("Gradient Descent Results:")
+print("=" * 70)
+print(f"Function: f(x) = x⁴ - 4x² + 4")
+print(f"Learning rate: {learning_rate}")
+print()
+
+for x0 in starting_points:
+    x_hist, f_hist = gradient_descent(f, f_prime, x0, learning_rate=learning_rate,
+                                      max_iters=50, tol=1e-6)
+    print(f"Starting from x₀ = {x0:>5.1f}:")
+    print(f"  Converged to x = {x_hist[-1]:>7.4f}")
+    print(f"  f(x) = {f_hist[-1]:>7.4f}")
+    print(f"  Iterations: {len(x_hist)-1}")
+    print()
+
+print("Observation: Starting point determines which minimum is found!")"""))
+
+# Cell 15: Learning rate effect
+notebook["cells"].append(create_markdown_cell("""## 7. Effect of Learning Rate
+
+Learning rate $\\alpha$ controls step size:
+- **Too small:** Slow convergence
+- **Too large:** Oscillation or divergence
+- **Just right:** Fast, stable convergence"""))
+
+# Cell 16: Learning rate comparison
+notebook["cells"].append(create_code_cell("""# Compare different learning rates
+f = lambda x: x**4 - 4*x**2 + 4
+f_prime = lambda x: 4*x**3 - 8*x
+
+x0 = 2.0
+learning_rates = [0.01, 0.05, 0.1, 0.15, 0.2, 0.3]
+
+fig, axes = plt.subplots(2, 3, figsize=(15, 10))
+axes = axes.flatten()
+
+x_plot = np.linspace(-3, 3, 1000)
+y_plot = f(x_plot)
+
+for idx, lr in enumerate(learning_rates):
+    ax = axes[idx]
+
+    try:
+        x_hist, f_hist = gradient_descent(f, f_prime, x0, learning_rate=lr,
+                                          max_iters=30, tol=1e-6)
+
+        # Plot
+        ax.plot(x_plot, y_plot, 'b-', linewidth=2, alpha=0.5)
+        ax.plot(x_hist, f_hist, 'ro-', markersize=6, linewidth=1.5, alpha=0.7)
+        ax.plot(x_hist[0], f_hist[0], 'go', markersize=10)
+        ax.plot(x_hist[-1], f_hist[-1], 'r*', markersize=12)
+
+        status = f"Converged: {len(x_hist)} iters"
+        color = 'lightgreen'
+    except:
+        ax.plot(x_plot, y_plot, 'b-', linewidth=2, alpha=0.5)
+        status = "Diverged!"
+        color = 'lightcoral'
+
+    ax.set_title(f'lr={lr} - {status}', fontsize=11, fontweight='bold',
+                bbox=dict(boxstyle='round', facecolor=color))
+    ax.set_xlabel('x', fontsize=10)
+    ax.set_ylabel('f(x)', fontsize=10)
+    ax.grid(True, alpha=0.3)
+    ax.set_ylim(-5, 15)
+
+plt.tight_layout()
+plt.show()
+
+print("Learning Rate Analysis:")
+print("=" * 70)
+print(f"Starting point: x₀ = {x0}")
+print()
+
+for lr in learning_rates:
+    try:
+        x_hist, f_hist = gradient_descent(f, f_prime, x0, learning_rate=lr,
+                                          max_iters=30, tol=1e-6)
+        converged = True
+        final_x = x_hist[-1]
+        iters = len(x_hist) - 1
+    except:
+        converged = False
+        final_x = np.nan
+        iters = "N/A"
+
+    if converged:
+        print(f"lr = {lr:.2f}: Converged to x={final_x:>7.4f} in {iters:>3} iterations")
+    else:
+        print(f"lr = {lr:.2f}: DIVERGED (unstable)")
+
+print("\\nConclusion: Choose learning rate carefully for stable convergence!")"""))
+
+# Cell 17: Activation functions
+notebook["cells"].append(create_markdown_cell("""## 8. Activation Functions and Derivatives
+
+Neural networks use activation functions. Their derivatives are needed for backpropagation.
+
+**Common activations:**
+- Sigmoid: $\\sigma(x) = \\frac{1}{1+e^{-x}}$, derivative: $\\sigma'(x) = \\sigma(x)(1-\\sigma(x))$
+- ReLU: $\\text{ReLU}(x) = \\max(0, x)$, derivative: $1$ if $x>0$, else $0$
+- Tanh: $\\tanh(x)$, derivative: $1 - \\tanh^2(x)$"""))
+
+# Cell 18: Activation function analysis
+notebook["cells"].append(create_code_cell("""# Define activation functions and derivatives
+sigmoid = lambda x: 1 / (1 + np.exp(-x))
+sigmoid_prime = lambda x: sigmoid(x) * (1 - sigmoid(x))
+
+relu = lambda x: np.maximum(0, x)
+relu_prime = lambda x: np.where(x > 0, 1, 0)
+
+tanh = lambda x: np.tanh(x)
+tanh_prime = lambda x: 1 - np.tanh(x)**2
+
+# Plot
+x = np.linspace(-5, 5, 1000)
+
+fig, axes = plt.subplots(3, 2, figsize=(14, 12))
+
+activations = [
+    (sigmoid, sigmoid_prime, 'Sigmoid'),
+    (relu, relu_prime, 'ReLU'),
+    (tanh, tanh_prime, 'Tanh')
+]
+
+for idx, (act, act_prime, name) in enumerate(activations):
+    # Function plot
+    ax = axes[idx, 0]
+    ax.plot(x, act(x), 'b-', linewidth=2.5)
+    ax.set_xlabel('x', fontsize=12)
+    ax.set_ylabel(f'{name}(x)', fontsize=12)
+    ax.set_title(f'{name} Activation', fontsize=13, fontweight='bold')
+    ax.grid(True, alpha=0.3)
+    ax.axhline(y=0, color='k', linewidth=0.5)
+    ax.axvline(x=0, color='k', linewidth=0.5)
+
+    # Derivative plot
+    ax = axes[idx, 1]
+    ax.plot(x, act_prime(x), 'r-', linewidth=2.5)
+    ax.set_xlabel('x', fontsize=12)
+    ax.set_ylabel(f"{name}'(x)", fontsize=12)
+    ax.set_title(f'{name} Derivative', fontsize=13, fontweight='bold')
+    ax.grid(True, alpha=0.3)
+    ax.axhline(y=0, color='k', linewidth=0.5)
+    ax.axvline(x=0, color='k', linewidth=0.5)
+
+plt.tight_layout()
+plt.show()
+
+print("Activation Function Properties:")
+print("=" * 70)
+print("\\n1. Sigmoid σ(x) = 1/(1+e^(-x)):")
+print("   - Range: (0, 1)")
+print("   - Derivative: σ'(x) = σ(x)(1-σ(x))")
+print("   - Max derivative: 0.25 at x=0")
+print("   - Problem: Vanishing gradients for large |x|")
+
+print("\\n2. ReLU(x) = max(0, x):")
+print("   - Range: [0, ∞)")
+print("   - Derivative: 1 if x>0, else 0")
+print("   - Advantage: No vanishing gradients for x>0")
+print("   - Problem: 'Dead neurons' for x≤0")
+
+print("\\n3. Tanh(x):")
+print("   - Range: (-1, 1)")
+print("   - Derivative: 1 - tanh²(x)")
+print("   - Max derivative: 1 at x=0")
+print("   - Similar to sigmoid but centered at 0")
+
+print("\\nML Application: Derivatives crucial for backpropagation!")"""))
+
+# Cell 19: Practice problems
+notebook["cells"].append(create_markdown_cell("""## 9. Practice Problems
+
+Solve these computationally:
+
+**Problem 1:** Find $f'(x)$ for $f(x) = 3x^4 - 2x^3 + 5x - 7$
+
+**Problem 2:** Use product rule: $\\frac{d}{dx}[(x^2+1)(x^3-2)]$
+
+**Problem 3:** Find critical points of $f(x) = x^3 - 6x^2 + 9x$ and classify them
+
+**Problem 4:** Optimize: Find dimensions of rectangular box (open top) with volume 32 cm³ that minimize surface area
+
+**Problem 5:** Implement gradient descent to find minimum of $f(x) = x^2 - 4x + 6$"""))
+
+# Cell 20: Solutions
+notebook["cells"].append(create_code_cell("""print("=" * 70)
+print("PRACTICE PROBLEM SOLUTIONS")
+print("=" * 70)
+
+# Problem 1
+print("\\nProblem 1: f'(x) for f(x) = 3x⁴ - 2x³ + 5x - 7")
+f1 = lambda x: 3*x**4 - 2*x**3 + 5*x - 7
+f1_prime_analytical = lambda x: 12*x**3 - 6*x**2 + 5
+
+x_test = 2
+analytical = f1_prime_analytical(x_test)
+numerical = derivative(f1, x_test, dx=1e-8)
+
+print(f"  f'({x_test}) = 12({x_test})³ - 6({x_test})² + 5")
+print(f"  Analytical: {analytical}")
+print(f"  Numerical:  {numerical:.6f}")
+print(f"  ✓ Match: {np.isclose(analytical, numerical)}")
+
+# Problem 2
+print("\\n" + "=" * 70)
+print("\\nProblem 2: d/dx[(x²+1)(x³-2)] using product rule")
+u = lambda x: x**2 + 1
+v = lambda x: x**3 - 2
+u_prime = lambda x: 2*x
+v_prime = lambda x: 3*x**2
+
+product_prime = lambda x: u_prime(x)*v(x) + u(x)*v_prime(x)
+
+x_test = 1
+result = product_prime(x_test)
+print(f"  u = x²+1, v = x³-2")
+print(f"  u' = 2x, v' = 3x²")
+print(f"  (uv)' = u'v + uv' = 2x(x³-2) + (x²+1)(3x²)")
+print(f"  At x={x_test}: {result}")
+
+# Simplify
+simplified = lambda x: 2*x**4 - 4*x + 3*x**4 + 3*x**2
+print(f"  Simplified: 5x⁴ + 3x² - 4x")
+print(f"  At x={x_test}: {simplified(x_test)}")
+
+# Problem 3
+print("\\n" + "=" * 70)
+print("\\nProblem 3: Critical points of f(x) = x³ - 6x² + 9x")
+f3 = lambda x: x**3 - 6*x**2 + 9*x
+f3_prime = lambda x: 3*x**2 - 12*x + 9
+f3_double_prime = lambda x: 6*x - 12
+
+# Solve 3x² - 12x + 9 = 0 => x² - 4x + 3 = 0 => (x-1)(x-3) = 0
+critical_pts = [1, 3]
+
+print(f"  f'(x) = 3x² - 12x + 9 = 0")
+print(f"  x² - 4x + 3 = 0")
+print(f"  (x-1)(x-3) = 0")
+print(f"  Critical points: x = {critical_pts}")
+
+for x in critical_pts:
+    f_val = f3(x)
+    second_deriv = f3_double_prime(x)
+    classification = "Local MIN" if second_deriv > 0 else "Local MAX" if second_deriv < 0 else "Inconclusive"
+    print(f"\\n  x = {x}:")
+    print(f"    f({x}) = {f_val}")
+    print(f"    f''({x}) = {second_deriv}")
+    print(f"    Classification: {classification}")
+
+# Problem 4
+print("\\n" + "=" * 70)
+print("\\nProblem 4: Box optimization (Volume = 32, minimize surface area)")
+print("  Let x = side of square base, h = height")
+print("  Constraint: x²h = 32, so h = 32/x²")
+print("  Surface area: S = x² + 4xh = x² + 4x(32/x²) = x² + 128/x")
+
+S = lambda x: x**2 + 128/x
+S_prime = lambda x: 2*x - 128/x**2
+
+# Find critical point: 2x - 128/x² = 0 => 2x³ = 128 => x³ = 64 => x = 4
+x_opt = 4
+h_opt = 32 / x_opt**2
+
+print(f"\\n  S'(x) = 2x - 128/x² = 0")
+print(f"  2x³ = 128")
+print(f"  x = {x_opt} cm")
+print(f"  h = 32/{x_opt}² = {h_opt} cm")
+print(f"  Minimum surface area: S = {S(x_opt):.2f} cm²")
+
+# Problem 5
+print("\\n" + "=" * 70)
+print("\\nProblem 5: Gradient descent for f(x) = x² - 4x + 6")
+f5 = lambda x: x**2 - 4*x + 6
+f5_prime = lambda x: 2*x - 4
+
+x_hist, f_hist = gradient_descent(f5, f5_prime, x0=0, learning_rate=0.3, max_iters=20)
+
+print(f"  Starting from x₀ = 0")
+print(f"  Learning rate = 0.3")
+print(f"  Converged to: x = {x_hist[-1]:.6f}")
+print(f"  Minimum value: f(x) = {f_hist[-1]:.6f}")
+print(f"  Analytical minimum: x = 2, f(2) = 2")
+print(f"  Iterations: {len(x_hist)-1}")"""))
+
+# Cell 21: Self-assessment
+notebook["cells"].append(create_markdown_cell("""## 10. Self-Assessment Checklist
+
+Check your understanding:
+
+**Derivatives Fundamentals:**
+- [ ] Understand derivative as limit and instantaneous rate of change
+- [ ] Can interpret derivative geometrically (tangent line slope)
+- [ ] Know relationship between differentiability and continuity
+- [ ] Can compute derivatives from definition (limit)
+
+**Differentiation Rules:**
+- [ ] Master power rule: $\\frac{d}{dx}[x^n] = nx^{n-1}$
+- [ ] Apply product rule correctly
+- [ ] Apply quotient rule correctly
+- [ ] Apply chain rule (CRITICAL for ML!)
+- [ ] Know derivatives of exponential, logarithmic, trig functions
+
+**Critical Points:**
+- [ ] Can find critical points (set $f'(x) = 0$)
+- [ ] Can classify using first derivative test
+- [ ] Can classify using second derivative test
+- [ ] Understand difference between local and global extrema
+
+**Optimization:**
+- [ ] Can set up optimization problems
+- [ ] Can express constraints and objectives
+- [ ] Can find optimal solutions using derivatives
+- [ ] Can verify solutions make sense in context
+
+**Gradient Descent:**
+- [ ] Understand gradient descent algorithm
+- [ ] Can implement gradient descent in code
+- [ ] Know effect of learning rate on convergence
+- [ ] Understand connection to neural network training
+
+**Applications:**
+- [ ] Know how derivatives relate to machine learning
+- [ ] Understand backpropagation as chain rule
+- [ ] Know activation function derivatives
+- [ ] Can analyze feature sensitivity using derivatives
+
+---
+
+## Next Steps
+
+**Week 11 Preview: Integration**
+- Antiderivatives and indefinite integrals
+- Definite integrals and area under curves
+- Fundamental Theorem of Calculus
+- Integration techniques
+- Applications to probability and statistics
+
+---
+
+**Excellent progress! Derivatives are the engine of optimization and machine learning. You now understand how neural networks learn through gradient-based methods. Next week, we'll explore integration - the reverse process!**"""))
+
+# Save notebook
+output_path = "/Users/godsonkurishinkal/Projects/iitm-bs-learning/01-Foundation-Level/01-Mathematics-I/notebooks/week-10-derivatives.ipynb"
+
+with open(output_path, 'w') as f:
+    json.dump(notebook, f, indent=2)
+
+print(f"✓ Notebook created successfully")
+print(f"✓ Output: {output_path}")
+print(f"✓ Total cells: {len(notebook['cells'])}")
+markdown_count = sum(1 for cell in notebook['cells'] if cell['cell_type'] == 'markdown')
+code_count = sum(1 for cell in notebook['cells'] if cell['cell_type'] == 'code')
+print(f"✓ Markdown cells: {markdown_count}")
+print(f"✓ Code cells: {code_count}")

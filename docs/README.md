@@ -4,86 +4,104 @@ This folder contains all documentation for the IIT Madras BS Learning Repository
 
 ---
 
-## 📚 Main Documentation Files
+## 📚 Main Documentation Files (8 Files)
 
-### 🚀 Quick Start
-**[GETTING_STARTED.md](./GETTING_STARTED.md)**
-- 3-step environment setup
+### ⭐ Core Reference Documents
+
+**[project-context.md](./project-context.md)** ⭐
+- Complete repository context and status
+- Current progress tracking (Foundation Level, Week 1)
+- Technology stack overview
+- **Primary reference for AI assistants**
+
+**[conventions-and-standards.md](./conventions-and-standards.md)** ⭐⭐
+- **SINGLE SOURCE OF TRUTH** for all standards
+- File naming conventions (lowercase-with-hyphens)
+- Folder structure standards
+- Quality standards (Week 1 exemplar)
+- Code standards and documentation
+- RAG optimization guidelines
+- Theory vs Practice separation
+- Metadata requirements
+
+**[program-overview.md](./program-overview.md)**
+- Complete program structure (Foundation → MTech)
+- All 6 levels, course details, credits (182 total)
+- Costs, timeline, career paths
+- Exit points and diplomas
+
+### 🚀 Getting Started
+
+**[quick-start-guide.md](./quick-start-guide.md)**
+- 5-minute fast track setup
+- Environment activation and verification
 - First week action plan
-- Quick reference guide
+- Understanding workspace structure
+- Troubleshooting common issues
+- Essential commands reference
 - **Read this first if you're new!**
 
-### 📖 Study System
-**[STUDY_GUIDE.md](./STUDY_GUIDE.md)**
+### 📖 Study & Learning
+
+**[study-guide.md](./study-guide.md)**
 - Complete study organization system
 - Daily and weekly workflows
-- Note-taking templates
-- File naming conventions
-- Study strategies by subject
+- Note-taking strategies
+- Study techniques by subject
+- Time management and habits
+- Review and retention methods
 
-### 🛠️ Environment Setup
-**[SETUP.md](./SETUP.md)**
-- Virtual environment setup
-- Package installation
-- Troubleshooting guide
-- VS Code integration
-- Common commands
-
-### 📝 Content Creation
-**[CONTENT_STRATEGY.md](./CONTENT_STRATEGY.md)**
+**[content-strategy.md](./content-strategy.md)**
 - Strategy for creating remaining 90+ weeks
 - Quality standards (Week 1 exemplar)
 - AI-assisted vs manual approaches
 - Timeline and scope analysis
+- Content generation workflows
+
+### 📝 Templates
+
+**[note-template.md](./note-template.md)**
+- Comprehensive RAG-optimized note template
+- Hierarchical information architecture
+- Front-loading critical information
+- Self-contained sections with semantic markers
+- LaTeX formatting examples
+- Includes all quality checklist items
+- *Note: Consolidated from multiple templates*
 
 ---
 
-## 📋 Templates
+## 📦 Archive
 
-The `templates/` folder contains standardized templates for consistent content creation:
-
-### [note-template.md](./templates/note-template.md)
-Complete template for weekly study notes including:
-- Overview and learning objectives
-- Key concepts and definitions
-- Formulas and theorems
-- Worked examples (3 levels)
-- Data science applications
-- Practice problems
-- Self-assessment checklist
-
-### [README-template.md](./templates/README-template.md)
-Template for course README files including:
-- Course overview and structure
-- Week-by-week topics
-- Prerequisites and resources
-- Study tips
-- Progress tracker
-- Assessment structure
+**[archive/](./archive/)** - Historical documentation (not actively used)
+- `past-tracking.md` - Early notes tracking (1% complete, superseded)
+- `2025-11-14-reorganization.md` - Historical changelog
+- See archive/README.md for details
 
 ---
 
 ## 📖 How to Use This Documentation
 
 ### For New Students
-1. Start with **GETTING_STARTED.md** → Set up environment
-2. Read **STUDY_GUIDE.md** → Understand the system
-3. Check **SETUP.md** → Troubleshoot any issues
+1. **[quick-start-guide.md](./quick-start-guide.md)** → Set up environment (5 mins)
+2. **[conventions-and-standards.md](./conventions-and-standards.md)** → Learn standards (15 mins)
+3. **[study-guide.md](./study-guide.md)** → Understand workflow (20 mins)
 
 ### For Ongoing Study
-- Reference **STUDY_GUIDE.md** for daily workflows
-- Use templates in `templates/` for new content
-- Check **SETUP.md** when adding new packages
+- Reference **study-guide.md** for daily workflows
+- Use **note-template.md** for creating weekly notes
+- Check **conventions-and-standards.md** for naming/quality rules
 
 ### For Content Creation
-- Review **CONTENT_STRATEGY.md** for approach
-- Use **note-template.md** for weekly notes
-- Follow **README-template.md** for new courses
+- Review **content-strategy.md** for approach
+- Use **note-template.md** with all RAG optimizations
+- Follow quality standards from **conventions-and-standards.md**
 
 ### For AI Assistants
-- Read **PROJECT_CONTEXT.md** (root folder) first
-- Reference **STUDY_GUIDE.md** for structure
-- Use templates for consistent output
+- Read **project-context.md** first (current status)
+- Reference **conventions-and-standards.md** (SINGLE SOURCE OF TRUTH)
+- Use **note-template.md** for generating content
+- Check Week 1 exemplar for quality benchmark
 
 ---
 
@@ -91,59 +109,97 @@ Template for course README files including:
 
 ```
 docs/
-├── README.md                    # This file
-├── GETTING_STARTED.md           # Quick start guide
-├── STUDY_GUIDE.md               # Complete study system
-├── SETUP.md                     # Environment setup
-├── CONTENT_STRATEGY.md          # Content creation strategy
-└── templates/                   # Standard templates
-    ├── note-template.md         # Weekly notes template
-    └── README-template.md       # Course README template
+├── README.md                         # This file (navigation hub)
+├── project-context.md                # ⭐ Current status & progress
+├── conventions-and-standards.md      # ⭐⭐ SINGLE SOURCE OF TRUTH
+├── program-overview.md               # Complete program (182 credits)
+├── quick-start-guide.md              # Fast setup guide
+├── study-guide.md                    # Daily/weekly workflows
+├── content-strategy.md               # Content creation approaches
+├── note-template.md                  # RAG-optimized template (consolidated)
+└── archive/                          # Historical docs (not actively used)
+    ├── README.md
+    ├── past-tracking.md
+    └── 2025-11-14-reorganization.md
 ```
+
+**8 active files** (down from 13 through consolidation)
 
 ---
 
 ## 💡 Quick Reference
 
 ### Most Used Documents
-1. **Daily**: STUDY_GUIDE.md (workflows)
-2. **Weekly**: Templates (creating content)
-3. **Setup**: SETUP.md (environment issues)
-4. **Planning**: CONTENT_STRATEGY.md (approach)
+1. **Daily**: study-guide.md (workflows)
+2. **Weekly**: note-template.md (creating content)
+3. **Setup**: quick-start-guide.md (environment)
+4. **Planning**: content-strategy.md (approach)
+5. **AI Context**: project-context.md (status)
+6. **Standards**: conventions-and-standards.md (rules)
 
 ### When to Use What
 
 | Situation | Document |
 |-----------|----------|
-| First time setup | GETTING_STARTED.md |
-| Daily study routine | STUDY_GUIDE.md |
-| Package issues | SETUP.md |
-| Creating new week notes | templates/note-template.md |
-| Starting new course | templates/README-template.md |
-| Planning content creation | CONTENT_STRATEGY.md |
-| AI assistant context | ../PROJECT_CONTEXT.md |
+| First time setup | quick-start-guide.md |
+| Daily study routine | study-guide.md |
+| Creating week notes | note-template.md |
+| File naming rules | conventions-and-standards.md |
+| Quality standards | conventions-and-standards.md |
+| Starting new course | Create course README (see existing courses) |
+| Planning content creation | content-strategy.md |
+| AI assistant context | project-context.md |
+| Environment issues | quick-start-guide.md (troubleshooting) |
+| Code standards | conventions-and-standards.md |
 
 ---
 
-## 🔄 Updates
+## 🔄 Recent Changes (v2.0.0 - 2025-11-21)
+
+### Consolidation and Cleanup
+✅ **Created**:
+- `conventions-and-standards.md` (consolidated 3 files)
+- `quick-start-guide.md` (consolidated 2 files)
+
+✅ **Renamed**:
+- `rag-optimized-note-template.md` → `note-template.md`
+
+✅ **Archived**:
+- `note-organization-index.md` → `archive/past-tracking.md`
+- `organization-update-summary.md` → `archive/2025-11-14-reorganization.md`
+
+✅ **Removed Duplicates**:
+- Deleted `templates/note-template.md` (kept comprehensive version)
+- Deleted `conventions.md`, `getting-started.md`, `setup.md` (consolidated)
+
+### Result
+- **Reduced**: 13 files → 8 active files
+- **Eliminated**: 60-70% redundant content
+- **Improved**: Single source of truth for each topic
+- **Better**: Clearer navigation and organization
+
+---
+
+## 📋 Update Schedule
 
 ### When to Update These Docs
-- **SETUP.md**: When adding new packages or tools
-- **STUDY_GUIDE.md**: When refining workflows
-- **CONTENT_STRATEGY.md**: After completing major milestones
-- **Templates**: When improving content structure
+- **project-context.md**: After major milestones (weekly status)
+- **conventions-and-standards.md**: When standards evolve (rare)
+- **study-guide.md**: When refining workflows (monthly)
+- **content-strategy.md**: After completing courses (quarterly)
+- **note-template.md**: When improving structure (rare)
+- **quick-start-guide.md**: When environment changes
 
-### Version History
-- **2025-11-15**: Initial documentation organization
-  - Created docs/ folder structure
-  - Moved and renamed all guides
-  - Created standardized templates
-  - Consolidated duplicate files
+### Next Review
+- After completing BSMA1001 (Week 12)
+- After Foundation Level completion (~8 months)
+- When transitioning to Diploma Level
 
 ---
 
-**Last Updated**: November 15, 2025  
-**Next Review**: After completing BSMA1001 (Week 12)
+**Version**: 2.0.0
+**Last Updated**: November 21, 2025
+**Next Review**: After BSMA1001 completion (Week 12)
 
 ---
 

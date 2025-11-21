@@ -1,9 +1,9 @@
 # BSMA1003: Mathematics for Data Science II - Study Guide
 
-**Course ID:** BSMA1003  
-**Credits:** 4  
-**Duration:** 11 weeks  
-**Instructor:** Sarang S Sane  
+**Course ID:** BSMA1003
+**Credits:** 4
+**Duration:** 11 weeks
+**Instructor:** Sarang S Sane
 **Prerequisites:** BSMA1001 - Mathematics for Data Science I
 
 ## 📚 Course Overview
@@ -587,13 +587,13 @@ print(f"Hessian:\n{H}")
 def gradient_descent_linear_regression(X, y, learning_rate=0.01, iterations=1000):
     m, n = X.shape
     theta = np.zeros(n)
-    
+
     for i in range(iterations):
         predictions = X @ theta
         errors = predictions - y
         gradient = (1/m) * (X.T @ errors)
         theta -= learning_rate * gradient
-    
+
     return theta
 
 # Using normal equations
@@ -707,9 +707,15 @@ print(f"Compression ratio: {k / min(img_array.shape):.2%}")
 
 ## 📚 Recommended Additional Resources
 
+### Textbooks
+- **Mathematics for Machine Learning:** [Free PDF](https://mml-book.github.io/book/mml-book.pdf) - Comprehensive textbook covering linear algebra, analytic geometry, matrix decompositions, vector calculus, probability, and optimization in the context of machine learning
+- **Gilbert Strang's Linear Algebra Course (MIT):** Classic comprehensive course
+
+### Video Resources
 - **3Blue1Brown - Essence of Linear Algebra:** Visual introduction to linear algebra concepts
 - **Khan Academy Linear Algebra:** Practice problems and video explanations
-- **Gilbert Strang's Linear Algebra Course (MIT):** Classic comprehensive course
+
+### Tools & Documentation
 - **NumPy Documentation:** Master the library used throughout the course
 
 ---
