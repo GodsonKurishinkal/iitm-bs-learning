@@ -1,0 +1,568 @@
+#!/usr/bin/env python3
+"""
+Generate enhanced Week 2 notebook: Categorical Data Analysis
+Following the quality pattern of weeks 4-12
+"""
+
+import json
+import os
+
+def create_week2_notebook():
+    notebook = {
+        "cells": [],
+        "metadata": {
+            "kernelspec": {
+                "display_name": "Python 3",
+                "language": "python",
+                "name": "python3"
+            },
+            "language_info": {
+                "name": "python",
+                "version": "3.9.6"
+            }
+        },
+        "nbformat": 4,
+        "nbformat_minor": 5
+    }
+    
+    cells = [
+        # Cell 1: Title
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "# Week 2: Categorical Data Analysis\n",
+                "\n",
+                "**Course:** Statistics I (BSMA1002)  \n",
+                "**Level:** Foundation  \n",
+                "**Week:** 2\n",
+                "\n",
+                "## Topics Covered\n",
+                "1. Frequency distributions and tables\n",
+                "2. Bar charts and pie charts\n",
+                "3. Contingency tables and cross-tabulation\n",
+                "4. Relative frequencies and percentages\n",
+                "5. Mode for categorical data\n",
+                "\n",
+                "## Learning Objectives\n",
+                "- Organize categorical data using frequency distributions\n",
+                "- Create effective visualizations for categorical variables\n",
+                "- Analyze relationships between categorical variables\n",
+                "- Calculate and interpret frequency statistics\n"
+            ]
+        },
+        
+        # Cell 2: Imports
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "# Import required libraries\n",
+                "import numpy as np\n",
+                "import pandas as pd\n",
+                "import matplotlib.pyplot as plt\n",
+                "import seaborn as sns\n",
+                "\n",
+                "# Set random seed for reproducibility\n",
+                "np.random.seed(42)\n",
+                "\n",
+                "# Configure visualization settings\n",
+                "plt.style.use('seaborn-v0_8-darkgrid')\n",
+                "sns.set_palette('husl')\n",
+                "%matplotlib inline\n",
+                "\n",
+                "print('✓ Libraries imported successfully')"
+            ]
+        },
+        
+        # Cell 3: Theory - Frequency Distributions
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## 1. Frequency Distributions\n",
+                "\n",
+                "### Definition\n",
+                "A **frequency distribution** shows how often each category or value appears in a dataset.\n",
+                "\n",
+                "### Types of Frequencies\n",
+                "\n",
+                "1. **Absolute Frequency**: Count of observations in each category\n",
+                "   $$f_i = \\text{count of category } i$$\n",
+                "\n",
+                "2. **Relative Frequency**: Proportion of observations in each category\n",
+                "   $$\\text{RF}_i = \\frac{f_i}{n} \\text{ where } n = \\sum f_i$$\n",
+                "\n",
+                "3. **Percentage Frequency**: Relative frequency as percentage\n",
+                "   $$\\text{PF}_i = \\text{RF}_i \\times 100\\%$$\n",
+                "\n",
+                "4. **Cumulative Frequency**: Running total of frequencies\n",
+                "   $$\\text{CF}_i = \\sum_{j=1}^{i} f_j$$\n",
+                "\n",
+                "### Properties\n",
+                "- Sum of all frequencies equals total observations: $\\sum f_i = n$\n",
+                "- Sum of relative frequencies equals 1: $\\sum \\text{RF}_i = 1$\n",
+                "- Sum of percentage frequencies equals 100%: $\\sum \\text{PF}_i = 100\\%$\n"
+            ]
+        },
+        
+        # Cell 4: Frequency Distribution Example
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "# Create sample customer data\n",
+                "categories = ['Electronics', 'Clothing', 'Food', 'Books', 'Sports']\n",
+                "purchases = np.random.choice(categories, size=200, \n",
+                "                            p=[0.25, 0.30, 0.20, 0.15, 0.10])\n",
+                "\n",
+                "# Create frequency distribution\n",
+                "freq_dist = pd.Series(purchases).value_counts().sort_index()\n",
+                "rel_freq = freq_dist / len(purchases)\n",
+                "pct_freq = rel_freq * 100\n",
+                "cum_freq = freq_dist.cumsum()\n",
+                "\n",
+                "# Create comprehensive frequency table\n",
+                "freq_table = pd.DataFrame({\n",
+                "    'Frequency': freq_dist,\n",
+                "    'Relative Freq': rel_freq.round(3),\n",
+                "    'Percentage': pct_freq.round(1),\n",
+                "    'Cumulative': cum_freq\n",
+                "})\n",
+                "\n",
+                "print('Frequency Distribution Table:')\n",
+                "print(freq_table)\n",
+                "print(f'\\nTotal observations: {len(purchases)}')\n",
+                "print(f'Verification: Sum of frequencies = {freq_dist.sum()}')\n",
+                "print(f'Verification: Sum of relative frequencies = {rel_freq.sum():.3f}')"
+            ]
+        },
+        
+        # Cell 5: Theory - Visualizations
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## 2. Categorical Data Visualizations\n",
+                "\n",
+                "### Bar Charts\n",
+                "- Display frequencies using rectangular bars\n",
+                "- Height represents frequency\n",
+                "- Bars can be vertical or horizontal\n",
+                "- Categories are discrete (gaps between bars)\n",
+                "\n",
+                "**When to use:**\n",
+                "- Comparing frequencies across categories\n",
+                "- Nominal or ordinal data\n",
+                "- More than 2-3 categories\n",
+                "\n",
+                "### Pie Charts\n",
+                "- Display relative frequencies as slices of a circle\n",
+                "- Slice angle = $\\frac{f_i}{n} \\times 360°$\n",
+                "- Shows parts of a whole\n",
+                "\n",
+                "**When to use:**\n",
+                "- Showing proportions\n",
+                "- 5-7 categories maximum\n",
+                "- Emphasizing percentage composition\n",
+                "\n",
+                "**Best Practices:**\n",
+                "- Use bar charts for precise comparisons\n",
+                "- Use pie charts for showing composition\n",
+                "- Avoid 3D effects (distort perception)\n",
+                "- Order categories logically\n"
+            ]
+        },
+        
+        # Cell 6: Bar Chart Example
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "# Create bar chart visualization\n",
+                "fig, axes = plt.subplots(1, 2, figsize=(14, 5))\n",
+                "\n",
+                "# Vertical bar chart\n",
+                "freq_dist.plot(kind='bar', ax=axes[0], color='steelblue', edgecolor='black')\n",
+                "axes[0].set_title('Purchase Categories - Bar Chart', fontsize=14, fontweight='bold')\n",
+                "axes[0].set_xlabel('Product Category', fontsize=11)\n",
+                "axes[0].set_ylabel('Frequency', fontsize=11)\n",
+                "axes[0].grid(axis='y', alpha=0.3)\n",
+                "\n",
+                "# Add value labels on bars\n",
+                "for i, v in enumerate(freq_dist.values):\n",
+                "    axes[0].text(i, v + 1, str(v), ha='center', va='bottom', fontweight='bold')\n",
+                "\n",
+                "# Horizontal bar chart with percentages\n",
+                "pct_freq.sort_values().plot(kind='barh', ax=axes[1], color='coral', edgecolor='black')\n",
+                "axes[1].set_title('Purchase Categories - Percentage', fontsize=14, fontweight='bold')\n",
+                "axes[1].set_xlabel('Percentage (%)', fontsize=11)\n",
+                "axes[1].set_ylabel('Product Category', fontsize=11)\n",
+                "axes[1].grid(axis='x', alpha=0.3)\n",
+                "\n",
+                "# Add percentage labels\n",
+                "for i, v in enumerate(pct_freq.sort_values().values):\n",
+                "    axes[1].text(v + 0.5, i, f'{v:.1f}%', ha='left', va='center', fontweight='bold')\n",
+                "\n",
+                "plt.tight_layout()\n",
+                "plt.show()\n",
+                "\n",
+                "print('Most popular category:', freq_dist.idxmax())\n",
+                "print(f'with {freq_dist.max()} purchases ({pct_freq.max():.1f}%)')"
+            ]
+        },
+        
+        # Cell 7: Pie Chart Example
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "# Create pie chart\n",
+                "fig, ax = plt.subplots(figsize=(10, 7))\n",
+                "\n",
+                "colors = plt.cm.Set3(range(len(freq_dist)))\n",
+                "wedges, texts, autotexts = ax.pie(freq_dist.values, \n",
+                "                                    labels=freq_dist.index,\n",
+                "                                    autopct='%1.1f%%',\n",
+                "                                    colors=colors,\n",
+                "                                    startangle=90,\n",
+                "                                    explode=[0.05 if i == freq_dist.argmax() else 0 \n",
+                "                                            for i in range(len(freq_dist))])\n",
+                "\n",
+                "# Enhance text formatting\n",
+                "for text in texts:\n",
+                "    text.set_fontsize(12)\n",
+                "    text.set_fontweight('bold')\n",
+                "\n",
+                "for autotext in autotexts:\n",
+                "    autotext.set_color('white')\n",
+                "    autotext.set_fontsize(10)\n",
+                "    autotext.set_fontweight('bold')\n",
+                "\n",
+                "ax.set_title('Distribution of Purchase Categories', fontsize=14, fontweight='bold', pad=20)\n",
+                "plt.axis('equal')\n",
+                "plt.show()\n",
+                "\n",
+                "print('\\nPie chart shows the composition of purchases across categories')\n",
+                "print(f'Largest slice: {freq_dist.idxmax()} ({pct_freq.max():.1f}%)')"
+            ]
+        },
+        
+        # Cell 8: Theory - Contingency Tables
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## 3. Contingency Tables (Cross-Tabulation)\n",
+                "\n",
+                "### Definition\n",
+                "A **contingency table** displays the frequency distribution of two or more categorical variables simultaneously.\n",
+                "\n",
+                "### Structure\n",
+                "- Rows represent categories of one variable\n",
+                "- Columns represent categories of another variable\n",
+                "- Cells contain joint frequencies\n",
+                "- Margins contain row/column totals\n",
+                "\n",
+                "### Joint Frequency\n",
+                "Count of observations in cell $(i,j)$:\n",
+                "$$n_{ij} = \\text{count where row } = i \\text{ and column } = j$$\n",
+                "\n",
+                "### Marginal Frequency\n",
+                "- Row total: $n_{i\\cdot} = \\sum_j n_{ij}$\n",
+                "- Column total: $n_{\\cdot j} = \\sum_i n_{ij}$\n",
+                "- Grand total: $n = \\sum_i \\sum_j n_{ij}$\n",
+                "\n",
+                "### Applications\n",
+                "- Analyze relationships between categorical variables\n",
+                "- Customer segmentation analysis\n",
+                "- Survey data analysis\n",
+                "- Market research\n"
+            ]
+        },
+        
+        # Cell 9: Contingency Table Example
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "# Create customer segmentation data\n",
+                "n_customers = 300\n",
+                "age_groups = np.random.choice(['18-25', '26-35', '36-50', '51+'], size=n_customers, \n",
+                "                              p=[0.20, 0.35, 0.30, 0.15])\n",
+                "membership = np.random.choice(['Basic', 'Premium', 'VIP'], size=n_customers,\n",
+                "                             p=[0.50, 0.35, 0.15])\n",
+                "\n",
+                "# Create DataFrame\n",
+                "customer_df = pd.DataFrame({\n",
+                "    'Age Group': age_groups,\n",
+                "    'Membership': membership\n",
+                "})\n",
+                "\n",
+                "# Create contingency table with margins\n",
+                "contingency = pd.crosstab(customer_df['Age Group'], \n",
+                "                         customer_df['Membership'], \n",
+                "                         margins=True, \n",
+                "                         margins_name='Total')\n",
+                "\n",
+                "print('Contingency Table: Age Group vs Membership Type')\n",
+                "print('='*60)\n",
+                "print(contingency)\n",
+                "print('\\n')\n",
+                "\n",
+                "# Calculate and display proportions\n",
+                "print('Proportion Table (%):')\n",
+                "print('='*60)\n",
+                "prop_table = pd.crosstab(customer_df['Age Group'], \n",
+                "                        customer_df['Membership'], \n",
+                "                        normalize='all') * 100\n",
+                "print(prop_table.round(1))"
+            ]
+        },
+        
+        # Cell 10: Contingency Table Visualization
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "# Create stacked bar chart\n",
+                "fig, axes = plt.subplots(1, 2, figsize=(14, 5))\n",
+                "\n",
+                "# Remove 'Total' row for visualization\n",
+                "contingency_no_total = contingency.drop('Total').drop('Total', axis=1)\n",
+                "\n",
+                "# Stacked bar chart\n",
+                "contingency_no_total.plot(kind='bar', stacked=True, ax=axes[0], \n",
+                "                         color=['#FF6B6B', '#4ECDC4', '#45B7D1'],\n",
+                "                         edgecolor='black')\n",
+                "axes[0].set_title('Membership Distribution by Age Group', fontsize=13, fontweight='bold')\n",
+                "axes[0].set_xlabel('Age Group', fontsize=11)\n",
+                "axes[0].set_ylabel('Frequency', fontsize=11)\n",
+                "axes[0].legend(title='Membership', bbox_to_anchor=(1.05, 1), loc='upper left')\n",
+                "axes[0].grid(axis='y', alpha=0.3)\n",
+                "plt.setp(axes[0].xaxis.get_majorticklabels(), rotation=45)\n",
+                "\n",
+                "# Grouped bar chart\n",
+                "contingency_no_total.plot(kind='bar', ax=axes[1], \n",
+                "                         color=['#FF6B6B', '#4ECDC4', '#45B7D1'],\n",
+                "                         edgecolor='black')\n",
+                "axes[1].set_title('Membership Comparison Across Age Groups', fontsize=13, fontweight='bold')\n",
+                "axes[1].set_xlabel('Age Group', fontsize=11)\n",
+                "axes[1].set_ylabel('Frequency', fontsize=11)\n",
+                "axes[1].legend(title='Membership', bbox_to_anchor=(1.05, 1), loc='upper left')\n",
+                "axes[1].grid(axis='y', alpha=0.3)\n",
+                "plt.setp(axes[1].xaxis.get_majorticklabels(), rotation=45)\n",
+                "\n",
+                "plt.tight_layout()\n",
+                "plt.show()"
+            ]
+        },
+        
+        # Cell 11: Theory - Mode
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## 4. Mode for Categorical Data\n",
+                "\n",
+                "### Definition\n",
+                "The **mode** is the category that appears most frequently in the dataset.\n",
+                "\n",
+                "### Properties\n",
+                "- Only measure of central tendency for nominal data\n",
+                "- Can be used for all types of data\n",
+                "- May have multiple modes (multimodal)\n",
+                "- Not affected by extreme values\n",
+                "\n",
+                "### Types\n",
+                "- **Unimodal**: One mode\n",
+                "- **Bimodal**: Two modes\n",
+                "- **Multimodal**: More than two modes\n",
+                "\n",
+                "### Formula\n",
+                "$$\\text{Mode} = \\text{category with maximum frequency}$$\n",
+                "$$\\text{Mode} = \\arg\\max_i f_i$$\n",
+                "\n",
+                "### Applications\n",
+                "- Most popular product\n",
+                "- Most common customer type\n",
+                "- Typical response in surveys\n"
+            ]
+        },
+        
+        # Cell 12: Mode Calculation
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "# Calculate mode for different categorical variables\n",
+                "from scipy import stats\n",
+                "\n",
+                "# Product categories mode\n",
+                "product_mode = stats.mode(purchases, keepdims=True)\n",
+                "print('Product Category Analysis:')\n",
+                "print(f'Mode: {product_mode.mode[0]}')\n",
+                "print(f'Frequency: {product_mode.count[0]}')\n",
+                "print(f'Percentage: {(product_mode.count[0] / len(purchases)) * 100:.1f}%')\n",
+                "\n",
+                "print('\\n' + '='*60 + '\\n')\n",
+                "\n",
+                "# Membership mode by age group\n",
+                "print('Mode Membership Type by Age Group:')\n",
+                "for age in sorted(customer_df['Age Group'].unique()):\n",
+                "    age_data = customer_df[customer_df['Age Group'] == age]['Membership']\n",
+                "    mode_membership = age_data.mode().values[0]\n",
+                "    mode_count = (age_data == mode_membership).sum()\n",
+                "    mode_pct = (mode_count / len(age_data)) * 100\n",
+                "    print(f'{age:8s}: {mode_membership:8s} ({mode_count:2d} out of {len(age_data):2d}, {mode_pct:.1f}%)')"
+            ]
+        },
+        
+        # Cell 13: Application - Market Basket Analysis
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## 5. Real-World Application: E-commerce Analytics\n",
+                "\n",
+                "### Business Problem\n",
+                "An e-commerce company wants to analyze customer purchase patterns to:\n",
+                "- Identify popular product categories\n",
+                "- Understand customer segmentation\n",
+                "- Optimize inventory and marketing strategies\n",
+                "\n",
+                "### Analysis Approach\n",
+                "1. Frequency analysis of product categories\n",
+                "2. Cross-tabulation of customer demographics and purchases\n",
+                "3. Visualization of purchase patterns\n",
+                "4. Identify modes and trends\n"
+            ]
+        },
+        
+        # Cell 14: Comprehensive Analysis
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "# Generate comprehensive e-commerce dataset\n",
+                "np.random.seed(123)\n",
+                "n_transactions = 500\n",
+                "\n",
+                "ecommerce_data = pd.DataFrame({\n",
+                "    'Product_Category': np.random.choice(\n",
+                "        ['Electronics', 'Fashion', 'Home', 'Sports', 'Books'], \n",
+                "        size=n_transactions, p=[0.30, 0.25, 0.20, 0.15, 0.10]\n",
+                "    ),\n",
+                "    'Customer_Type': np.random.choice(\n",
+                "        ['New', 'Regular', 'VIP'], \n",
+                "        size=n_transactions, p=[0.40, 0.45, 0.15]\n",
+                "    ),\n",
+                "    'Payment_Method': np.random.choice(\n",
+                "        ['Credit Card', 'Debit Card', 'PayPal', 'Cash'], \n",
+                "        size=n_transactions, p=[0.40, 0.30, 0.20, 0.10]\n",
+                "    )\n",
+                "})\n",
+                "\n",
+                "# Comprehensive analysis\n",
+                "print('E-COMMERCE ANALYTICS DASHBOARD')\n",
+                "print('='*70)\n",
+                "\n",
+                "print('\\n1. Product Category Performance:')\n",
+                "product_stats = ecommerce_data['Product_Category'].value_counts()\n",
+                "for category, count in product_stats.items():\n",
+                "    pct = (count / n_transactions) * 100\n",
+                "    bar = '█' * int(pct / 2)\n",
+                "    print(f'{category:15s}: {bar:25s} {count:3d} ({pct:5.1f}%)')\n",
+                "\n",
+                "print('\\n2. Customer Segmentation:')\n",
+                "customer_stats = ecommerce_data['Customer_Type'].value_counts()\n",
+                "for cust_type, count in customer_stats.items():\n",
+                "    pct = (count / n_transactions) * 100\n",
+                "    print(f'{cust_type:10s}: {count:3d} transactions ({pct:5.1f}%)')\n",
+                "\n",
+                "print('\\n3. Cross-Analysis: Top Category by Customer Type:')\n",
+                "cross_tab = pd.crosstab(ecommerce_data['Customer_Type'], \n",
+                "                       ecommerce_data['Product_Category'])\n",
+                "print(cross_tab)\n",
+                "\n",
+                "print('\\n4. Key Insights:')\n",
+                "mode_category = product_stats.idxmax()\n",
+                "mode_customer = customer_stats.idxmax()\n",
+                "print(f'   • Most popular category: {mode_category} ({product_stats.max()} purchases)')\n",
+                "print(f'   • Dominant customer type: {mode_customer} ({customer_stats.max()} customers)')\n",
+                "print(f'   • Total transactions analyzed: {n_transactions}')"
+            ]
+        },
+        
+        # Cell 15: Summary
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## Summary & Key Takeaways\n",
+                "\n",
+                "### Core Concepts\n",
+                "1. **Frequency Distributions**\n",
+                "   - Organize categorical data into tables\n",
+                "   - Calculate absolute, relative, percentage, and cumulative frequencies\n",
+                "   - Essential for understanding data composition\n",
+                "\n",
+                "2. **Visualizations**\n",
+                "   - **Bar charts**: Best for comparing categories\n",
+                "   - **Pie charts**: Best for showing proportions\n",
+                "   - Choose based on data and communication goals\n",
+                "\n",
+                "3. **Contingency Tables**\n",
+                "   - Analyze relationships between two categorical variables\n",
+                "   - Powerful tool for segmentation and cross-analysis\n",
+                "   - Foundation for chi-square tests (later weeks)\n",
+                "\n",
+                "4. **Mode**\n",
+                "   - Only measure of central tendency for nominal data\n",
+                "   - Identifies most frequent category\n",
+                "   - Critical for business decision-making\n",
+                "\n",
+                "### Practical Applications\n",
+                "- Customer segmentation\n",
+                "- Market research analysis\n",
+                "- Survey data interpretation\n",
+                "- Product portfolio optimization\n",
+                "- Business intelligence reporting\n",
+                "\n",
+                "### Next Steps\n",
+                "- Week 3: Numerical data visualization (histograms, box plots)\n",
+                "- Week 4: Central tendency measures (mean, median)\n",
+                "- Week 5: Dispersion measures (variance, standard deviation)\n"
+            ]
+        }
+    ]
+    
+    notebook['cells'] = cells
+    return notebook
+
+# Generate and save notebook
+if __name__ == '__main__':
+    notebook = create_week2_notebook()
+    output_path = '../01-Foundation-Level/02-Statistics-I/notebooks/week-02-categorical-data-analysis.ipynb'
+    
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(notebook, f, indent=2, ensure_ascii=False)
+    
+    print(f'✓ Week 2 enhanced: {len(notebook["cells"])} cells')
+
