@@ -1,0 +1,33 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"jupyter.askForKernelRestart": false,
+		"notebook.cellToolbarLocation": {
+			"default": "right",
+			"jupyter-notebook": "left"
+		},
+		"notebook.lineNumbers": "on",
+		"notebook.output.textLineLimit": 500,
+		"notebook.formatOnSave.enabled": true,
+		"markdown.math.enabled": true,
+		"workbench.editorAssociations": {
+			"*.md": "vscode.markdown.preview.editor"
+		},
+		"files.associations": {
+			"*.md": "markdown",
+			"*.ipynb": "jupyter-notebook",
+			"*.json": "jsonc"
+		},
+		"git.ignoreLimitWarning": true,
+		"git.confirmSync": false,
+		"terminal.integrated.env.osx": {
+			"PYTHONPATH": "${workspaceFolder}"
+		},
+		"terminal.integrated.defaultProfile.osx": "zsh",
+		"explorer.sortOrder": "type"
+	}
+}

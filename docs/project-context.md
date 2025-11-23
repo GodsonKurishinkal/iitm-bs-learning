@@ -1,9 +1,9 @@
 # IIT Madras BS Data Science - Project Context
 
-**Last Updated**: November 15, 2025
+**Last Updated**: November 23, 2025
 **Student**: Godson Kurishinkal
 **Program**: BS in Data Science and Applications
-**Current Level**: Foundation (Term 1)
+**Current Level**: Foundation (Mathematics & Statistics COMPLETE)
 
 ---
 
@@ -22,21 +22,21 @@ This repository serves as a **comprehensive learning workspace** for the IIT Mad
 ## 📊 Current Status
 
 ### Overall Progress
-- **Program Level**: Foundation Level (Term 1)
-- **Credits Completed**: 0/182 total credits
-- **Current Focus**: BSMA1001 (Mathematics for Data Science I)
-- **Repository Status**: Scaffolding complete, Week 1 exemplar created
+- **Program Level**: Foundation Level (50% Complete - Math & Stats DONE)
+- **Credits Completed**: 16/32 Foundation credits | 16/182 total credits
+- **Current Focus**: Mathematics & Statistics COMPLETE - Ready for Computer Science courses
+- **Repository Status**: 4 complete courses, 47 weeks of comprehensive notes, 71+ notebooks
 
-### Foundation Level (32 credits - IN PROGRESS)
+### Foundation Level (32 credits - 50% COMPLETE)
 | Course Code | Course Name | Credits | Status | Progress |
 |-------------|-------------|---------|--------|----------|
-| BSMA1001 | Mathematics for Data Science I | 4 | 🔄 In Progress | Week 1/12 complete |
-| BSMA1002 | Statistics for Data Science I | 4 | 📝 Not Started | 0/12 weeks |
+| BSMA1001 | Mathematics for Data Science I | 4 | ✅ Complete | 12/12 weeks ✅ |
+| BSMA1002 | Statistics for Data Science I | 4 | ✅ Complete | 12/12 weeks ✅ |
+| BSMA1003 | Mathematics for Data Science II | 4 | ✅ Complete | 11/11 weeks ✅ |
+| BSMA1004 | Statistics for Data Science II | 4 | ✅ Complete | 12/12 weeks ✅ |
 | BSCS1001 | Computational Thinking | 4 | 📝 Not Started | 0/12 weeks |
-| BSHS1001 | English I | 4 | 📝 Not Started | 0/12 weeks |
-| BSMA1003 | Mathematics for Data Science II | 4 | 📝 Not Started | 0/11 weeks |
-| BSMA1004 | Statistics for Data Science II | 4 | 📝 Not Started | 0/12 weeks |
 | BSCS1002 | Python Programming | 4 | 📝 Not Started | 0/12 weeks |
+| BSHS1001 | English I | 4 | 📝 Not Started | 0/12 weeks |
 | BSHS1002 | English II | 4 | 📝 Not Started | 0/12 weeks |
 
 **Legend**: ✅ Complete | 🔄 In Progress | 📝 Not Started

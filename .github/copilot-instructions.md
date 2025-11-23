@@ -1,7 +1,7 @@
 # GitHub Copilot Instructions for IIT Madras BS Learning Repository
 
-**Version**: 1.0.0
-**Last Updated**: 2025-11-21
+**Version**: 1.1.0
+**Last Updated**: 2025-11-22
 **Next Review**: After Foundation Level completion (2026-02)
 
 ---
@@ -82,26 +82,34 @@ Located in: `01-Foundation-Level/01-Mathematics/`
 
 ### File Naming Convention (STRICTLY ENFORCE)
 
-**Notes**:
+**ALL Markdown Files: Use lowercase-with-hyphens** (no uppercase, no underscores, no spaces)
+
+**Weekly Notes**:
 - Format: `week-{nn}-{topic-description}.md`
-- Use **lowercase with hyphens** (no underscores, no spaces)
-- Include 2-4 word topic description
 - ✅ Good: `week-01-set-theory-relations-functions.md`
 - ✅ Good: `week-02-coordinate-systems-2d.md`
 - ❌ Bad: `Week-01-Notes.md`, `week_01.md`, `BSMA1001-week-01.md`
+
+**Study Guides & Special Files**:
+- Format: `study-guide.md`, `completion-status.md`, `notebook-template-guide.md`
+- Overview files: `00-[course-code]-overview.md` (e.g., `00-bsma1001-overview.md`)
+- ✅ Good: `study-guide.md`, `completion-status.md`, `00-bsma1001-overview.md`
+- ❌ Bad: `STUDY-GUIDE.md`, `COMPLETION-STATUS.md`, `00-BSMA1001-overview.md`
 
 **Notebooks**:
 - Format: `week-{nn}-{topic}-practice.ipynb`
 - ✅ Good: `week-01-set-theory-practice.ipynb`
 - ❌ Bad: `Week01.ipynb`, `practice_notebook.ipynb`
 
+**Exception**: `README.md` files remain uppercase (standard convention)
+
 ### Course Folder Structure (Standard)
 ```
 [Subject]/
 ├── README.md                    # Course overview
-├── STUDY-GUIDE.md              # 12-week detailed plan
+├── study-guide.md              # 12-week detailed plan
 ├── notes/                       # 📝 Theory (Markdown)
-│   ├── 00-[COURSE-CODE]-overview.md
+│   ├── 00-[course-code]-overview.md
 │   ├── week-01-topic.md
 │   └── week-02-topic.md
 ├── notebooks/                   # 💻 Practice (Jupyter)
@@ -204,7 +212,7 @@ Tags: #CourseCode #Topic #WeekN #Level
 3. `docs/ai-assistant-guide.md` - Consolidated guide specifically for AI assistants with quick reference tables
 
 **Progress Tracking**:
-1. `01-Foundation-Level/COMPLETION-STATUS.md` - Foundation progress tracker
+1. `01-Foundation-Level/completion-status.md` - Foundation progress tracker
 2. `[Level]/[Subject]/README.md` - Course-specific progress
 
 **Templates**:
@@ -265,7 +273,7 @@ See `docs/note-template.md` for complete details.
 1. **Check Current Status**: Read `docs/project-context.md` for latest progress
 2. **Verify Quality Standard**: Review Week 1 exemplar files
 3. **Check Templates**: Use appropriate template from `docs/templates/`
-4. **Understand Context**: Read course `README.md` and `study-guide.md`
+4. **Understand Context**: Read course `README.md` and `study-guide.md` (both lowercase)
 
 ### When Creating Weekly Notes
 
@@ -306,22 +314,23 @@ See `docs/note-template.md` for complete details.
 ## 🚫 Common Mistakes to Avoid
 
 1. **NEVER** save course notes in `00-RAG-Studies/notes/` - that's for templates only
-2. **NEVER** use uppercase or underscores in filenames (use lowercase-with-hyphens)
+2. **NEVER** use uppercase or underscores in markdown filenames except `README.md` (use lowercase-with-hyphens)
 3. **NEVER** mix theory and practice in same file (separate notes/ and notebooks/)
 4. **NEVER** skip metadata blocks in files
-5. **NEVER** include course codes in filenames (e.g., `BSMA1001-week-01.md` ❌)
-6. **NEVER** create generic names (`notes.md`, `practice.ipynb` ❌)
-7. **NEVER** commit untested notebook code
-8. **NEVER** skip the Data Science Applications section in notes
+5. **NEVER** use uppercase in filenames: `STUDY-GUIDE.md` ❌ → `study-guide.md` ✅
+6. **NEVER** use uppercase in course codes: `00-BSMA1001-overview.md` ❌ → `00-bsma1001-overview.md` ✅
+7. **NEVER** create generic names (`notes.md`, `practice.ipynb` ❌)
+8. **NEVER** commit untested notebook code
+9. **NEVER** skip the Data Science Applications section in notes
 
 ---
 
 ## 📊 Progress Tracking
 
 After creating content:
-1. Update `[Level]/COMPLETION-STATUS.md`
+1. Update `[Level]/completion-status.md`
 2. Update course `README.md` progress tracker
-3. Mark week as complete in study guide
+3. Mark week as complete in `study-guide.md`
 4. Update `docs/project-context.md` if milestone reached
 
 ---
@@ -347,8 +356,8 @@ After creating content:
 | Quality standard | Week 1 exemplar in `01-Foundation-Level/01-Mathematics-I/` |
 | Study workflow | `docs/study-guide.md` |
 | Environment setup | `docs/quick-start-guide.md` |
-| Course structure | Subject `README.md` files |
-| Progress tracking | `[Level]/COMPLETION-STATUS.md` |
+| Course structure | Subject `README.md` and `study-guide.md` files |
+| Progress tracking | `[Level]/completion-status.md` |
 
 ---
 
@@ -366,4 +375,5 @@ After creating content:
 **Remember**: This repository will be used for 4-8 years spanning Foundation through MTech. Maintain high quality and consistency from the start!
 
 **Version History**:
+- v1.1.0 (2025-11-22): Standardized ALL markdown filenames to lowercase-with-hyphens
 - v1.0.0 (2025-11-21): Initial Copilot instructions created
