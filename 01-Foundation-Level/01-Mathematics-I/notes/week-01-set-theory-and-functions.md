@@ -1,6 +1,6 @@
 # Week 01: Set Theory and Functions
 
-**Course**: BSMA1001 - Mathematics I  
+**Course**: BSMA1001 - Mathematics I
 **Level**: Foundation
 
 ---
