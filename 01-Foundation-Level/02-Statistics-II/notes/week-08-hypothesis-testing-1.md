@@ -3,6 +3,14 @@
 **Course**: BSST1002 - Statistics II
 **Level**: Foundation Level
 
+---
+
+## Visual Summary
+
+![Critical Regions and Decision Matrix](images/week-08-hypothesis-testing.png)
+
+---
+
 ## Learning Objectives
 - Understand the hypothesis testing framework and its components
 - Formulate null and alternative hypotheses correctly

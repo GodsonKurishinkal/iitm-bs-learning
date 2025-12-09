@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Numerical Data: Histogram and Box Plot](images/week-03-numerical-data.png)
+
+---
+
 ## Learning Objectives
 - Master measures of central tendency (mean, median, mode)
 - Understand measures of spread (variance, standard deviation, IQR)

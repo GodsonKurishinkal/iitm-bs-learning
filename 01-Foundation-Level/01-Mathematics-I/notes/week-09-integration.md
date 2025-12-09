@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Integration and Riemann Sums](images/week-09-integration.png)
+
+---
+
 ## 1. Computing Areas
 
 ### 1.1 Theory

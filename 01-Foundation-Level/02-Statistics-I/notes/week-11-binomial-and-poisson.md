@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Binomial and Poisson Distributions](images/week-11-discrete-distributions.png)
+
+---
+
 ## Learning Objectives
 - Master the binomial distribution for fixed trials
 - Understand the Poisson distribution for event counts

@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Hessian and Optimization](images/week-11-optimization.png)
+
+---
+
 ## Learning Objectives
 - Understand higher-order partial derivatives
 - Master the Hessian matrix and second derivative test

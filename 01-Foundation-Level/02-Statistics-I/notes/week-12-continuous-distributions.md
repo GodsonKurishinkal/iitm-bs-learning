@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Normal, Uniform, and Exponential Distributions](images/week-12-continuous-distributions.png)
+
+---
+
 ## Learning Objectives
 - Master the Normal distribution and its applications
 - Understand the Uniform distribution

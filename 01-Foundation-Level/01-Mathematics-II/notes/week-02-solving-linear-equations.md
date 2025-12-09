@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Systems of Linear Equations](images/week-02-linear-equations.png)
+
+---
+
 ## Learning Objectives
 - Apply Cramer's Rule for solving systems with explicit formulas
 - Understand Row Echelon Form (REF) and Reduced Row Echelon Form (RREF)

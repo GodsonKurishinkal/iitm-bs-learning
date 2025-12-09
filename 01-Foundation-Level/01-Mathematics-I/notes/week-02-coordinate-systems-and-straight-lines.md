@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Coordinate Geometry and Straight Lines](images/week-02-coordinate-geometry.png)
+
+---
+
 ## 1. Rectangular Coordinate System
 
 ### 1.1 Theory

@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Covariance and Correlation](images/week-03-covariance.png)
+
+---
+
 ## Learning Objectives
 - Understand transformations of random variables
 - Master the Jacobian method for finding new distributions

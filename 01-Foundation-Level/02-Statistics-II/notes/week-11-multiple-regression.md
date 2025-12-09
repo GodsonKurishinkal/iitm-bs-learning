@@ -3,6 +3,14 @@
 **Course**: BSST1002 - Statistics II
 **Level**: Foundation Level
 
+---
+
+## Visual Summary
+
+![ANOVA and F-Distribution](images/week-11-anova.png)
+
+---
+
 ## Learning Objectives
 - Extend simple regression to multiple predictor variables
 - Interpret partial regression coefficients

@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Polynomial Functions](images/week-04-polynomials.png)
+
+---
+
 ## 1. Polynomial Arithmetic
 
 ### 1.1 Theory

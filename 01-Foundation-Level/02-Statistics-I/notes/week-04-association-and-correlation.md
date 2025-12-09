@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Correlation Types](images/week-04-correlation.png)
+
+---
+
 ## Learning Objectives
 - Understand association between categorical variables
 - Master correlation for numerical variables

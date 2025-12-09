@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Mean, Variance, and Empirical Rule](images/week-10-expectation.png)
+
+---
+
 ## Learning Objectives
 - Master expected value calculations
 - Understand variance and standard deviation

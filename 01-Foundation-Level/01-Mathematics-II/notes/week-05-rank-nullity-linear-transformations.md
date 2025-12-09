@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Rank-Nullity Theorem](images/week-05-rank-nullity.png)
+
+---
+
 ## Learning Objectives
 - Understand null space and nullity
 - Master the Rank-Nullity Theorem

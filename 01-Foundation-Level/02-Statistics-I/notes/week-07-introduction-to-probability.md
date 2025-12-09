@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Probability Venn Diagram](images/week-07-probability.png)
+
+---
+
 ## Learning Objectives
 - Understand sample spaces and events
 - Master probability axioms and derived rules

@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Quadratic Functions and Parabolas](images/week-03-quadratic-functions.png)
+
+---
+
 ## 1. Quadratic Functions
 
 ### 1.1 Theory

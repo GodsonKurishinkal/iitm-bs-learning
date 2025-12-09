@@ -3,6 +3,14 @@
 **Course**: BSST1002 - Statistics II
 **Level**: Foundation Level
 
+---
+
+## Visual Summary
+
+![Inference for Proportions](images/week-09-proportions.png)
+
+---
+
 ## Learning Objectives
 - Perform two-sample t-tests for comparing independent groups
 - Apply paired t-tests for matched or before/after comparisons

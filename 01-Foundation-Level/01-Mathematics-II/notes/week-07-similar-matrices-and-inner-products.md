@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Eigenvalues and Inner Products](images/week-07-eigenvalues-inner-products.png)
+
+---
+
 ## Learning Objectives
 - Understand matrix equivalence and similarity
 - Master inner products and norms

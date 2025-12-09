@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Graph Representations](images/week-10-graph-basics.png)
+
+---
+
 ## Learning Objectives
 - Understand graph representations (adjacency matrix and adjacency list)
 - Master Breadth-First Search (BFS) algorithm

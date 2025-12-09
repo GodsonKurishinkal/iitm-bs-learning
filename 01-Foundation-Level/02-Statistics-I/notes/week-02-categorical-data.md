@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Categorical Data Visualization](images/week-02-categorical-data.png)
+
+---
+
 ## Learning Objectives
 - Understand frequency tables and their construction
 - Calculate relative and cumulative frequencies

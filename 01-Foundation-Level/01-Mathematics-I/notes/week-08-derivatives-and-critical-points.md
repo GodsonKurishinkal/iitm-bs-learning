@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Derivatives and Critical Points](images/week-08-derivatives.png)
+
+---
+
 ## 1. Differentiability and the Derivative
 
 ### 1.1 Theory

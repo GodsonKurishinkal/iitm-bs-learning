@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Function Transformations](images/week-05-transformations.png)
+
+---
+
 ## 1. Horizontal and Vertical Line Tests
 
 ### 1.1 Theory

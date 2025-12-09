@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Probability Tree and Bayes' Theorem](images/week-08-conditional-probability.png)
+
+---
+
 ## Learning Objectives
 - Master conditional probability calculations
 - Understand and apply Bayes' theorem

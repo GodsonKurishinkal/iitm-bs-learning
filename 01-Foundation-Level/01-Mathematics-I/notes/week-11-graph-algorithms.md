@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Shortest Path Algorithms](images/week-11-graph-algorithms.png)
+
+---
+
 ## Learning Objectives
 - Understand single-source shortest path algorithms
 - Master Dijkstra's algorithm for non-negative weights

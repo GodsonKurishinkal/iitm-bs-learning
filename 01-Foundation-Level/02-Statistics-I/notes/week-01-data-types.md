@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Classification of Variables](images/week-01-data-types.png)
+
+---
+
 ## Learning Objectives
 - Understand the classification of variables
 - Distinguish between categorical and numerical data

@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Central Limit Theorem](images/week-05-clt.png)
+
+---
+
 ## Learning Objectives
 - Understand the Law of Large Numbers (LLN)
 - Master the Central Limit Theorem (CLT)

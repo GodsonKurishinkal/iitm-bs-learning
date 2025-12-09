@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Logarithmic and Exponential Functions](images/week-06-logarithms.png)
+
+---
+
 ## 1. Logarithm Properties
 
 ### 1.1 Theory

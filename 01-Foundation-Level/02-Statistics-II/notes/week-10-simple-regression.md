@@ -3,6 +3,14 @@
 **Course**: BSST1002 - Statistics II
 **Level**: Foundation Level
 
+---
+
+## Visual Summary
+
+![Linear Regression and Residuals](images/week-10-regression.png)
+
+---
+
 ## Learning Objectives
 - Understand the simple linear regression model and its components
 - Estimate regression coefficients using the least squares method

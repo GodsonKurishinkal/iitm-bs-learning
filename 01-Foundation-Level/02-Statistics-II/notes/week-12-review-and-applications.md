@@ -3,6 +3,14 @@
 **Course**: BSST1002 - Statistics II
 **Level**: Foundation Level
 
+---
+
+## Visual Summary
+
+![Chi-Square Distribution and Tests](images/week-12-chi-square.png)
+
+---
+
 ## Learning Objectives
 - Review all key concepts from Statistics II
 - Integrate statistical methods for real-world applications

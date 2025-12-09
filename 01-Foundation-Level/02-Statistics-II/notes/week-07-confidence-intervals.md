@@ -3,6 +3,14 @@
 **Course**: BSST1002 - Statistics II
 **Level**: Foundation Level
 
+---
+
+## Visual Summary
+
+![Confidence Intervals](images/week-07-confidence-intervals.png)
+
+---
+
 ## Learning Objectives
 - Understand confidence intervals as a measure of estimation uncertainty
 - Apply t-distribution when population variance is unknown

@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Limits and Continuity](images/week-07-limits.png)
+
+---
+
 ## 1. Sequences
 
 ### 1.1 Theory

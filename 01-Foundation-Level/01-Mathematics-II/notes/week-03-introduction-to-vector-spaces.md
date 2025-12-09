@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Vector Spaces and Linear Combinations](images/week-03-vector-spaces.png)
+
+---
+
 ## Learning Objectives
 - Understand the abstract definition of vector spaces
 - Learn the axioms that define a vector space

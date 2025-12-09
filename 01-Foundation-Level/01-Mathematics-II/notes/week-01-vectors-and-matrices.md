@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Vectors and Matrices](images/week-01-vectors-matrices.png)
+
+---
+
 ## Learning Objectives
 - Understand vectors and their operations
 - Master matrix representations and operations

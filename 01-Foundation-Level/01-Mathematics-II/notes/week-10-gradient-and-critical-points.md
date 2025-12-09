@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Gradient and Critical Points](images/week-10-gradient.png)
+
+---
+
 ## Learning Objectives
 - Understand the gradient vector and its properties
 - Learn tangent plane approximation

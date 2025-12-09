@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Joint and Marginal Distributions](images/week-01-joint-distributions.png)
+
+---
+
 ## Learning Objectives
 - Understand joint distributions for multiple variables
 - Master marginal and conditional distributions

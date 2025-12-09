@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![PMF and PDF/CDF](images/week-09-random-variables.png)
+
+---
+
 ## Learning Objectives
 - Understand discrete random variables and PMF
 - Master continuous random variables and PDF

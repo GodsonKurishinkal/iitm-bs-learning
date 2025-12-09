@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Multivariable Functions](images/week-09-multivariable.png)
+
+---
+
 ## Learning Objectives
 - Understand functions of multiple variables
 - Master partial derivatives and their computation

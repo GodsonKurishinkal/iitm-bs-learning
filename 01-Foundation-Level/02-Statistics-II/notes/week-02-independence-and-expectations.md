@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Conditional vs Marginal Distributions](images/week-02-conditional-distributions.png)
+
+---
+
 ## Learning Objectives
 - Understand independence of random variables
 - Master expectation properties for sums and products

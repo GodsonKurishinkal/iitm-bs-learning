@@ -5,6 +5,12 @@
 
 ---
 
+## Visual Summary
+
+![Gram-Schmidt Orthogonalization](images/week-08-gram-schmidt.png)
+
+---
+
 ## Learning Objectives
 - Understand orthogonality and orthonormality
 - Master the Gram-Schmidt orthogonalization process
