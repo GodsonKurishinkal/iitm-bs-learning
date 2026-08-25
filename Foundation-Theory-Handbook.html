@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foundation Theory Handbook — Maths 1 &amp; 2, Stats 1 &amp; 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] },
+  startup: { typeset: true }
+};
+</script>
+<script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.js"></script>
+<style>
+:root{
+  --paper:#ECEFF2;
+  --card:#FFFFFF;
+  --ink:#0F1B29;
+  --ink2:#33465C;
+  --muted:#7C8DA0;
+  --rule:#C9D2DB;
+  --blue:#1B5A8A;
+  --blue-t:#E8EFF5;
+  --ox:#7C2D2D;
+  --ox-t:#F6EBEB;
+  --rail:104px;
+  --gap:28px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:16.5px;
+  line-height:1.62;
+  font-variant-numeric:oldstyle-nums;
+}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+/* ---------- top bar ---------- */
+.bar{
+  position:sticky;top:0;z-index:50;
+  background:var(--ink);
+  color:#DCE4EC;
+  border-bottom:2px solid var(--blue);
+}
+.bar-in{
+  max-width:1080px;margin:0 auto;
+  padding:9px 24px;
+  display:flex;align-items:center;gap:18px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
+}
+.bar-in .brand{font-weight:600;color:#fff;margin-right:auto;letter-spacing:.14em}
+.bar-in a{color:#9FB4C8;text-decoration:none;padding:3px 7px;border:1px solid transparent;border-radius:2px}
+.bar-in a:hover,.bar-in a:focus-visible{color:#fff;border-color:#3D5670;outline:none}
+
+/* ---------- shell ---------- */
+.shell{max-width:1080px;margin:0 auto;padding:0 24px 120px}
+
+/* ---------- cover ---------- */
+.cover{padding:78px 0 54px;border-bottom:1px solid var(--rule)}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--blue);font-weight:600;
+}
+.cover h1{
+  font-family:Archivo,system-ui,sans-serif;font-weight:700;
+  font-size:clamp(34px,6.2vw,60px);line-height:1.02;letter-spacing:-.025em;
+  margin:16px 0 0;max-width:15ch;
+}
+.cover .sub{
+  margin-top:20px;max-width:56ch;color:var(--ink2);font-size:17.5px;
+}
+.meta{
+  margin-top:34px;display:flex;flex-wrap:wrap;gap:8px;
+}
+.chip{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;border:1px solid var(--rule);background:var(--card);
+  padding:6px 11px;border-radius:2px;color:var(--ink2);
+}
+.chip b{color:var(--blue);font-weight:600}
+
+/* ---------- contents ---------- */
+.toc{padding:44px 0 10px}
+.toc h2{
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 22px;
+}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:22px}
+.toc-col{background:var(--card);border:1px solid var(--rule);border-top:3px solid var(--blue);padding:18px 20px 20px}
+.toc-col h3{
+  font-family:Archivo,sans-serif;font-size:15px;font-weight:700;letter-spacing:-.01em;
+  margin:0 0 4px;
+}
+.toc-col .cid{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;color:var(--blue);text-transform:uppercase;font-weight:600}
+.toc-col ol{list-style:none;margin:14px 0 0;padding:0;font-size:14.5px}
+.toc-col li{margin:0 0 6px;display:flex;gap:9px;align-items:baseline}
+.toc-col li span{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);flex:none;width:44px}
+.toc-col a{color:var(--ink2);text-decoration:none;border-bottom:1px solid transparent}
+.toc-col a:hover,.toc-col a:focus-visible{color:var(--blue);border-bottom-color:var(--blue);outline:none}
+
+/* ---------- part divider ---------- */
+.part{margin:76px 0 0;border-top:3px solid var(--ink);padding-top:14px}
+.part .pnum{
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--blue);font-weight:600;
+}
+.part h2{
+  font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(26px,4vw,38px);
+  letter-spacing:-.022em;margin:8px 0 0;
+}
+.part p{margin:10px 0 0;color:var(--ink2);max-width:62ch;font-size:16px}
+
+/* ---------- clause: the margin rail ---------- */
+.clause{
+  display:grid;grid-template-columns:var(--rail) minmax(0,1fr);
+  gap:var(--gap);margin-top:44px;align-items:start;
+}
+.clause > .code{
+  position:sticky;top:56px;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--blue);font-weight:600;
+  text-align:right;padding-top:8px;border-top:2px solid var(--blue);
+  line-height:1.5;
+}
+.clause > .code em{display:block;font-style:normal;color:var(--muted);font-weight:400;font-size:10.5px;margin-top:3px;letter-spacing:.06em}
+.body{min-width:0}
+.body > h3{
+  font-family:Archivo,sans-serif;font-weight:700;font-size:23px;letter-spacing:-.018em;
+  margin:0 0 4px;padding-top:4px;
+}
+.body > h4{
+  font-family:Archivo,sans-serif;font-weight:600;font-size:15.5px;letter-spacing:.005em;
+  margin:30px 0 8px;color:var(--ink);
+}
+.body p{margin:0 0 12px}
+.body ul,.body ol{margin:0 0 14px;padding-left:20px}
+.body li{margin:0 0 6px}
+.lead{color:var(--ink2);font-size:15.5px;margin-bottom:20px !important}
+
+/* ---------- blocks ---------- */
+.def,.thm{
+  background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--blue);
+  padding:15px 18px;margin:0 0 16px;
+}
+.def .tag,.thm .tag,.trap .tag{
+  display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:600;color:var(--blue);margin-bottom:7px;
+}
+.def p:last-child,.thm p:last-child,.trap p:last-child{margin-bottom:0}
+.trap{
+  background:var(--ox-t);border:1px solid #E2C9C9;border-left:3px solid var(--ox);
+  padding:14px 18px;margin:0 0 16px;color:#4A2020;
+}
+.trap .tag{color:var(--ox)}
+.trap ul{margin:0;padding-left:18px}
+.fx{
+  background:var(--blue-t);border:1px solid #D2E0EB;padding:12px 16px;margin:0 0 16px;
+  overflow-x:auto;
+}
+.fx p{margin:0 0 6px}
+.fx p:last-child{margin-bottom:0}
+
+/* ---------- tables ---------- */
+.tbl{width:100%;border-collapse:collapse;margin:0 0 18px;font-size:14.5px;background:var(--card)}
+.tbl caption{
+  caption-side:top;text-align:left;font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;padding-bottom:7px;
+}
+.tbl th,.tbl td{border:1px solid var(--rule);padding:8px 11px;text-align:left;vertical-align:top}
+.tbl thead th{
+  background:var(--ink);color:#E6EDF3;font-family:Archivo,sans-serif;font-weight:600;
+  font-size:12.5px;letter-spacing:.02em;border-color:var(--ink);
+}
+.tbl tbody th{background:var(--blue-t);font-weight:600;font-family:Archivo,sans-serif;font-size:13.5px}
+.wrap{overflow-x:auto;margin-bottom:18px}
+.wrap .tbl{margin-bottom:0;min-width:520px}
+
+kbd{
+  font-family:"IBM Plex Mono",monospace;font-size:.86em;background:var(--blue-t);
+  border:1px solid #D2E0EB;padding:1px 5px;border-radius:2px;color:var(--blue);
+}
+mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
+
+/* ---------- responsive ---------- */
+@media (max-width:820px){
+  :root{--rail:0px;--gap:0px}
+  .clause{grid-template-columns:1fr;gap:0}
+  .clause > .code{
+    position:static;text-align:left;border-top:none;border-left:3px solid var(--blue);
+    padding:2px 0 2px 10px;margin-bottom:14px;
+  }
+  .clause > .code em{display:inline;margin-left:8px}
+  body{font-size:16px}
+}
+
+/* ---------- print ---------- */
+@media print{
+  :root{--paper:#fff;--card:#fff;--rail:88px;--gap:20px}
+  body{background:#fff;font-size:10.2pt;line-height:1.42}
+  .bar,.toc-col a{position:static}
+  .bar{display:none}
+  .shell{max-width:none;padding:0}
+  .cover{padding:0 0 20px}
+  .part{break-before:page;page-break-before:always;margin-top:0}
+  .clause{break-inside:auto;margin-top:22px}
+  .clause > .code{position:static}
+  .def,.thm,.trap,.fx,.tbl,figure{break-inside:avoid;page-break-inside:avoid}
+  .body > h3,.body > h4{break-after:avoid;page-break-after:avoid}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="bar">
+  <div class="bar-in">
+    <span class="brand">Foundation Theory Handbook</span>
+    <a href="#p1">M1</a>
+    <a href="#p2">S1</a>
+    <a href="#p3">M2</a>
+    <a href="#p4">S2</a>
+    <a href="#p5">Appx</a>
+  </div>
+</nav>
+
+<div class="shell">
+
+<header class="cover">
+  <div class="eyebrow">IIT Madras BSc · Foundation Level · Theory Only</div>
+  <h1>Everything you have to know, and nothing you have to solve.</h1>
+  <p class="sub">Definitions, theorems, conditions and formulas for Mathematics for Data Science I &amp; II and Statistics for Data Science I &amp; II. No worked problems — this is the reference you check answers against, and the sheet you blank-page from memory each morning.</p>
+  <div class="meta">
+    <span class="chip"><b>4</b> courses</span>
+    <span class="chip"><b>44</b> clauses</span>
+    <span class="chip">Clause codes match <b>course · week</b></span>
+    <span class="chip">Print to A4 — parts break cleanly</span>
+  </div>
+</header>
+
+<section class="toc">
+  <h2>Contents</h2>
+  <div class="toc-grid">
+
+    <div class="toc-col">
+      <div class="cid">Part I · M1</div>
+      <h3>Mathematics I</h3>
+      <ol>
+        <li><span>M1.01</span><a href="#m1-01">Number systems</a></li>
+        <li><span>M1.02</span><a href="#m1-02">Sets &amp; counting</a></li>
+        <li><span>M1.03</span><a href="#m1-03">Relations</a></li>
+        <li><span>M1.04</span><a href="#m1-04">Functions</a></li>
+        <li><span>M1.05</span><a href="#m1-05">Coordinate geometry</a></li>
+        <li><span>M1.06</span><a href="#m1-06">Straight lines</a></li>
+        <li><span>M1.07</span><a href="#m1-07">Quadratics</a></li>
+        <li><span>M1.08</span><a href="#m1-08">Polynomials</a></li>
+      </ol>
+    </div>
+
+    <div class="toc-col">
+      <div class="cid">Part II · S1</div>
+      <h3>Statistics I</h3>
+      <ol>
+        <li><span>S1.01</span><a href="#s1-01">Data &amp; scales</a></li>
+        <li><span>S1.02</span><a href="#s1-02">Categorical data</a></li>
+        <li><span>S1.03</span><a href="#s1-03">Numerical data</a></li>
+        <li><span>S1.04</span><a href="#s1-04">Association</a></li>
+        <li><span>S1.05</span><a href="#s1-05">Permutations &amp; combinations</a></li>
+        <li><span>S1.06</span><a href="#s1-06">Probability</a></li>
+        <li><span>S1.07</span><a href="#s1-07">Conditional probability</a></li>
+      </ol>
+    </div>
+
+    <div class="toc-col">
+      <div class="cid">Part III · M2</div>
+      <h3>Mathematics II</h3>
+      <ol>
+        <li><span>M2.01</span><a href="#m2-01">Vectors &amp; matrices</a></li>
+        <li><span>M2.02</span><a href="#m2-02">Linear systems &amp; RREF</a></li>
+        <li><span>M2.03</span><a href="#m2-03">Determinants</a></li>
+        <li><span>M2.04</span><a href="#m2-04">Vector spaces</a></li>
+        <li><span>M2.05</span><a href="#m2-05">Dependence &amp; independence</a></li>
+        <li><span>M2.06</span><a href="#m2-06">Basis, rank, dimension</a></li>
+        <li><span>M2.07</span><a href="#m2-07">Null space &amp; rank–nullity</a></li>
+        <li><span>M2.08</span><a href="#m2-08">Linear transformations</a></li>
+        <li><span>M2.09</span><a href="#m2-09">Inner products &amp; norms</a></li>
+        <li><span>M2.10</span><a href="#m2-10">Projection &amp; Gram–Schmidt</a></li>
+        <li><span>M2.11</span><a href="#m2-11">Orthogonal transformations</a></li>
+        <li><span>M2.12</span><a href="#m2-12">Multivariable functions</a></li>
+      </ol>
+    </div>
+
+    <div class="toc-col">
+      <div class="cid">Part IV · S2</div>
+      <h3>Statistics II</h3>
+      <ol>
+        <li><span>S2.01</span><a href="#s2-01">Joint discrete distributions</a></li>
+        <li><span>S2.02</span><a href="#s2-02">Functions of random variables</a></li>
+        <li><span>S2.03</span><a href="#s2-03">Expectation &amp; variance</a></li>
+        <li><span>S2.04</span><a href="#s2-04">Bounds &amp; inequalities</a></li>
+        <li><span>S2.05</span><a href="#s2-05">Continuous random variables</a></li>
+        <li><span>S2.06</span><a href="#s2-06">Joint continuous</a></li>
+        <li><span>S2.07</span><a href="#s2-07">Samples &amp; limit theorems</a></li>
+        <li><span>S2.08</span><a href="#s2-08">MGFs &amp; the CLT</a></li>
+        <li><span>S2.09</span><a href="#s2-09">Point estimation</a></li>
+        <li><span>S2.10</span><a href="#s2-10">Confidence intervals</a></li>
+        <li><span>S2.11</span><a href="#s2-11">Bayesian estimation</a></li>
+        <li><span>S2.12</span><a href="#s2-12">Hypothesis testing</a></li>
+        <li><span>S2.13</span><a href="#s2-13">The test battery</a></li>
+      </ol>
+    </div>
+
+    <div class="toc-col">
+      <div class="cid">Part V</div>
+      <h3>Appendix</h3>
+      <ol>
+        <li><span>A.01</span><a href="#a-01">Distribution table</a></li>
+        <li><span>A.02</span><a href="#a-02">Test selection map</a></li>
+        <li><span>A.03</span><a href="#a-03">Notation key</a></li>
+        <li><span>A.04</span><a href="#a-04">Blank-page checklist</a></li>
+      </ol>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ PART I ============ -->
+<section class="part" id="p1">
+  <div class="pnum">Part I · Mathematics for Data Science I</div>
+  <h2>Numbers, geometry and polynomials</h2>
+  <p>The cheapest marks in the Foundation term. Almost everything here is mechanical: a formula applied correctly gets full credit. Own straight lines and quadratics completely before you spend a minute on the conceptual lectures.</p>
+</section>
+
+<div class="clause" id="m1-01">
+  <div class="code">M1.01<em>Week 1</em></div>
+  <div class="body">
+    <h3>Number systems</h3>
+    <p class="lead">The tower \(\mathbb{N}\subset\mathbb{Z}\subset\mathbb{Q}\subset\mathbb{R}\subset\mathbb{C}\). Each level exists because the level below is not closed under some operation.</p>
+
+    <div class="wrap"><table class="tbl">
+      <caption>Why each extension exists</caption>
+      <thead><tr><th>Set</th><th>Symbol</th><th>Closed under</th><th>Fails at</th></tr></thead>
+      <tbody>
+        <tr><td>Natural</td><td>\(\mathbb{N}=\{1,2,3,\dots\}\)</td><td>\(+,\times\)</td><td>\(3-5\)</td></tr>
+        <tr><td>Integers</td><td>\(\mathbb{Z}\)</td><td>\(+,-,\times\)</td><td>\(3\div 5\)</td></tr>
+        <tr><td>Rational</td><td>\(\mathbb{Q}=\{p/q: q\neq 0\}\)</td><td>\(+,-,\times,\div\)</td><td>\(\sqrt{2}\)</td></tr>
+        <tr><td>Real</td><td>\(\mathbb{R}\)</td><td>all four, limits</td><td>\(\sqrt{-1}\)</td></tr>
+        <tr><td>Complex</td><td>\(\mathbb{C}=\{a+ib\}\)</td><td>all four, all roots</td><td>ordering</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="def">
+      <span class="tag">Field axioms</span>
+      <p>For \(\mathbb{Q},\mathbb{R},\mathbb{C}\), both \(+\) and \(\times\) are <b>associative</b> and <b>commutative</b>, each has an <b>identity</b> (\(0\) and \(1\)) and an <b>inverse</b> (\(-a\); \(a^{-1}\) for \(a\neq 0\)), and \(\times\) <b>distributes</b> over \(+\). \(\mathbb{Z}\) is not a field: it lacks multiplicative inverses.</p>
+    </div>
+
+    <h4>Rational and irrational</h4>
+    <ul>
+      <li>A real number is rational \(\iff\) its decimal expansion terminates or is eventually periodic.</li>
+      <li>\(p/q\) in lowest terms terminates \(\iff\) \(q\) has only \(2\) and \(5\) as prime factors.</li>
+      <li>Irrational numbers are those in \(\mathbb{R}\setminus\mathbb{Q}\): \(\sqrt2,\ \pi,\ e\).</li>
+    </ul>
+
+    <div class="thm">
+      <span class="tag">Theorem · irrationality of \(\sqrt2\)</span>
+      <p>Assume \(\sqrt2=p/q\) with \(\gcd(p,q)=1\). Then \(p^2=2q^2\), so \(p^2\) is even, so \(p\) is even, say \(p=2k\). Then \(4k^2=2q^2\Rightarrow q^2=2k^2\), so \(q\) is even too — contradicting \(\gcd(p,q)=1\). The engine is <b>proof by contradiction on a lowest-terms assumption</b>; the same argument works for \(\sqrt{n}\) whenever \(n\) is not a perfect square.</p>
+    </div>
+
+    <h4>Primes and divisibility</h4>
+    <ul>
+      <li><b>Prime:</b> \(p&gt;1\) whose only positive divisors are \(1\) and \(p\). \(1\) is neither prime nor composite.</li>
+      <li><b>Fundamental theorem of arithmetic:</b> every integer \(n&gt;1\) factors into primes uniquely up to order.</li>
+      <li><b>Euclid:</b> there are infinitely many primes. If \(p_1,\dots,p_k\) were all of them, \(N=p_1\cdots p_k+1\) is divisible by none of them.</li>
+      <li>If \(n=p_1^{a_1}\cdots p_k^{a_k}\), the number of positive divisors is \(\prod (a_i+1)\).</li>
+      <li>\(\gcd(a,b)\cdot\operatorname{lcm}(a,b)=ab\).</li>
+      <li><b>Division algorithm:</b> for \(a\in\mathbb{Z}, b&gt;0\) there exist unique \(q,r\) with \(a=bq+r\) and \(0\le r&lt;b\).</li>
+    </ul>
+
+    <h4>Complex numbers</h4>
+    <div class="fx">
+      <p>\(z=a+ib\), \(\bar z=a-ib\), \(|z|=\sqrt{a^2+b^2}\), \(z\bar z=|z|^2\), \(z^{-1}=\bar z/|z|^2\)</p>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="m1-02">
+  <div class="code">M1.02<em>Week 1</em></div>
+  <div class="body">
+    <h3>Sets, cardinality and counting</h3>
+
+    <div class="def">
+      <span class="tag">Core definitions</span>
+      <p><b>Subset:</b> \(A\subseteq B\) iff every element of \(A\) is in \(B\). <b>Proper subset:</b> \(A\subset B\) and \(A\neq B\). <b>Equality:</b> \(A=B\) iff \(A\subseteq B\) and \(B\subseteq A\) — this double inclusion is the standard proof technique. <b>Power set:</b> \(\mathcal{P}(A)\) is the set of all subsets; \(|\mathcal{P}(A)|=2^{|A|}\). The empty set \(\varnothing\) is a subset of every set.</p>
+    </div>
+
+    <h4>Operations and laws</h4>
+    <div class="wrap"><table class="tbl">
+      <caption>Set algebra</caption>
+      <thead><tr><th>Law</th><th>Statement</th></tr></thead>
+      <tbody>
+        <tr><td>Commutative</td><td>\(A\cup B=B\cup A\), \(A\cap B=B\cap A\)</td></tr>
+        <tr><td>Associative</td><td>\(A\cup(B\cup C)=(A\cup B)\cup C\)</td></tr>
+        <tr><td>Distributive</td><td>\(A\cap(B\cup C)=(A\cap B)\cup(A\cap C)\), and dually</td></tr>
+        <tr><td>De Morgan</td><td>\((A\cup B)^c=A^c\cap B^c\), \((A\cap B)^c=A^c\cup B^c\)</td></tr>
+        <tr><td>Idempotent</td><td>\(A\cup A=A\), \(A\cap A=A\)</td></tr>
+        <tr><td>Difference</td><td>\(A\setminus B=A\cap B^c\)</td></tr>
+        <tr><td>Symmetric difference</td><td>\(A\triangle B=(A\setminus B)\cup(B\setminus A)=(A\cup B)\setminus(A\cap B)\)</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="fx">
+      <p><b>Inclusion–exclusion, two sets:</b> \(|A\cup B|=|A|+|B|-|A\cap B|\)</p>
+      <p><b>Three sets:</b> \(|A\cup B\cup C|=|A|+|B|+|C|-|A\cap B|-|A\cap C|-|B\cap C|+|A\cap B\cap C|\)</p>
+    </div>
+
+    <p><b>Cartesian product:</b> \(A\times B=\{(a,b):a\in A,b\in B\}\), with \(|A\times B|=|A|\,|B|\). Order matters, so \(A\times B\neq B\times A\) in general.</p>
+
+    <h4>Sets versus collections</h4>
+    <p>Not every description defines a set. Russell's collection \(R=\{X : X\notin X\}\) leads to a contradiction: \(R\in R\iff R\notin R\). So "the collection of all sets" is a <b>collection</b>, not a set. This is why sets are built up by construction rules rather than declared by arbitrary predicates.</p>
+
+    <h4>Degrees of infinity</h4>
+    <ul>
+      <li>\(A\) and \(B\) have the <b>same cardinality</b> iff a bijection \(A\to B\) exists.</li>
+      <li><b>Countable</b> = finite or in bijection with \(\mathbb{N}\). \(\mathbb{Z}\) and \(\mathbb{Q}\) are countable (zig-zag enumeration).</li>
+      <li>\(\mathbb{R}\) is <b>uncountable</b> — Cantor's diagonal argument: any proposed list of reals in \([0,1]\) misses the number built by changing the \(n\)th digit of the \(n\)th entry.</li>
+      <li>\(|\mathcal{P}(A)|&gt;|A|\) always, so there is no largest infinity.</li>
+    </ul>
+
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <ul>
+        <li>\(\in\) versus \(\subseteq\). \(\{1\}\subseteq\{1,2\}\) but \(\{1\}\notin\{1,2\}\).</li>
+        <li>\(\varnothing\) and \(\{\varnothing\}\) are different: the second has one element.</li>
+        <li>A countable union of countable sets is countable — an infinite set can have the same size as a proper subset. That is the definition of infinite, not a paradox.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="m1-03">
+  <div class="code">M1.03<em>Week 1</em></div>
+  <div class="body">
+    <h3>Relations</h3>
+    <div class="def">
+      <span class="tag">Definition</span>
+      <p>A <b>relation</b> from \(A\) to \(B\) is any subset \(R\subseteq A\times B\). Write \(aRb\) for \((a,b)\in R\). On a set with \(|A|=n\) there are \(2^{n^2}\) relations. <b>Domain</b> \(=\{a:\exists b,(a,b)\in R\}\); <b>range</b> \(=\{b:\exists a,(a,b)\in R\}\).</p>
+    </div>
+
+    <div class="wrap"><table class="tbl">
+      <caption>Properties of a relation on \(A\)</caption>
+      <thead><tr><th>Property</th><th>Condition</th></tr></thead>
+      <tbody>
+        <tr><td>Reflexive</td><td>\(\forall a:\ aRa\)</td></tr>
+        <tr><td>Symmetric</td><td>\(aRb\Rightarrow bRa\)</td></tr>
+        <tr><td>Antisymmetric</td><td>\(aRb \wedge bRa\Rightarrow a=b\)</td></tr>
+        <tr><td>Transitive</td><td>\(aRb \wedge bRc\Rightarrow aRc\)</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="thm">
+      <span class="tag">Theorem</span>
+      <p>A relation that is reflexive, symmetric and transitive is an <b>equivalence relation</b>. Its equivalence classes \([a]=\{x:xRa\}\) <b>partition</b> \(A\): they are non-empty, pairwise disjoint, and their union is \(A\). Conversely every partition induces an equivalence relation. A relation that is reflexive, antisymmetric and transitive is a <b>partial order</b>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="m1-04">
+  <div class="code">M1.04<em>Week 1</em></div>
+  <div class="body">
+    <h3>Functions</h3>
+    <div class="def">
+      <span class="tag">Definition</span>
+      <p>A <b>function</b> \(f:A\to B\) is a relation in which every \(a\in A\) appears in exactly one pair. \(A\) is the <b>domain</b>, \(B\) the <b>codomain</b>, and \(f(A)=\{f(a):a\in A\}\subseteq B\) the <b>image</b> or <b>range</b>.</p>
+    </div>
+
+    <div class="wrap"><table class="tbl">
+      <caption>Classification</caption>
+      <thead><tr><th>Type</th><th>Condition</th><th>Test</th><th>Count \(A\to B\), \(|A|=m,|B|=n\)</th></tr></thead>
+      <tbody>
+        <tr><td>Injective (one-one)</td><td>\(f(x_1)=f(x_2)\Rightarrow x_1=x_2\)</td><td>horizontal line meets graph at most once</td><td>\(n(n-1)\cdots(n-m+1)\)</td></tr>
+        <tr><td>Surjective (onto)</td><td>\(f(A)=B\)</td><td>every \(b\) is hit</td><td>\(\sum_{k=0}^{n}(-1)^k\binom{n}{k}(n-k)^m\)</td></tr>
+        <tr><td>Bijective</td><td>both</td><td>—</td><td>\(n!\) when \(m=n\)</td></tr>
+        <tr><td>Any function</td><td>—</td><td>vertical line test</td><td>\(n^m\)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Composition and inverse</h4>
+    <ul>
+      <li>\((g\circ f)(x)=g(f(x))\); composition is associative but <b>not</b> commutative.</li>
+      <li>If \(f,g\) are injective so is \(g\circ f\); same for surjective and bijective.</li>
+      <li>\(f^{-1}\) exists \(\iff\) \(f\) is a bijection. Then \(f^{-1}\circ f=\mathrm{id}_A\), \(f\circ f^{-1}=\mathrm{id}_B\), and \((g\circ f)^{-1}=f^{-1}\circ g^{-1}\).</li>
+      <li>Graph of \(f^{-1}\) is the graph of \(f\) reflected in the line \(y=x\).</li>
+    </ul>
+
+    <h4>Standard functions and shapes</h4>
+    <ul>
+      <li><b>Linear</b> \(f(x)=mx+c\) — straight line. <b>Quadratic</b> \(ax^2+bx+c\) — parabola.</li>
+      <li><b>Absolute value</b> \(|x|\) — V-shape. <b>Floor</b> \(\lfloor x\rfloor\), <b>ceiling</b> \(\lceil x\rceil\) — step functions.</li>
+      <li><b>Exponential</b> \(a^x\) (\(a&gt;0\)) and <b>logarithm</b> \(\log_a x\) are mutual inverses on \((0,\infty)\).</li>
+      <li><b>Even:</b> \(f(-x)=f(x)\), symmetric about the \(y\)-axis. <b>Odd:</b> \(f(-x)=-f(x)\), symmetric about the origin.</li>
+      <li><b>Increasing:</b> \(x_1&lt;x_2\Rightarrow f(x_1)\le f(x_2)\); strictly increasing if \(&lt;\). A strictly monotone function is injective.</li>
+    </ul>
+
+    <h4>Transformations of \(y=f(x)\)</h4>
+    <div class="fx">
+      <p>\(f(x)+k\): up \(k\) · \(f(x+k)\): left \(k\) · \(af(x)\): vertical stretch \(a\) · \(f(ax)\): horizontal squeeze by \(a\) · \(-f(x)\): reflect in \(x\)-axis · \(f(-x)\): reflect in \(y\)-axis</p>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="m1-05">
+  <div class="code">M1.05<em>Week 2</em></div>
+  <div class="body">
+    <h3>Coordinate geometry</h3>
+    <div class="fx">
+      <p><b>Distance:</b> \(d=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}\)</p>
+      <p><b>Section (internal, ratio \(m:n\)):</b> \(\left(\dfrac{mx_2+nx_1}{m+n},\ \dfrac{my_2+ny_1}{m+n}\right)\)</p>
+      <p><b>Section (external):</b> \(\left(\dfrac{mx_2-nx_1}{m-n},\ \dfrac{my_2-ny_1}{m-n}\right)\)</p>
+      <p><b>Midpoint:</b> \(\left(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2}\right)\) &nbsp;·&nbsp; <b>Centroid:</b> \(\left(\frac{x_1+x_2+x_3}{3},\frac{y_1+y_2+y_3}{3}\right)\)</p>
+      <p><b>Area of triangle:</b> \(\Delta=\tfrac12\left|x_1(y_2-y_3)+x_2(y_3-y_1)+x_3(y_1-y_2)\right|\)</p>
+    </div>
+    <p>Three points are <b>collinear</b> iff \(\Delta=0\), equivalently iff the slopes of any two of the three segments are equal.</p>
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <ul>
+        <li>Take the modulus in the area formula, or a correct answer comes out negative.</li>
+        <li>In the section formula the ratio \(m:n\) attaches \(m\) to the <b>far</b> point \((x_2,y_2)\).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="m1-06">
+  <div class="code">M1.06<em>Weeks 2–3</em></div>
+  <div class="body">
+    <h3>Straight lines</h3>
+    <p class="lead">Highest-yield block in Maths 1. Every form below should be writable from memory in under ten seconds.</p>
+
+    <h4>Slope</h4>
+    <div class="fx">
+      <p>\(m=\dfrac{y_2-y_1}{x_2-x_1}=\tan\theta\), where \(\theta\in[0^\circ,180^\circ)\) is the angle with the positive \(x\)-axis.</p>
+    </div>
+    <ul>
+      <li>Horizontal line: \(m=0\). Vertical line: \(m\) undefined.</li>
+      <li><b>Parallel:</b> \(m_1=m_2\). &nbsp; <b>Perpendicular:</b> \(m_1m_2=-1\) (both non-vertical).</li>
+    </ul>
+
+    <div class="wrap"><table class="tbl">
+      <caption>Forms of a line</caption>
+      <thead><tr><th>Form</th><th>Equation</th><th>Use when you know</th></tr></thead>
+      <tbody>
+        <tr><td>Point–slope</td><td>\(y-y_1=m(x-x_1)\)</td><td>a point and the slope</td></tr>
+        <tr><td>Two-point</td><td>\(y-y_1=\frac{y_2-y_1}{x_2-x_1}(x-x_1)\)</td><td>two points</td></tr>
+        <tr><td>Slope–intercept</td><td>\(y=mx+c\)</td><td>slope and \(y\)-intercept</td></tr>
+        <tr><td>Intercept</td><td>\(\frac{x}{a}+\frac{y}{b}=1\)</td><td>both axis intercepts</td></tr>
+        <tr><td>Normal</td><td>\(x\cos\alpha+y\sin\alpha=p\)</td><td>perpendicular distance \(p\) from origin</td></tr>
+        <tr><td>General</td><td>\(Ax+By+C=0\)</td><td>always valid, incl. vertical lines</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Reading the general form</h4>
+    <div class="fx">
+      <p>\(Ax+By+C=0 \Rightarrow m=-\dfrac{A}{B},\quad \text{$x$-int}=-\dfrac{C}{A},\quad \text{$y$-int}=-\dfrac{C}{B}\)</p>
+      <p>Parallel to it: \(Ax+By+k=0\). &nbsp; Perpendicular to it: \(Bx-Ay+k=0\).</p>
+      <p>Through \((x_1,y_1)\) and perpendicular: \(B(x-x_1)-A(y-y_1)=0\).</p>
+    </div>
+
+    <h4>Distances and angles</h4>
+    <div class="fx">
+      <p><b>Point to line:</b> \(d=\dfrac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}\)</p>
+      <p><b>Between parallels</b> \(Ax+By+C_1=0\) and \(Ax+By+C_2=0\): \(d=\dfrac{|C_1-C_2|}{\sqrt{A^2+B^2}}\)</p>
+      <p><b>Angle between two lines:</b> \(\tan\theta=\left|\dfrac{m_1-m_2}{1+m_1m_2}\right|\)</p>
+    </div>
+    <p><b>Point of intersection:</b> solve the two equations simultaneously. Two lines \(A_1x+B_1y+C_1=0\), \(A_2x+B_2y+C_2=0\) are parallel when \(\frac{A_1}{A_2}=\frac{B_1}{B_2}\neq\frac{C_1}{C_2}\), and identical when all three ratios are equal.</p>
+
+    <h4>Straight-line fit</h4>
+    <p>Given data \((x_i,y_i)\), the least-squares line minimises \(\sum (y_i-\hat y_i)^2\). Its slope and intercept are the Statistics I regression formulas — see <a href="#s1-04">S1.04</a>. The line always passes through \((\bar x,\bar y)\).</p>
+
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <ul>
+        <li>The perpendicular-distance formula needs the line in <b>general form with everything on one side</b> before you substitute.</li>
+        <li>\(m_1m_2=-1\) fails when one line is vertical — handle that case separately.</li>
+        <li>The two parallel lines must have <b>identical</b> \(A\) and \(B\) before you use \(|C_1-C_2|\); rescale first.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="m1-07">
+  <div class="code">M1.07<em>Weeks 4–5</em></div>
+  <div class="body">
+    <h3>Quadratic functions and equations</h3>
+
+    <div class="def">
+      <span class="tag">Standard, vertex and factored forms</span>
+      <p>\(f(x)=ax^2+bx+c\ (a\neq0)\) &nbsp;=&nbsp; \(a(x-h)^2+k\) &nbsp;=&nbsp; \(a(x-\alpha)(x-\beta)\) when real roots exist.</p>
+    </div>
+
+    <h4>Geometry of the parabola</h4>
+    <div class="fx">
+      <p>Vertex \(\left(-\dfrac{b}{2a},\ -\dfrac{D}{4a}\right)\) where \(D=b^2-4ac\); axis of symmetry \(x=-\dfrac{b}{2a}\); \(y\)-intercept \(c\).</p>
+    </div>
+    <ul>
+      <li>\(a&gt;0\): opens upward, vertex is the <b>minimum</b>, min value \(=-D/4a\), range \([-D/4a,\infty)\).</li>
+      <li>\(a&lt;0\): opens downward, vertex is the <b>maximum</b>.</li>
+      <li>Larger \(|a|\) means a narrower parabola.</li>
+    </ul>
+
+    <h4>Completing the square — the derivation</h4>
+    <div class="fx">
+      <p>\(ax^2+bx+c = a\!\left(x^2+\tfrac{b}{a}x\right)+c = a\!\left(x+\tfrac{b}{2a}\right)^2 - \tfrac{b^2}{4a}+c\)</p>
+      <p>Setting this to zero gives \(\left(x+\tfrac{b}{2a}\right)^2=\tfrac{b^2-4ac}{4a^2}\), hence \(\ x=\dfrac{-b\pm\sqrt{b^2-4ac}}{2a}\).</p>
+    </div>
+
+    <div class="wrap"><table class="tbl">
+      <caption>Discriminant \(D=b^2-4ac\) (real coefficients)</caption>
+      <thead><tr><th>\(D\)</th><th>Roots</th><th>Graph vs \(x\)-axis</th></tr></thead>
+      <tbody>
+        <tr><td>\(D&gt;0\)</td><td>two distinct real</td><td>cuts at two points</td></tr>
+        <tr><td>\(D=0\)</td><td>one repeated real \(=-b/2a\)</td><td>touches (tangent)</td></tr>
+        <tr><td>\(D&lt;0\)</td><td>complex conjugate pair</td><td>no intersection</td></tr>
+        <tr><td>\(D\) a perfect square, coefficients rational</td><td>rational roots</td><td>factorises over \(\mathbb{Q}\)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Roots and coefficients</h4>
+    <div class="fx">
+      <p>\(\alpha+\beta=-\dfrac{b}{a}\), \(\qquad \alpha\beta=\dfrac{c}{a}\), \(\qquad |\alpha-\beta|=\dfrac{\sqrt{D}}{|a|}\)</p>
+      <p>Reconstruct: \(x^2-(\alpha+\beta)x+\alpha\beta=0\). Also \(\alpha^2+\beta^2=(\alpha+\beta)^2-2\alpha\beta\).</p>
+    </div>
+
+    <h4>Sign of a quadratic</h4>
+    <p>If \(D&lt;0\), \(f(x)\) has the sign of \(a\) for every \(x\). If \(D&gt;0\) with roots \(\alpha&lt;\beta\), then \(f\) has the sign of \(a\) outside \([\alpha,\beta]\) and the opposite sign strictly inside.</p>
+
+    <h4>Slope of a quadratic</h4>
+    <p>The chord slope between \(x\) and \(x+h\) is \(2ax+b+ah\). As \(h\to0\) this gives the <b>tangent slope</b> \(f'(x)=2ax+b\), which is zero exactly at the vertex — the algebraic reason the vertex is the extremum. Contrast with a line, whose slope is the same constant everywhere.</p>
+  </div>
+</div>
+
+<div class="clause" id="m1-08">
+  <div class="code">M1.08<em>Week 6</em></div>
+  <div class="body">
+    <h3>Polynomials</h3>
+    <div class="def">
+      <span class="tag">Definition</span>
+      <p>\(p(x)=a_nx^n+\cdots+a_1x+a_0\) with \(a_n\neq0\). <b>Degree</b> \(=n\); \(a_n\) is the <b>leading coefficient</b>; \(a_0\) the constant term. The zero polynomial has undefined (or \(-\infty\)) degree.</p>
+    </div>
+
+    <h4>Degree arithmetic</h4>
+    <ul>
+      <li>\(\deg(p\pm q)\le\max(\deg p,\deg q)\) — equality can fail if leading terms cancel.</li>
+      <li>\(\deg(pq)=\deg p+\deg q\).</li>
+      <li>Division of \(p\) by \(q\): \(\deg(\text{quotient})=\deg p-\deg q\), \(\deg(\text{remainder})&lt;\deg q\).</li>
+    </ul>
+
+    <div class="thm">
+      <span class="tag">Division algorithm</span>
+      <p>For polynomials \(p\) and \(q\neq0\) there exist <b>unique</b> \(s\) (quotient) and \(r\) (remainder) with \[p(x)=q(x)\,s(x)+r(x),\qquad \deg r&lt;\deg q .\]</p>
+    </div>
+
+    <div class="thm">
+      <span class="tag">Remainder and factor theorems</span>
+      <p><b>Remainder:</b> the remainder on dividing \(p(x)\) by \((x-a)\) is \(p(a)\).<br>
+      <b>Factor:</b> \((x-a)\) divides \(p(x)\) \(\iff\) \(p(a)=0\).<br>
+      More generally, dividing by \((ax-b)\) leaves remainder \(p(b/a)\).</p>
+    </div>
+
+    <h4>Roots</h4>
+    <ul>
+      <li><b>Fundamental theorem of algebra:</b> a degree-\(n\) polynomial has exactly \(n\) roots in \(\mathbb{C}\), counted with multiplicity.</li>
+      <li>With real coefficients, non-real roots come in <b>conjugate pairs</b>; so an odd-degree real polynomial has at least one real root.</li>
+      <li><b>Multiplicity</b> \(k\): \((x-a)^k\mid p(x)\) but \((x-a)^{k+1}\nmid p(x)\). At an even-multiplicity root the graph touches; at odd multiplicity it crosses.</li>
+      <li><b>Rational root theorem:</b> any rational root \(p/q\) in lowest terms of an integer-coefficient polynomial has \(p\mid a_0\) and \(q\mid a_n\).</li>
+      <li><b>Vieta, degree \(n\):</b> \(\sum\alpha_i=-a_{n-1}/a_n\) and \(\prod\alpha_i=(-1)^n a_0/a_n\).</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ PART II ============ -->
+<section class="part" id="p2">
+  <div class="pnum">Part II · Statistics for Data Science I</div>
+  <h2>Describing data, counting, and probability</h2>
+  <p>Seven weeks that reduce to five examinable topics: summary measures, the boxplot rule, correlation and the fitted line, counting, and conditional probability. Everything else is vocabulary.</p>
+</section>
+
+<div class="clause" id="s1-01">
+  <div class="code">S1.01<em>Week 1</em></div>
+  <div class="body">
+    <h3>Data types and scales of measurement</h3>
+    <div class="def">
+      <span class="tag">Vocabulary</span>
+      <p><b>Population:</b> every unit of interest. <b>Sample:</b> a subset actually observed. <b>Parameter:</b> a number describing the population (\(\mu,\sigma,p\)). <b>Statistic:</b> a number computed from the sample (\(\bar x,s,\hat p\)). <b>Variable:</b> a characteristic that varies across units. <b>Observation:</b> one recorded value.</p>
+    </div>
+
+    <div class="wrap"><table class="tbl">
+      <caption>Classification of variables</caption>
+      <thead><tr><th>Class</th><th>Sub-type</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="2">Categorical (qualitative)</td><td>Nominal — no order</td><td>blood group, city</td></tr>
+        <tr><td>Ordinal — ordered, gaps not meaningful</td><td>satisfaction rating, grade</td></tr>
+        <tr><td rowspan="2">Numerical (quantitative)</td><td>Discrete — countable</td><td>number of defects</td></tr>
+        <tr><td>Continuous — any value in an interval</td><td>weight, time</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="wrap"><table class="tbl">
+      <caption>Scales of measurement — each level adds one capability</caption>
+      <thead><tr><th>Scale</th><th>Adds</th><th>Valid operations</th><th>Centre</th></tr></thead>
+      <tbody>
+        <tr><td>Nominal</td><td>labels only</td><td>\(=,\neq\), counts</td><td>mode</td></tr>
+        <tr><td>Ordinal</td><td>order</td><td>\(&lt;,&gt;\), median, percentiles</td><td>mode, median</td></tr>
+        <tr><td>Interval</td><td>meaningful differences, arbitrary zero</td><td>\(+,-\), mean, SD</td><td>all three</td></tr>
+        <tr><td>Ratio</td><td>true zero</td><td>\(\times,\div\), ratios</td><td>all three</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <ul>
+        <li>Temperature in °C is <b>interval</b>, not ratio: 20°C is not "twice as hot" as 10°C. Kelvin is ratio.</li>
+        <li>Numbers used as labels (jersey numbers, pin codes) are <b>nominal</b>. Averaging them is meaningless.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="s1-02">
+  <div class="code">S1.02<em>Week 2</em></div>
+  <div class="body">
+    <h3>Describing categorical data</h3>
+    <ul>
+      <li><b>Frequency</b> \(f_i\): count in category \(i\). <b>Relative frequency</b> \(f_i/n\); <b>percentage</b> \(100f_i/n\). Relative frequencies sum to 1.</li>
+      <li><b>Bar chart:</b> bars separated, height = frequency; the axis must start at zero. <b>Pie chart:</b> angle \(=360^\circ\times f_i/n\); readable only with few categories. <b>Pareto chart:</b> bars sorted descending with a cumulative-percentage line.</li>
+      <li><b>Mode:</b> the most frequent category — the only centre available for nominal data. <b>Median</b> becomes available for ordinal data.</li>
+    </ul>
+
+    <div class="trap">
+      <span class="tag">Misleading graphics — the standard exam question</span>
+      <ul>
+        <li><b>Truncated axis:</b> starting the \(y\)-axis above zero exaggerates differences.</li>
+        <li><b>Area/volume distortion:</b> scaling both width and height by \(k\) multiplies perceived size by \(k^2\).</li>
+        <li><b>3D and perspective:</b> foreground slices look larger.</li>
+        <li><b>Unequal bin widths</b> in a histogram, or non-uniform axis spacing.</li>
+        <li><b>Cherry-picked range</b> on a time axis.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="s1-03">
+  <div class="code">S1.03<em>Week 3</em></div>
+  <div class="body">
+    <h3>Describing numerical data</h3>
+
+    <h4>Frequency tables and histograms</h4>
+    <ul>
+      <li><b>Class interval / bin</b>, <b>class width</b>, <b>class mark</b> (midpoint) \(=\frac{L+U}{2}\).</li>
+      <li><b>Histogram:</b> adjacent bars, area proportional to frequency. <b>Ogive:</b> cumulative frequency plotted against upper class boundary.</li>
+      <li><b>Stem-and-leaf</b> retains the original values; a histogram does not.</li>
+    </ul>
+
+    <h4>Measures of centre</h4>
+    <div class="fx">
+      <p>\(\bar x=\dfrac{1}{n}\sum_{i=1}^{n}x_i\qquad\) grouped: \(\bar x=\dfrac{\sum f_i m_i}{\sum f_i}\qquad\) weighted: \(\bar x_w=\dfrac{\sum w_i x_i}{\sum w_i}\)</p>
+    </div>
+    <ul>
+      <li><b>Properties of the mean:</b> \(\sum(x_i-\bar x)=0\); the mean minimises \(\sum(x_i-c)^2\) over \(c\); it uses every value and is therefore sensitive to outliers.</li>
+      <li><b>Median:</b> value at position \(\frac{n+1}{2}\) after sorting (average the two middle values when \(n\) is even). It minimises \(\sum|x_i-c|\) and is <b>resistant</b> to outliers.</li>
+      <li><b>Mode:</b> most frequent value; a distribution may have none, one, or several.</li>
+    </ul>
+
+    <div class="wrap"><table class="tbl">
+      <caption>Shape and the ordering of centres</caption>
+      <thead><tr><th>Shape</th><th>Ordering</th><th>Tail</th></tr></thead>
+      <tbody>
+        <tr><td>Right-skewed (positive)</td><td>mode &lt; median &lt; mean</td><td>long right tail</td></tr>
+        <tr><td>Symmetric</td><td>mode = median = mean</td><td>balanced</td></tr>
+        <tr><td>Left-skewed (negative)</td><td>mean &lt; median &lt; mode</td><td>long left tail</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Measures of dispersion</h4>
+    <div class="fx">
+      <p><b>Range</b> \(=\max-\min\)</p>
+      <p><b>Population variance</b> \(\sigma^2=\dfrac{1}{N}\sum(x_i-\mu)^2\) &nbsp;·&nbsp; <b>Sample variance</b> \(s^2=\dfrac{1}{n-1}\sum(x_i-\bar x)^2\)</p>
+      <p><b>Computational form</b> \(s^2=\dfrac{\sum x_i^2-n\bar x^2}{n-1}\) &nbsp;·&nbsp; <b>SD</b> \(=\sqrt{\text{variance}}\), in the same units as the data</p>
+      <p><b>Coefficient of variation</b> \(\mathrm{CV}=\dfrac{s}{\bar x}\times100\%\) — unitless, for comparing spread across different scales</p>
+    </div>
+    <p>The divisor \(n-1\) is used because \(\bar x\) is estimated from the same data, costing one degree of freedom; it makes \(s^2\) an unbiased estimator of \(\sigma^2\).</p>
+
+    <h4>Position measures and the boxplot</h4>
+    <ul>
+      <li>The \(p\)th <b>percentile</b> has at least \(p\%\) of values at or below it. \(Q_1=P_{25}\), \(Q_2=\)median\(=P_{50}\), \(Q_3=P_{75}\).</li>
+      <li><b>IQR</b> \(=Q_3-Q_1\), a resistant measure of spread.</li>
+      <li><b>Five-number summary:</b> min, \(Q_1\), median, \(Q_3\), max.</li>
+    </ul>
+    <div class="fx">
+      <p><b>Outlier fences:</b> below \(Q_1-1.5\,\mathrm{IQR}\) or above \(Q_3+1.5\,\mathrm{IQR}\).</p>
+      <p>Whiskers extend to the most extreme data points <b>inside</b> the fences; points beyond are plotted individually.</p>
+    </div>
+
+    <h4>Effect of a linear transformation \(y=a+bx\)</h4>
+    <div class="fx">
+      <p>\(\bar y=a+b\bar x\), \(\quad s_y=|b|\,s_x\), \(\quad s_y^2=b^2s_x^2\), \(\quad \mathrm{median}_y=a+b\,\mathrm{median}_x\), \(\quad \mathrm{IQR}_y=|b|\,\mathrm{IQR}_x\)</p>
+    </div>
+    <p>Shifting changes location measures but not spread; scaling changes both.</p>
+  </div>
+</div>
+
+<div class="clause" id="s1-04">
+  <div class="code">S1.04<em>Week 4</em></div>
+  <div class="body">
+    <h3>Association between two variables</h3>
+
+    <h4>Two categorical variables</h4>
+    <ul>
+      <li><b>Contingency table</b> with row totals, column totals and grand total \(n\).</li>
+      <li><b>Joint</b> relative frequency \(=n_{ij}/n\). <b>Marginal</b> \(=\) row or column total \(/n\). <b>Conditional</b> \(=n_{ij}/(\text{row total})\), which is the row profile.</li>
+      <li>The variables look <b>independent</b> when every conditional distribution matches the corresponding marginal distribution.</li>
+    </ul>
+
+    <h4>Two numerical variables</h4>
+    <p>Read a <b>scatterplot</b> for four things: <b>direction</b> (positive/negative), <b>form</b> (linear/curved), <b>strength</b> (tightness about the pattern), and <b>outliers</b>.</p>
+
+    <div class="fx">
+      <p><b>Covariance:</b> \(\ \mathrm{cov}(x,y)=\dfrac{1}{n-1}\sum(x_i-\bar x)(y_i-\bar y)=\dfrac{\sum x_iy_i-n\bar x\bar y}{n-1}\)</p>
+      <p><b>Correlation:</b> \(\ r=\dfrac{\mathrm{cov}(x,y)}{s_x s_y}=\dfrac{\sum(x_i-\bar x)(y_i-\bar y)}{\sqrt{\sum(x_i-\bar x)^2\sum(y_i-\bar y)^2}}\)</p>
+    </div>
+
+    <div class="wrap"><table class="tbl">
+      <caption>Covariance versus correlation</caption>
+      <thead><tr><th></th><th>Covariance</th><th>Correlation \(r\)</th></tr></thead>
+      <tbody>
+        <tr><td>Units</td><td>units of \(x\) × units of \(y\)</td><td>none</td></tr>
+        <tr><td>Range</td><td>\((-\infty,\infty)\)</td><td>\([-1,1]\)</td></tr>
+        <tr><td>Sign means</td><td>direction</td><td>direction</td></tr>
+        <tr><td>Magnitude means</td><td>nothing comparable</td><td>strength of the <b>linear</b> relation</td></tr>
+        <tr><td>Under \(x'=a+bx\)</td><td>scales by \(b\)</td><td>unchanged if \(b&gt;0\), sign flips if \(b&lt;0\)</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <ul>
+        <li>\(r\) measures <b>linear</b> association only. A perfect parabola can have \(r=0\).</li>
+        <li>Correlation is not causation — confounding and lurking variables.</li>
+        <li>\(r\) is symmetric in \(x\) and \(y\); the regression slope is not.</li>
+        <li>A single outlier can move \(r\) dramatically.</li>
+      </ul>
+    </div>
+
+    <h4>Fitting a line</h4>
+    <div class="fx">
+      <p>Least squares minimises \(\sum e_i^2\) where \(e_i=y_i-\hat y_i\) is the <b>residual</b>.</p>
+      <p>\(\hat y=b_0+b_1x\) with \(\quad b_1=r\dfrac{s_y}{s_x}=\dfrac{\mathrm{cov}(x,y)}{s_x^2}\quad\) and \(\quad b_0=\bar y-b_1\bar x\)</p>
+    </div>
+    <ul>
+      <li>The line always passes through \((\bar x,\bar y)\).</li>
+      <li>Residuals sum to zero; a good fit shows no pattern in the residual plot.</li>
+      <li><b>Coefficient of determination</b> \(r^2\) is the proportion of variation in \(y\) explained by the linear relation with \(x\).</li>
+      <li><b>Extrapolation</b> outside the observed range of \(x\) is unjustified.</li>
+    </ul>
+
+    <h4>One categorical, one numerical</h4>
+    <p>Compare group distributions with side-by-side boxplots or group means and SDs. Association exists when the distribution of the numerical variable shifts across categories.</p>
+  </div>
+</div>
+
+<div class="clause" id="s1-05">
+  <div class="code">S1.05<em>Week 5</em></div>
+  <div class="body">
+    <h3>Permutations and combinations</h3>
+
+    <div class="def">
+      <span class="tag">The two basic principles</span>
+      <p><b>Addition rule:</b> if a task can be done in \(m\) ways <b>or</b> \(n\) mutually exclusive ways, there are \(m+n\) ways.<br>
+      <b>Multiplication rule:</b> if a task has stages done in \(m\) <b>and then</b> \(n\) ways, there are \(mn\) ways.</p>
+    </div>
+
+    <div class="fx">
+      <p>\(n!=n(n-1)\cdots1\), with \(0!=1\)</p>
+      <p><b>Permutations</b> (order matters): \(\ ^nP_r=\dfrac{n!}{(n-r)!}\)</p>
+      <p><b>Combinations</b> (order does not): \(\ ^nC_r=\binom{n}{r}=\dfrac{n!}{r!(n-r)!}=\dfrac{^nP_r}{r!}\)</p>
+    </div>
+
+    <div class="wrap"><table class="tbl">
+      <caption>Which formula</caption>
+      <thead><tr><th>Situation</th><th>Count</th></tr></thead>
+      <tbody>
+        <tr><td>Arrange \(r\) of \(n\) distinct objects</td><td>\(^nP_r\)</td></tr>
+        <tr><td>Choose \(r\) of \(n\) distinct objects</td><td>\(^nC_r\)</td></tr>
+        <tr><td>Arrange \(n\) objects, repeats \(n_1,n_2,\dots,n_k\)</td><td>\(\dfrac{n!}{n_1!\,n_2!\cdots n_k!}\)</td></tr>
+        <tr><td>\(r\) selections from \(n\) types, repetition allowed, order matters</td><td>\(n^r\)</td></tr>
+        <tr><td>\(r\) selections from \(n\) types, repetition allowed, order does not</td><td>\(\binom{n+r-1}{r}\)</td></tr>
+        <tr><td>Circular arrangements of \(n\) distinct objects</td><td>\((n-1)!\) &nbsp;(\(\tfrac{(n-1)!}{2}\) if reflections identified)</td></tr>
+        <tr><td>Split \(n\) into groups of sizes \(n_1,\dots,n_k\)</td><td>\(\dfrac{n!}{n_1!\cdots n_k!}\)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Identities</h4>
+    <div class="fx">
+      <p>\(\binom{n}{r}=\binom{n}{n-r}\), \(\quad\binom{n}{r}+\binom{n}{r-1}=\binom{n+1}{r}\) (Pascal), \(\quad\sum_{r=0}^{n}\binom{n}{r}=2^n\)</p>
+      <p><b>Binomial theorem:</b> \((a+b)^n=\sum_{r=0}^{n}\binom{n}{r}a^{n-r}b^{r}\); the \((r+1)\)th term is \(\binom{n}{r}a^{n-r}b^r\).</p>
+    </div>
+
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <ul>
+        <li>Ask "would swapping two chosen items give a different outcome?" Yes → permutation. No → combination.</li>
+        <li>"At least one" is almost always easier as \(1-P(\text{none})\), or total minus the complement count.</li>
+        <li>Items that must stay together: glue them into one block, arrange the blocks, then arrange within the block.</li>
+        <li>Items that must be separated: arrange the others first, then place the restricted items into the gaps.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="s1-06">
+  <div class="code">S1.06<em>Week 6</em></div>
+  <div class="body">
+    <h3>Probability</h3>
+    <div class="def">
+      <span class="tag">Definitions</span>
+      <p><b>Random experiment:</b> outcome not predictable in advance, but the set of possible outcomes is known and the experiment is repeatable. <b>Sample space</b> \(S\): the set of all outcomes. <b>Event:</b> a subset of \(S\). <b>Elementary event:</b> a single outcome. <b>Mutually exclusive:</b> \(A\cap B=\varnothing\). <b>Exhaustive:</b> \(A_1\cup\cdots\cup A_k=S\).</p>
+    </div>
+
+    <div class="thm">
+      <span class="tag">Axioms (Kolmogorov)</span>
+      <p>(1) \(P(A)\ge0\) &nbsp; (2) \(P(S)=1\) &nbsp; (3) for pairwise disjoint \(A_1,A_2,\dots\), \(P(\bigcup A_i)=\sum P(A_i)\).</p>
+    </div>
+
+    <div class="fx">
+      <p>\(P(\varnothing)=0\), \(\quad P(A^c)=1-P(A)\), \(\quad 0\le P(A)\le 1\)</p>
+      <p>\(A\subseteq B\Rightarrow P(A)\le P(B)\) &nbsp;(monotonicity)</p>
+      <p><b>Addition rule:</b> \(P(A\cup B)=P(A)+P(B)-P(A\cap B)\)</p>
+      <p><b>Three events:</b> \(P(A\cup B\cup C)=\sum P(A)-\sum P(A\cap B)+P(A\cap B\cap C)\)</p>
+      <p>\(P(A\setminus B)=P(A)-P(A\cap B)\) &nbsp;·&nbsp; <b>Boole:</b> \(P(\bigcup A_i)\le\sum P(A_i)\)</p>
+    </div>
+
+    <h4>Equally likely outcomes</h4>
+    <p>When \(S\) is finite with all outcomes equally likely, \(P(A)=\dfrac{|A|}{|S|}=\dfrac{\text{favourable}}{\text{total}}\). This is where <a href="#s1-05">S1.05</a> counting is used — the entire question becomes a counting question.</p>
+
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <ul>
+        <li>Mutually exclusive is <b>not</b> the same as independent. If \(A,B\) are disjoint with positive probability, they are necessarily <b>dependent</b>: knowing \(A\) occurred tells you \(B\) did not.</li>
+        <li>The equally-likely formula requires a genuinely symmetric sample space. Listing "sum of two dice" as \(\{2,\dots,12\}\) does not give equally likely outcomes.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="s1-07">
+  <div class="code">S1.07<em>Week 7</em></div>
+  <div class="body">
+    <h3>Conditional probability, independence and Bayes</h3>
+
+    <div class="def">
+      <span class="tag">Definition</span>
+      <p>\[P(A\mid B)=\frac{P(A\cap B)}{P(B)},\qquad P(B)&gt;0\]
+      Conditioning on \(B\) restricts the sample space to \(B\) and rescales. \(P(\cdot\mid B)\) satisfies all the probability axioms.</p>
+    </div>
+
+    <div class="fx">
+      <p><b>Multiplication rule:</b> \(P(A\cap B)=P(B)P(A\mid B)=P(A)P(B\mid A)\)</p>
+      <p><b>Chain rule:</b> \(P(A_1\cap\cdots\cap A_n)=P(A_1)P(A_2\mid A_1)\cdots P(A_n\mid A_1\cap\cdots\cap A_{n-1})\)</p>
+    </div>
+
+    <div class="def">
+      <span class="tag">Independence</span>
+      <p>\(A\) and \(B\) are independent iff \(P(A\cap B)=P(A)P(B)\), equivalently \(P(A\mid B)=P(A)\) when \(P(B)&gt;0\).</p>
+      <p>If \(A\perp B\) then so are \(A^c,B\); \(A,B^c\); and \(A^c,B^c\).</p>
+      <p><b>Mutual independence</b> of \(A_1,\dots,A_n\) requires the product rule for <b>every</b> sub-collection, not just pairs. Pairwise independence does not imply mutual independence.</p>
+    </div>
+
+    <div class="thm">
+      <span class="tag">Total probability &amp; Bayes</span>
+      <p>Let \(B_1,\dots,B_k\) partition \(S\) with \(P(B_i)&gt;0\).</p>
+      <p><b>Total probability:</b> \[P(A)=\sum_{i=1}^{k}P(B_i)\,P(A\mid B_i)\]</p>
+      <p><b>Bayes' rule:</b> \[P(B_j\mid A)=\frac{P(B_j)P(A\mid B_j)}{\sum_{i}P(B_i)P(A\mid B_i)}\]</p>
+      <p>\(P(B_j)\) is the <b>prior</b>, \(P(A\mid B_j)\) the <b>likelihood</b>, \(P(B_j\mid A)\) the <b>posterior</b>.</p>
+    </div>
+
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <ul>
+        <li>\(P(A\mid B)\neq P(B\mid A)\). Reversing these is the single most common error in the paper.</li>
+        <li>For any two-way problem, build the \(2\times2\) contingency table with a convenient total (say 10,000) before touching a formula. It converts Bayes into division.</li>
+        <li>A rare condition with a good test still gives a low posterior — the base rate dominates.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PART III ============ -->
+<section class="part" id="p3">
+  <div class="pnum">Part III · Mathematics for Data Science II</div>
+  <h2>Linear algebra</h2>
+  <p>Twelve weeks that rest on one procedure. Rank, nullity, basis, independence, consistency, kernel and image are all read off the reduced row echelon form. Learn to row-reduce without arithmetic slips and most of this part answers itself; the orthogonality block at the end is the only genuinely separate machinery.</p>
+</section>
+
+<div class="clause" id="m2-01">
+  <div class="code">M2.01<em>Weeks 1–2</em></div>
+  <div class="body">
+    <h3>Vectors and matrices</h3>
+
+    <h4>Vectors in \(\mathbb{R}^n\)</h4>
+    <div class="fx">
+      <p>\(\mathbf{u}+\mathbf{v}=(u_1+v_1,\dots,u_n+v_n)\), \(\quad c\mathbf{u}=(cu_1,\dots,cu_n)\)</p>
+      <p>\(\mathbf{u}\cdot\mathbf{v}=\sum u_iv_i=\mathbf{u}^T\mathbf{v}\), \(\quad\|\mathbf{u}\|=\sqrt{\mathbf{u}\cdot\mathbf{u}}\), \(\quad\cos\theta=\dfrac{\mathbf{u}\cdot\mathbf{v}}{\|\mathbf{u}\|\|\mathbf{v}\|}\)</p>
+      <p>Unit vector \(\hat{\mathbf{u}}=\mathbf{u}/\|\mathbf{u}\|\); \(\ \mathbf{u}\perp\mathbf{v}\iff\mathbf{u}\cdot\mathbf{v}=0\).</p>
+    </div>
+
+    <h4>Special matrices</h4>
+    <div class="wrap"><table class="tbl">
+      <caption>Types of square matrix</caption>
+      <thead><tr><th>Name</th><th>Condition</th></tr></thead>
+      <tbody>
+        <tr><td>Diagonal</td><td>\(a_{ij}=0\) for \(i\neq j\)</td></tr>
+        <tr><td>Identity \(I\)</td><td>diagonal with all ones; \(AI=IA=A\)</td></tr>
+        <tr><td>Scalar</td><td>\(kI\)</td></tr>
+        <tr><td>Upper / lower triangular</td><td>zeros below / above the diagonal</td></tr>
+        <tr><td>Symmetric</td><td>\(A^T=A\)</td></tr>
+        <tr><td>Skew-symmetric</td><td>\(A^T=-A\); diagonal entries are zero</td></tr>
+        <tr><td>Orthogonal</td><td>\(A^TA=I\), so \(A^{-1}=A^T\)</td></tr>
+        <tr><td>Idempotent</td><td>\(A^2=A\)</td></tr>
+        <tr><td>Singular</td><td>\(\det A=0\); no inverse</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Algebra of matrices</h4>
+    <ul>
+      <li>\(AB\) is defined when the inner dimensions match: \((m\times n)(n\times p)=(m\times p)\). Entry \((AB)_{ij}=\sum_k a_{ik}b_{kj}\).</li>
+      <li>Multiplication is <b>associative</b> and <b>distributive</b> but <b>not commutative</b>: \(AB\neq BA\) in general.</li>
+      <li>\(AB=0\) does not imply \(A=0\) or \(B=0\). \(AB=AC\) does not imply \(B=C\) unless \(A\) is invertible.</li>
+    </ul>
+    <div class="fx">
+      <p>\((A^T)^T=A\), \(\ (A+B)^T=A^T+B^T\), \(\ (AB)^T=B^TA^T\), \(\ (kA)^T=kA^T\)</p>
+      <p>\((AB)^{-1}=B^{-1}A^{-1}\), \(\ (A^T)^{-1}=(A^{-1})^T\), \(\ (A^{-1})^{-1}=A\)</p>
+      <p>\(\operatorname{tr}(A)=\sum a_{ii}\), \(\ \operatorname{tr}(AB)=\operatorname{tr}(BA)\), \(\ \operatorname{tr}(A+B)=\operatorname{tr}A+\operatorname{tr}B\)</p>
+    </div>
+    <p>Any square matrix splits uniquely as \(A=\underbrace{\tfrac12(A+A^T)}_{\text{symmetric}}+\underbrace{\tfrac12(A-A^T)}_{\text{skew}}\).</p>
+  </div>
+</div>
+
+<div class="clause" id="m2-02">
+  <div class="code">M2.02<em>Weeks 3–5</em></div>
+  <div class="body">
+    <h3>Linear systems, row reduction and RREF</h3>
+    <p class="lead">The central procedure of the whole course.</p>
+
+    <div class="def">
+      <span class="tag">Elementary row operations</span>
+      <p>(1) Swap two rows \(R_i\leftrightarrow R_j\). (2) Scale a row \(R_i\to cR_i\), \(c\neq0\). (3) Add a multiple of one row to another, \(R_i\to R_i+cR_j\). Each is reversible and each is realised by left-multiplying by an <b>elementary matrix</b>. Row operations change the row space? No — they <b>preserve</b> the row space and the null space, and preserve dependence relations among columns.</p>
+    </div>
+
+    <div class="def">
+      <span class="tag">Echelon forms</span>
+      <p><b>Row echelon form (REF):</b> all-zero rows at the bottom; each leading entry (pivot) is strictly to the right of the pivot above it.<br>
+      <b>Reduced row echelon form (RREF):</b> additionally, every pivot is \(1\) and is the only non-zero entry in its column. The RREF of a matrix is <b>unique</b>.</p>
+    </div>
+
+    <div class="thm">
+      <span class="tag">Consistency criterion</span>
+      <p>For \(A\mathbf{x}=\mathbf{b}\) with \(A\) of size \(m\times n\), reduce the augmented matrix \([A\mid\mathbf{b}]\):</p>
+      <ul>
+        <li>\(\operatorname{rank}(A)&lt;\operatorname{rank}([A\mid\mathbf{b}])\) → <b>no solution</b> (a row reads \([0\ 0\cdots0\mid c]\), \(c\neq0\)).</li>
+        <li>\(\operatorname{rank}(A)=\operatorname{rank}([A\mid\mathbf{b}])=n\) → <b>unique solution</b>.</li>
+        <li>\(\operatorname{rank}(A)=\operatorname{rank}([A\mid\mathbf{b}])=r&lt;n\) → <b>infinitely many</b>, with \(n-r\) free parameters.</li>
+      </ul>
+    </div>
+
+    <h4>Structure of the solution set</h4>
+    <div class="fx">
+      <p>\(\{\mathbf{x}:A\mathbf{x}=\mathbf{b}\}=\mathbf{x}_p+\mathcal{N}(A)\) — one particular solution plus the whole null space.</p>
+    </div>
+    <p>A <b>homogeneous</b> system \(A\mathbf{x}=\mathbf{0}\) is always consistent (\(\mathbf{x}=\mathbf{0}\) works). It has a non-trivial solution iff \(\operatorname{rank}(A)&lt;n\) — in particular whenever \(m&lt;n\) (more unknowns than equations).</p>
+
+    <h4>Procedure</h4>
+    <ol>
+      <li>Write \([A\mid\mathbf{b}]\).</li>
+      <li><b>Gaussian elimination:</b> row-reduce to REF, then back-substitute.</li>
+      <li><b>Gauss–Jordan:</b> continue to RREF and read the solution directly.</li>
+      <li>Pivot columns → <b>basic</b> variables; non-pivot columns → <b>free</b> variables. Set each free variable to a parameter and express the basic ones in terms of them.</li>
+    </ol>
+
+    <div class="thm">
+      <span class="tag">Invertibility — equivalent statements for \(A\) of size \(n\times n\)</span>
+      <p>The following are all equivalent: \(A\) is invertible; \(\det A\neq0\); \(\operatorname{rank}A=n\); RREF of \(A\) is \(I\); \(A\mathbf{x}=\mathbf{0}\) has only the trivial solution; \(A\mathbf{x}=\mathbf{b}\) has a unique solution for every \(\mathbf{b}\); the columns of \(A\) are linearly independent; the columns span \(\mathbb{R}^n\); the rows form a basis of \(\mathbb{R}^n\); \(\mathcal{N}(A)=\{\mathbf{0}\}\), i.e. nullity \(=0\); \(A\) is a product of elementary matrices.</p>
+    </div>
+    <p><b>Inverse by row reduction:</b> reduce \([A\mid I]\) to \([I\mid A^{-1}]\). If a zero row appears on the left, \(A\) is singular.</p>
+  </div>
+</div>
+
+<div class="clause" id="m2-03">
+  <div class="code">M2.03<em>Weeks 4–5</em></div>
+  <div class="body">
+    <h3>Determinants</h3>
+    <div class="fx">
+      <p>\(2\times2\): \(\ \det\begin{bmatrix}a&amp;b\\c&amp;d\end{bmatrix}=ad-bc\)</p>
+      <p><b>Cofactor expansion along row \(i\):</b> \(\ \det A=\sum_{j=1}^{n}a_{ij}C_{ij}\), where \(C_{ij}=(-1)^{i+j}M_{ij}\) and \(M_{ij}\) is the minor (determinant of \(A\) with row \(i\) and column \(j\) deleted).</p>
+    </div>
+
+    <div class="wrap"><table class="tbl">
+      <caption>Properties</caption>
+      <thead><tr><th>Statement</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>\(\det(A^T)=\det A\)</td><td>rows and columns interchangeable</td></tr>
+        <tr><td>\(\det(AB)=\det A\cdot\det B\)</td><td>but \(\det(A+B)\neq\det A+\det B\)</td></tr>
+        <tr><td>\(\det(kA)=k^n\det A\)</td><td>\(n\times n\)</td></tr>
+        <tr><td>\(\det(A^{-1})=1/\det A\)</td><td>needs \(\det A\neq0\)</td></tr>
+        <tr><td>Row swap</td><td>sign flips</td></tr>
+        <tr><td>Row scaled by \(c\)</td><td>determinant scaled by \(c\)</td></tr>
+        <tr><td>\(R_i\to R_i+cR_j\)</td><td>determinant <b>unchanged</b></td></tr>
+        <tr><td>Zero row, or two equal/proportional rows</td><td>\(\det A=0\)</td></tr>
+        <tr><td>Triangular or diagonal matrix</td><td>\(\det A=\prod a_{ii}\)</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="fx">
+      <p><b>Adjugate:</b> \(\operatorname{adj}(A)=C^T\) (transpose of the cofactor matrix), and \(A\operatorname{adj}(A)=(\det A)I\), so \(\ A^{-1}=\dfrac{1}{\det A}\operatorname{adj}(A)\).</p>
+      <p><b>Cramer's rule:</b> for \(A\mathbf{x}=\mathbf{b}\) with \(\det A\neq0\), \(\ x_i=\dfrac{\det A_i}{\det A}\), where \(A_i\) is \(A\) with column \(i\) replaced by \(\mathbf{b}\).</p>
+    </div>
+    <p><b>Geometric meaning:</b> \(|\det A|\) is the factor by which \(A\) scales area (\(n=2\)) or volume (\(n=3\)). A zero determinant means the transformation collapses space into a lower dimension — which is exactly why it is not invertible. The sign records whether orientation is preserved.</p>
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <ul>
+        <li>Cramer's rule and the adjugate formula only apply to <b>square, non-singular</b> systems. For anything else, row-reduce.</li>
+        <li>Expand along the row or column with the most zeros — the arithmetic is where marks are lost, not the method.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="m2-04">
+  <div class="code">M2.04<em>Week 6</em></div>
+  <div class="body">
+    <h3>Vector spaces and subspaces</h3>
+    <div class="def">
+      <span class="tag">Axioms</span>
+      <p>A <b>vector space</b> \(V\) over a field \(F\) is a set with addition and scalar multiplication satisfying, for all \(\mathbf{u},\mathbf{v},\mathbf{w}\in V\) and \(a,b\in F\):</p>
+      <ol>
+        <li>Closure under \(+\) and under scalar multiplication</li>
+        <li>\(\mathbf{u}+\mathbf{v}=\mathbf{v}+\mathbf{u}\) (commutative)</li>
+        <li>\((\mathbf{u}+\mathbf{v})+\mathbf{w}=\mathbf{u}+(\mathbf{v}+\mathbf{w})\) (associative)</li>
+        <li>There exists \(\mathbf{0}\) with \(\mathbf{v}+\mathbf{0}=\mathbf{v}\)</li>
+        <li>Each \(\mathbf{v}\) has \(-\mathbf{v}\) with \(\mathbf{v}+(-\mathbf{v})=\mathbf{0}\)</li>
+        <li>\(a(\mathbf{u}+\mathbf{v})=a\mathbf{u}+a\mathbf{v}\)</li>
+        <li>\((a+b)\mathbf{v}=a\mathbf{v}+b\mathbf{v}\)</li>
+        <li>\(a(b\mathbf{v})=(ab)\mathbf{v}\) and \(1\mathbf{v}=\mathbf{v}\)</li>
+      </ol>
+    </div>
+    <p>Consequences: \(0\mathbf{v}=\mathbf{0}\), \(a\mathbf{0}=\mathbf{0}\), \((-1)\mathbf{v}=-\mathbf{v}\), and the zero vector is unique.</p>
+    <p><b>Standard examples:</b> \(\mathbb{R}^n\); \(M_{m\times n}\) (dimension \(mn\)); \(P_n\), polynomials of degree \(\le n\) (dimension \(n+1\)); the set of functions \(\mathbb{R}\to\mathbb{R}\); the solution set of a <b>homogeneous</b> system.</p>
+
+    <div class="thm">
+      <span class="tag">Subspace test</span>
+      <p>A non-empty \(W\subseteq V\) is a subspace iff (i) \(\mathbf{0}\in W\), (ii) \(W\) is closed under addition, (iii) \(W\) is closed under scalar multiplication. Equivalently: \(a\mathbf{u}+b\mathbf{v}\in W\) for all \(\mathbf{u},\mathbf{v}\in W\), \(a,b\in F\).</p>
+    </div>
+
+    <div class="def">
+      <span class="tag">Span</span>
+      <p>\(\operatorname{span}\{\mathbf{v}_1,\dots,\mathbf{v}_k\}=\{c_1\mathbf{v}_1+\cdots+c_k\mathbf{v}_k\}\) — the set of all linear combinations. It is always a subspace, and it is the <b>smallest</b> subspace containing those vectors. \(\operatorname{span}(\varnothing)=\{\mathbf{0}\}\).</p>
+    </div>
+    <p>The intersection of subspaces is a subspace; the <b>union generally is not</b>. The sum \(U+W=\{\mathbf{u}+\mathbf{w}\}\) is a subspace, and \(\dim(U+W)=\dim U+\dim W-\dim(U\cap W)\).</p>
+
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <p>Any candidate subspace failing to contain \(\mathbf{0}\) is disqualified immediately — check that first. A line or plane not through the origin is <b>not</b> a subspace (it is an affine subspace).</p>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="m2-05">
+  <div class="code">M2.05<em>Week 6</em></div>
+  <div class="body">
+    <h3>Linear dependence and independence</h3>
+    <div class="def">
+      <span class="tag">Definition</span>
+      <p>\(\{\mathbf{v}_1,\dots,\mathbf{v}_k\}\) is <b>linearly independent</b> if \[c_1\mathbf{v}_1+\cdots+c_k\mathbf{v}_k=\mathbf{0}\ \Longrightarrow\ c_1=\cdots=c_k=0.\] Otherwise it is <b>linearly dependent</b>: some non-trivial combination gives \(\mathbf{0}\), equivalently at least one vector lies in the span of the others.</p>
+    </div>
+
+    <h4>Facts</h4>
+    <ul>
+      <li>Any set containing \(\mathbf{0}\) is dependent.</li>
+      <li>A single non-zero vector is independent. Two vectors are dependent iff one is a scalar multiple of the other.</li>
+      <li>Any subset of an independent set is independent; any superset of a dependent set is dependent.</li>
+      <li>More than \(n\) vectors in \(\mathbb{R}^n\) are always dependent.</li>
+      <li>An independent set can be extended to a basis; a spanning set can be reduced to a basis.</li>
+    </ul>
+
+    <h4>How to test</h4>
+    <ol>
+      <li>Put the vectors as <b>columns</b> of \(A\) and solve \(A\mathbf{c}=\mathbf{0}\). Only the trivial solution → independent.</li>
+      <li>Row-reduce: independent \(\iff\) every column is a pivot column \(\iff\operatorname{rank}A=k\).</li>
+      <li>For exactly \(n\) vectors in \(\mathbb{R}^n\): independent \(\iff\det A\neq0\).</li>
+    </ol>
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <p>Put vectors in <b>columns</b> to study dependence among the vectors themselves (pivot columns identify an independent subset of the <b>original</b> vectors). Put them in <b>rows</b> when you only need a basis for their span — the non-zero rows of the RREF are then a clean basis, though not necessarily made of the original vectors.</p>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="m2-06">
+  <div class="code">M2.06<em>Weeks 6–7</em></div>
+  <div class="body">
+    <h3>Basis, rank and dimension</h3>
+    <div class="def">
+      <span class="tag">Basis</span>
+      <p>A <b>basis</b> of \(V\) is a set that is (i) linearly independent and (ii) spans \(V\). Every vector then has a <b>unique</b> representation as a linear combination of basis vectors — those coefficients are the <b>coordinates</b> relative to that ordered basis.</p>
+    </div>
+
+    <div class="thm">
+      <span class="tag">Dimension</span>
+      <p>Every basis of a finite-dimensional \(V\) has the same number of elements; that number is \(\dim V\). Consequences, with \(n=\dim V\):</p>
+      <ul>
+        <li>Any independent set has at most \(n\) elements; any spanning set has at least \(n\).</li>
+        <li>Any \(n\) independent vectors form a basis. Any \(n\) spanning vectors form a basis. (Two conditions, but with the right count either one implies the other.)</li>
+        <li>If \(W\subseteq V\) is a subspace then \(\dim W\le\dim V\), with equality iff \(W=V\).</li>
+      </ul>
+    </div>
+    <p>Standard bases: \(\{\mathbf{e}_1,\dots,\mathbf{e}_n\}\) for \(\mathbb{R}^n\); \(\{1,x,\dots,x^n\}\) for \(P_n\); \(\dim M_{m\times n}=mn\). By convention \(\dim\{\mathbf{0}\}=0\) with basis \(\varnothing\).</p>
+
+    <div class="def">
+      <span class="tag">The three matrix spaces</span>
+      <p>For \(A\) of size \(m\times n\): the <b>row space</b> \(\subseteq\mathbb{R}^n\), the <b>column space</b> \(\mathcal{C}(A)\subseteq\mathbb{R}^m\), and the <b>null space</b> \(\mathcal{N}(A)\subseteq\mathbb{R}^n\).</p>
+    </div>
+
+    <div class="thm">
+      <span class="tag">Rank</span>
+      <p>\(\operatorname{rank}(A)=\dim(\text{row space})=\dim(\text{column space})=\) number of pivots in the RREF. <b>Row rank equals column rank</b>, always. Also \(\operatorname{rank}(A)=\operatorname{rank}(A^T)\le\min(m,n)\); \(A\) has <b>full rank</b> when equality holds.</p>
+    </div>
+
+    <div class="fx">
+      <p><b>Reading bases off the RREF of \(A\):</b></p>
+      <p>Row space → the non-zero rows of the RREF.</p>
+      <p>Column space → the columns of the <b>original</b> \(A\) in the pivot positions.</p>
+      <p>Null space → solve \(A\mathbf{x}=\mathbf{0}\), one basis vector per free variable.</p>
+    </div>
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <p>Row operations <b>change</b> the column space but preserve the row space and the null space. That is precisely why the column-space basis must be taken from the original matrix, while the row-space basis can be taken from the reduced one.</p>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="m2-07">
+  <div class="code">M2.07<em>Week 7</em></div>
+  <div class="body">
+    <h3>Null space, nullity and rank–nullity</h3>
+    <div class="def">
+      <span class="tag">Definition</span>
+      <p>\(\mathcal{N}(A)=\{\mathbf{x}\in\mathbb{R}^n:A\mathbf{x}=\mathbf{0}\}\), a subspace of \(\mathbb{R}^n\). Its dimension is the <b>nullity</b>, equal to the number of free variables.</p>
+    </div>
+    <div class="thm">
+      <span class="tag">Rank–nullity theorem</span>
+      <p>\[\operatorname{rank}(A)+\operatorname{nullity}(A)=n\quad(\text{number of columns})\]</p>
+      <p>Every column is either a pivot column (contributing to rank) or a free column (contributing to nullity). That is the entire proof.</p>
+    </div>
+    <h4>Finding a basis for \(\mathcal{N}(A)\)</h4>
+    <ol>
+      <li>Reduce \(A\) to RREF and identify pivot and free columns.</li>
+      <li>Write each basic variable in terms of the free variables.</li>
+      <li>Set one free variable to \(1\) and the rest to \(0\), in turn. Each choice produces one basis vector.</li>
+    </ol>
+    <p>The resulting set is automatically independent (each vector has a \(1\) where the others have \(0\)) and has exactly nullity-many elements.</p>
+  </div>
+</div>
+
+<div class="clause" id="m2-08">
+  <div class="code">M2.08<em>Weeks 8–9</em></div>
+  <div class="body">
+    <h3>Linear transformations</h3>
+    <div class="def">
+      <span class="tag">Definition</span>
+      <p>\(T:V\to W\) is <b>linear</b> if for all \(\mathbf{u},\mathbf{v}\in V\) and scalar \(c\):</p>
+      <p>\[T(\mathbf{u}+\mathbf{v})=T(\mathbf{u})+T(\mathbf{v}),\qquad T(c\mathbf{u})=cT(\mathbf{u}).\]</p>
+      <p>Both conditions collapse to \(T(a\mathbf{u}+b\mathbf{v})=aT(\mathbf{u})+bT(\mathbf{v})\). It follows that \(T(\mathbf{0})=\mathbf{0}\) — a fast disqualifying test.</p>
+    </div>
+
+    <div class="def">
+      <span class="tag">Kernel and image</span>
+      <p><b>Kernel</b> \(\ker T=\{\mathbf{v}:T(\mathbf{v})=\mathbf{0}\}\subseteq V\), a subspace. Its dimension is the <b>nullity</b>.<br>
+      <b>Image</b> \(\operatorname{im}T=\{T(\mathbf{v}):\mathbf{v}\in V\}\subseteq W\), a subspace. Its dimension is the <b>rank</b>.</p>
+      <p>If \(T(\mathbf{x})=A\mathbf{x}\), then \(\ker T=\mathcal{N}(A)\) and \(\operatorname{im}T=\mathcal{C}(A)\) — the two are the same objects in different language.</p>
+    </div>
+
+    <div class="thm">
+      <span class="tag">Rank–nullity, and injectivity</span>
+      <p>\(\dim(\ker T)+\dim(\operatorname{im}T)=\dim V\).</p>
+      <p>\(T\) is <b>injective</b> \(\iff\ker T=\{\mathbf{0}\}\iff\) nullity \(=0\).<br>
+      \(T\) is <b>surjective</b> \(\iff\operatorname{im}T=W\iff\operatorname{rank}T=\dim W\).<br>
+      \(T\) is an <b>isomorphism</b> when both hold; then \(\dim V=\dim W\). For \(\dim V=\dim W\) finite, injective \(\iff\) surjective \(\iff\) bijective.</p>
+    </div>
+
+    <h4>Matrix of a transformation</h4>
+    <p>Let \(B=\{\mathbf{v}_1,\dots,\mathbf{v}_n\}\) be an ordered basis of \(V\) and \(C\) an ordered basis of \(W\). The matrix \([T]_B^C\) has as its \(j\)th column the coordinate vector \([T(\mathbf{v}_j)]_C\). Then \([T(\mathbf{v})]_C=[T]_B^C\,[\mathbf{v}]_B\).</p>
+    <p>A linear map is completely determined by its action on a basis.</p>
+
+    <div class="fx">
+      <p><b>Change of basis:</b> \([\mathbf{v}]_C=P_{C\leftarrow B}[\mathbf{v}]_B\), where the columns of \(P\) are \([\mathbf{v}_j]_C\). \(P\) is invertible and \(P_{B\leftarrow C}=P_{C\leftarrow B}^{-1}\).</p>
+      <p><b>Similar matrices:</b> \(B=P^{-1}AP\) — same transformation, different basis. Similar matrices share rank, determinant, trace and eigenvalues.</p>
+      <p><b>Equivalent matrices:</b> \(B=QAP\) with \(P,Q\) invertible — same rank, that is all.</p>
+    </div>
+
+    <h4>Affine subspaces and affine maps</h4>
+    <p>An <b>affine subspace</b> is a translate \(\mathbf{x}_0+U\) of a subspace \(U\); it contains \(\mathbf{0}\) only when \(\mathbf{x}_0\in U\). The solution set of a consistent non-homogeneous system is exactly an affine subspace. An <b>affine map</b> has the form \(\mathbf{x}\mapsto A\mathbf{x}+\mathbf{b}\); it is linear iff \(\mathbf{b}=\mathbf{0}\).</p>
+  </div>
+</div>
+
+<div class="clause" id="m2-09">
+  <div class="code">M2.09<em>Weeks 10–11</em></div>
+  <div class="body">
+    <h3>Inner products, norms and orthogonality</h3>
+    <div class="def">
+      <span class="tag">Inner product axioms (real case)</span>
+      <p>\(\langle\cdot,\cdot\rangle:V\times V\to\mathbb{R}\) satisfying, for all \(\mathbf{u},\mathbf{v},\mathbf{w}\) and scalars \(a,b\):</p>
+      <ul>
+        <li><b>Symmetry:</b> \(\langle\mathbf{u},\mathbf{v}\rangle=\langle\mathbf{v},\mathbf{u}\rangle\)</li>
+        <li><b>Bilinearity:</b> \(\langle a\mathbf{u}+b\mathbf{v},\mathbf{w}\rangle=a\langle\mathbf{u},\mathbf{w}\rangle+b\langle\mathbf{v},\mathbf{w}\rangle\)</li>
+        <li><b>Positive definiteness:</b> \(\langle\mathbf{v},\mathbf{v}\rangle\ge0\), with equality iff \(\mathbf{v}=\mathbf{0}\)</li>
+      </ul>
+      <p>The dot product is the standard example. A general form is \(\langle\mathbf{u},\mathbf{v}\rangle=\mathbf{u}^TM\mathbf{v}\) for a symmetric positive-definite \(M\).</p>
+    </div>
+
+    <div class="fx">
+      <p><b>Induced norm:</b> \(\|\mathbf{v}\|=\sqrt{\langle\mathbf{v},\mathbf{v}\rangle}\), &nbsp; <b>distance:</b> \(d(\mathbf{u},\mathbf{v})=\|\mathbf{u}-\mathbf{v}\|\), &nbsp; <b>angle:</b> \(\cos\theta=\dfrac{\langle\mathbf{u},\mathbf{v}\rangle}{\|\mathbf{u}\|\|\mathbf{v}\|}\)</p>
+      <p>Norm axioms: \(\|\mathbf{v}\|\ge0\) with equality iff \(\mathbf{v}=\mathbf{0}\); \(\|c\mathbf{v}\|=|c|\|\mathbf{v}\|\); \(\|\mathbf{u}+\mathbf{v}\|\le\|\mathbf{u}\|+\|\mathbf{v}\|\).</p>
+    </div>
+
+    <div class="thm">
+      <span class="tag">Key inequalities and identities</span>
+      <p><b>Cauchy–Schwarz:</b> \(|\langle\mathbf{u},\mathbf{v}\rangle|\le\|\mathbf{u}\|\,\|\mathbf{v}\|\), equality iff \(\mathbf{u},\mathbf{v}\) are parallel. This is what makes the angle formula well defined.<br>
+      <b>Triangle inequality</b> follows from it.<br>
+      <b>Pythagoras:</b> \(\mathbf{u}\perp\mathbf{v}\Rightarrow\|\mathbf{u}+\mathbf{v}\|^2=\|\mathbf{u}\|^2+\|\mathbf{v}\|^2\).<br>
+      <b>Parallelogram law:</b> \(\|\mathbf{u}+\mathbf{v}\|^2+\|\mathbf{u}-\mathbf{v}\|^2=2\|\mathbf{u}\|^2+2\|\mathbf{v}\|^2\).</p>
+    </div>
+
+    <div class="thm">
+      <span class="tag">Orthogonality implies independence</span>
+      <p>A set of <b>non-zero</b> pairwise orthogonal vectors is linearly independent. (Take \(\sum c_i\mathbf{v}_i=\mathbf{0}\) and pair with \(\mathbf{v}_j\): every term dies except \(c_j\|\mathbf{v}_j\|^2\), forcing \(c_j=0\).) The converse fails.</p>
+    </div>
+    <p><b>Orthogonal complement:</b> \(U^\perp=\{\mathbf{v}:\langle\mathbf{v},\mathbf{u}\rangle=0\ \forall\mathbf{u}\in U\}\), a subspace with \(\dim U+\dim U^\perp=\dim V\) and \(U\cap U^\perp=\{\mathbf{0}\}\). For a matrix, \(\mathcal{N}(A)=(\text{row space})^\perp\).</p>
+  </div>
+</div>
+
+<div class="clause" id="m2-10">
+  <div class="code">M2.10<em>Week 11</em></div>
+  <div class="body">
+    <h3>Orthonormal bases, projection and Gram–Schmidt</h3>
+    <div class="def">
+      <span class="tag">Orthonormal basis</span>
+      <p>A basis with \(\langle\mathbf{q}_i,\mathbf{q}_j\rangle=\delta_{ij}\): pairwise orthogonal and each of unit norm. Its advantage is that coordinates come free — no system to solve:</p>
+      <p>\[\mathbf{v}=\sum_{i}\langle\mathbf{v},\mathbf{q}_i\rangle\,\mathbf{q}_i,\qquad \|\mathbf{v}\|^2=\sum_i\langle\mathbf{v},\mathbf{q}_i\rangle^2 \ \text{(Parseval)}\]</p>
+    </div>
+
+    <div class="fx">
+      <p><b>Projection onto a vector</b> \(\mathbf{u}\): \(\ \operatorname{proj}_{\mathbf{u}}\mathbf{v}=\dfrac{\langle\mathbf{v},\mathbf{u}\rangle}{\langle\mathbf{u},\mathbf{u}\rangle}\mathbf{u}\)</p>
+      <p><b>Projection onto a subspace</b> \(U\) with orthonormal basis \(\{\mathbf{q}_i\}\): \(\ \operatorname{proj}_U\mathbf{v}=\sum_i\langle\mathbf{v},\mathbf{q}_i\rangle\mathbf{q}_i\)</p>
+      <p><b>Projection matrix</b> onto \(\mathcal{C}(A)\), columns of \(A\) independent: \(\ P=A(A^TA)^{-1}A^T\)</p>
+    </div>
+    <ul>
+      <li>\(P^2=P\) (idempotent) and \(P^T=P\) (symmetric) — these two properties characterise an orthogonal projection.</li>
+      <li>\(\mathbf{v}-\operatorname{proj}_U\mathbf{v}\in U^\perp\), and \(\operatorname{proj}_U\mathbf{v}\) is the <b>unique closest point</b> of \(U\) to \(\mathbf{v}\). That minimising property is exactly least squares: the normal equations \(A^TA\hat{\mathbf{x}}=A^T\mathbf{b}\) say the residual is orthogonal to the column space.</li>
+    </ul>
+
+    <div class="thm">
+      <span class="tag">Gram–Schmidt</span>
+      <p>Given an independent set \(\{\mathbf{v}_1,\dots,\mathbf{v}_k\}\), build an orthogonal set:</p>
+      <p>\[\mathbf{w}_1=\mathbf{v}_1,\qquad \mathbf{w}_j=\mathbf{v}_j-\sum_{i=1}^{j-1}\frac{\langle\mathbf{v}_j,\mathbf{w}_i\rangle}{\langle\mathbf{w}_i,\mathbf{w}_i\rangle}\mathbf{w}_i\]</p>
+      <p>Then normalise: \(\mathbf{q}_j=\mathbf{w}_j/\|\mathbf{w}_j\|\). At every stage \(\operatorname{span}\{\mathbf{w}_1,\dots,\mathbf{w}_j\}=\operatorname{span}\{\mathbf{v}_1,\dots,\mathbf{v}_j\}\). In words: <b>subtract off everything already accounted for by the previous directions</b>. Writing \(A=QR\) with \(Q\) orthonormal and \(R\) upper triangular records the same computation.</p>
+    </div>
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <ul>
+        <li>Subtract projections onto the already-orthogonalised \(\mathbf{w}_i\), not onto the original \(\mathbf{v}_i\).</li>
+        <li>Normalise at the very end, or carry fractions through the whole computation.</li>
+        <li>If a \(\mathbf{w}_j\) comes out zero, the original set was dependent.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="m2-11">
+  <div class="code">M2.11<em>Week 11</em></div>
+  <div class="body">
+    <h3>Orthogonal transformations and rotations</h3>
+    <div class="def">
+      <span class="tag">Orthogonal matrix</span>
+      <p>\(Q\) is orthogonal iff \(Q^TQ=QQ^T=I\), i.e. \(Q^{-1}=Q^T\). Equivalently, the columns (and rows) form an orthonormal basis of \(\mathbb{R}^n\).</p>
+    </div>
+    <ul>
+      <li>Preserves inner products: \(\langle Q\mathbf{u},Q\mathbf{v}\rangle=\langle\mathbf{u},\mathbf{v}\rangle\); hence preserves <b>lengths, angles and distances</b> — it is an isometry.</li>
+      <li>\(\det Q=\pm1\). \(+1\) is a <b>rotation</b> (orientation preserved); \(-1\) is a <b>reflection</b>.</li>
+      <li>Products and inverses of orthogonal matrices are orthogonal.</li>
+    </ul>
+    <div class="fx">
+      <p><b>Rotation by \(\theta\) in \(\mathbb{R}^2\):</b> \(R_\theta=\begin{bmatrix}\cos\theta&amp;-\sin\theta\\ \sin\theta&amp;\cos\theta\end{bmatrix}\), with \(R_\alpha R_\beta=R_{\alpha+\beta}\) and \(R_\theta^{-1}=R_{-\theta}\).</p>
+      <p><b>Reflection</b> in the line through the origin at angle \(\theta\): \(\begin{bmatrix}\cos2\theta&amp;\sin2\theta\\ \sin2\theta&amp;-\cos2\theta\end{bmatrix}\).</p>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="m2-12">
+  <div class="code">M2.12<em>Week 12</em></div>
+  <div class="body">
+    <h3>Multivariable functions</h3>
+    <p>A function \(f:\mathbb{R}^n\to\mathbb{R}\) assigns a number to each point of \(n\)-space. For \(n=2\) the graph \(z=f(x,y)\) is a <b>surface</b> in \(\mathbb{R}^3\).</p>
+    <ul>
+      <li><b>Level curve / contour:</b> the set \(f(x,y)=c\) — a slice of the surface at constant height, drawn in the \(xy\)-plane. Closely spaced contours mean a steep region.</li>
+      <li><b>Trace:</b> the curve obtained by fixing \(x\) or \(y\) and slicing the surface with a vertical plane.</li>
+      <li><b>Surface of revolution:</b> rotating a curve about an axis; e.g. rotating \(y=f(x)\) about the \(x\)-axis gives \(y^2+z^2=f(x)^2\).</li>
+      <li><b>Partial derivative</b> \(\partial f/\partial x\): differentiate with respect to \(x\) treating \(y\) as constant — the slope of the trace in the \(x\)-direction.</li>
+      <li>The gradient \(\nabla f=(\partial f/\partial x,\ \partial f/\partial y)\) is perpendicular to the level curve and points in the direction of steepest increase.</li>
+    </ul>
+    <p>Common shapes: \(z=x^2+y^2\) is a paraboloid (circular contours); \(z=x^2-y^2\) is a saddle (hyperbolic contours); \(ax+by+cz=d\) is a plane (parallel straight-line contours).</p>
+  </div>
+</div>
+
+<!-- ============ PART IV ============ -->
+<section class="part" id="p4">
+  <div class="pnum">Part IV · Statistics for Data Science II</div>
+  <h2>From random variables to inference</h2>
+  <p>One long dependency chain: expectation and variance → the normal distribution → the CLT and sampling distributions → estimators → confidence intervals → tests. The last four clauses carry the most marks and rest entirely on the first four. Do not let the spine go soft in order to polish joint transformations.</p>
+</section>
+
+<div class="clause" id="s2-01">
+  <div class="code">S2.01<em>Week 1</em></div>
+  <div class="body">
+    <h3>Joint, marginal and conditional distributions (discrete)</h3>
+    <div class="def">
+      <span class="tag">Joint PMF</span>
+      <p>\(p_{X,Y}(x,y)=P(X=x,\ Y=y)\), with \(p_{X,Y}(x,y)\ge0\) and \(\sum_x\sum_y p_{X,Y}(x,y)=1\).</p>
+    </div>
+    <div class="fx">
+      <p><b>Marginals</b> (sum out the other variable): \(\ p_X(x)=\sum_y p_{X,Y}(x,y),\qquad p_Y(y)=\sum_x p_{X,Y}(x,y)\)</p>
+      <p><b>Conditional:</b> \(\ p_{X\mid Y}(x\mid y)=\dfrac{p_{X,Y}(x,y)}{p_Y(y)}\) for \(p_Y(y)&gt;0\). For each fixed \(y\) this is a valid PMF in \(x\).</p>
+      <p><b>Multiplication:</b> \(\ p_{X,Y}(x,y)=p_Y(y)\,p_{X\mid Y}(x\mid y)\)</p>
+    </div>
+    <div class="def">
+      <span class="tag">Independence</span>
+      <p>\(X\perp Y\) iff \(p_{X,Y}(x,y)=p_X(x)p_Y(y)\) for <b>all</b> \((x,y)\); equivalently \(p_{X\mid Y}(x\mid y)=p_X(x)\) wherever defined.</p>
+      <p>For \(n\) variables, <b>mutual independence</b> requires \(p(x_1,\dots,x_n)=\prod_i p_{X_i}(x_i)\) — the full factorisation, not just pairwise.</p>
+    </div>
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <ul>
+        <li>A quick check for dependence: if the <b>support</b> is not a full rectangle (e.g. \(x\le y\)), the variables cannot be independent, whatever the formula looks like.</li>
+        <li>The joint determines the marginals, but the marginals do <b>not</b> determine the joint unless you additionally assume independence.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="s2-02">
+  <div class="code">S2.02<em>Week 2</em></div>
+  <div class="body">
+    <h3>Functions of random variables</h3>
+    <h4>One variable</h4>
+    <p>For \(Y=g(X)\) discrete, collect probability from every preimage:</p>
+    <div class="fx">
+      <p>\(p_Y(y)=\displaystyle\sum_{x:\,g(x)=y}p_X(x)\)</p>
+    </div>
+    <p>If \(g\) is <b>one-to-one</b> the sum has a single term and probabilities transfer unchanged: \(p_Y(y)=p_X(g^{-1}(y))\). If \(g\) is <b>many-to-one</b> (e.g. \(X^2\), \(|X|\)) probabilities merge — this is the whole distinction.</p>
+
+    <h4>Two variables</h4>
+    <div class="fx">
+      <p><b>Sum</b> (discrete convolution): \(\ p_{X+Y}(z)=\sum_x p_{X,Y}(x,z-x)\), and \(=\sum_x p_X(x)p_Y(z-x)\) under independence.</p>
+      <p><b>Maximum:</b> \(\ F_{\max}(z)=P(X\le z,Y\le z)=F_X(z)F_Y(z)\) if independent.</p>
+      <p><b>Minimum:</b> \(\ P(\min&gt;z)=P(X&gt;z)P(Y&gt;z)\), so \(F_{\min}(z)=1-(1-F_X(z))(1-F_Y(z))\).</p>
+      <p>General \(Z=g(X,Y)\): \(\ p_Z(z)=\sum_{(x,y):g(x,y)=z}p_{X,Y}(x,y)\).</p>
+    </div>
+    <div class="trap">
+      <span class="tag">Method</span>
+      <p>For max and min, always go through the <b>CDF</b>, not the PMF directly — "the max is \(\le z\)" is a clean event, "the max equals \(z\)" is not.</p>
+    </div>
+    <p>Useful closure results under independence: Binomial\((m,p)+\)Binomial\((n,p)=\)Binomial\((m+n,p)\); Poisson\((\lambda_1)+\)Poisson\((\lambda_2)=\)Poisson\((\lambda_1+\lambda_2)\); \(N(\mu_1,\sigma_1^2)+N(\mu_2,\sigma_2^2)=N(\mu_1+\mu_2,\ \sigma_1^2+\sigma_2^2)\).</p>
+  </div>
+</div>
+
+<div class="clause" id="s2-03">
+  <div class="code">S2.03<em>Week 3</em></div>
+  <div class="body">
+    <h3>Expectation, variance, covariance</h3>
+    <div class="def">
+      <span class="tag">Expectation</span>
+      <p>\(E[X]=\sum_x x\,p_X(x)\) (discrete) or \(\int_{-\infty}^{\infty}xf_X(x)\,dx\) (continuous), when the sum/integral converges absolutely.</p>
+      <p><b>LOTUS:</b> \(E[g(X)]=\sum_x g(x)p_X(x)\) — you do <b>not</b> need the distribution of \(g(X)\). In two variables, \(E[g(X,Y)]=\sum_x\sum_y g(x,y)p_{X,Y}(x,y)\).</p>
+    </div>
+
+    <div class="fx">
+      <p><b>Linearity (always, no independence needed):</b> \(\ E[aX+bY+c]=aE[X]+bE[Y]+c\)</p>
+      <p><b>Under independence only:</b> \(\ E[XY]=E[X]E[Y]\)</p>
+    </div>
+
+    <div class="fx">
+      <p><b>Variance:</b> \(\ \operatorname{Var}(X)=E[(X-\mu)^2]=E[X^2]-(E[X])^2\ \ge 0\)</p>
+      <p>\(\operatorname{Var}(aX+b)=a^2\operatorname{Var}(X)\) — shifts do not change spread.</p>
+      <p><b>Covariance:</b> \(\ \operatorname{Cov}(X,Y)=E[(X-\mu_X)(Y-\mu_Y)]=E[XY]-E[X]E[Y]\)</p>
+      <p>\(\operatorname{Var}(X\pm Y)=\operatorname{Var}(X)+\operatorname{Var}(Y)\pm2\operatorname{Cov}(X,Y)\)</p>
+      <p>\(\operatorname{Var}\!\left(\sum a_iX_i\right)=\sum a_i^2\operatorname{Var}(X_i)+2\sum_{i&lt;j}a_ia_j\operatorname{Cov}(X_i,X_j)\)</p>
+    </div>
+
+    <h4>Properties of covariance</h4>
+    <ul>
+      <li>\(\operatorname{Cov}(X,X)=\operatorname{Var}(X)\); symmetric; bilinear: \(\operatorname{Cov}(aX+b,cY+d)=ac\operatorname{Cov}(X,Y)\).</li>
+      <li><b>Correlation:</b> \(\rho_{X,Y}=\dfrac{\operatorname{Cov}(X,Y)}{\sigma_X\sigma_Y}\in[-1,1]\); \(|\rho|=1\) iff \(Y\) is an exact linear function of \(X\).</li>
+    </ul>
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <ul>
+        <li>Independent \(\Rightarrow\) uncorrelated. The converse is <b>false</b>: with \(X\sim\) symmetric about 0 and \(Y=X^2\), \(\operatorname{Cov}=0\) but \(Y\) is determined by \(X\).</li>
+        <li>Variance is additive only when the covariance term vanishes.</li>
+        <li>\(E[g(X)]\neq g(E[X])\) unless \(g\) is linear.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="s2-04">
+  <div class="code">S2.04<em>Week 3</em></div>
+  <div class="body">
+    <h3>Bounds using mean and variance</h3>
+    <div class="thm">
+      <span class="tag">Markov's inequality</span>
+      <p>For \(X\ge0\) and \(a&gt;0\): \[P(X\ge a)\le\frac{E[X]}{a}\] Uses the mean only; usually loose, but requires almost no information.</p>
+    </div>
+    <div class="thm">
+      <span class="tag">Chebyshev's inequality</span>
+      <p>For any \(X\) with finite mean \(\mu\) and variance \(\sigma^2\), and \(k&gt;0\): \[P(|X-\mu|\ge k\sigma)\le\frac{1}{k^2},\qquad\text{equivalently}\qquad P(|X-\mu|\ge \varepsilon)\le\frac{\sigma^2}{\varepsilon^2}\] Apply Markov to \((X-\mu)^2\) to derive it. Distribution-free: at least \(1-1/k^2\) of any distribution lies within \(k\) SDs of the mean (75% for \(k=2\), 89% for \(k=3\)).</p>
+    </div>
+    <p>Applied to the sample mean, \(\operatorname{Var}(\bar X_n)=\sigma^2/n\), so \(P(|\bar X_n-\mu|\ge\varepsilon)\le\sigma^2/(n\varepsilon^2)\to0\). That is the <b>weak law of large numbers</b> in one line, and the formal statement of the concentration phenomenon.</p>
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <p>These are <b>bounds</b>, not approximations. If a question says "at least" or "at most" with no distribution given, it wants Chebyshev. If it names a distribution, compute exactly instead.</p>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="s2-05">
+  <div class="code">S2.05<em>Weeks 4–5</em></div>
+  <div class="body">
+    <h3>Continuous random variables</h3>
+    <div class="def">
+      <span class="tag">CDF</span>
+      <p>\(F_X(x)=P(X\le x)\), defined for every random variable. Properties: non-decreasing; right-continuous; \(F(-\infty)=0\), \(F(\infty)=1\); \(P(a&lt;X\le b)=F(b)-F(a)\). Discrete \(F\) is a step function; continuous \(F\) has no jumps.</p>
+    </div>
+    <div class="def">
+      <span class="tag">PDF</span>
+      <p>\(X\) is continuous if \(F_X(x)=\int_{-\infty}^{x}f_X(t)\,dt\) for a <b>density</b> \(f_X\ge0\) with \(\int f_X=1\). Then \(f_X(x)=F_X'(x)\) wherever the derivative exists, and \(P(a\le X\le b)=\int_a^b f_X(x)\,dx\).</p>
+      <p>\(f_X(x)\) is <b>not</b> a probability and may exceed 1; probability is area. \(P(X=c)=0\) for every single point, so \(&lt;\) and \(\le\) are interchangeable.</p>
+    </div>
+    <div class="fx">
+      <p>\(E[X]=\displaystyle\int_{-\infty}^{\infty}xf(x)dx\), \(\quad E[g(X)]=\int g(x)f(x)dx\), \(\quad \operatorname{Var}(X)=\int x^2f(x)dx-\mu^2\)</p>
+    </div>
+
+    <h4>Functions of a continuous variable — the CDF method</h4>
+    <ol>
+      <li>Write \(F_Y(y)=P(g(X)\le y)\).</li>
+      <li>Solve the inequality for \(X\) to express the event in terms of \(F_X\).</li>
+      <li>Differentiate: \(f_Y(y)=\dfrac{d}{dy}F_Y(y)\).</li>
+    </ol>
+    <p>For strictly monotone \(g\) this collapses to the change-of-variable formula \(f_Y(y)=f_X(g^{-1}(y))\left|\frac{d}{dy}g^{-1}(y)\right|\).</p>
+
+    <h4>Key continuous distributions</h4>
+    <div class="fx">
+      <p><b>Uniform</b> \(U(a,b)\): \(f=\frac{1}{b-a}\) on \([a,b]\); \(\mu=\frac{a+b}{2}\), \(\sigma^2=\frac{(b-a)^2}{12}\).</p>
+      <p><b>Exponential</b>\((\lambda)\): \(f=\lambda e^{-\lambda x},x\ge0\); \(F=1-e^{-\lambda x}\); \(\mu=1/\lambda\), \(\sigma^2=1/\lambda^2\).</p>
+      <p><b>Normal</b> \(N(\mu,\sigma^2)\): \(f=\frac{1}{\sigma\sqrt{2\pi}}e^{-(x-\mu)^2/2\sigma^2}\); symmetric, bell-shaped, mean = median = mode.</p>
+    </div>
+    <div class="thm">
+      <span class="tag">Memorylessness</span>
+      <p>The exponential is the only continuous distribution with \(P(X&gt;s+t\mid X&gt;s)=P(X&gt;t)\). The geometric is its discrete counterpart.</p>
+    </div>
+    <h4>Standardising the normal</h4>
+    <div class="fx">
+      <p>\(Z=\dfrac{X-\mu}{\sigma}\sim N(0,1)\), and \(P(a&lt;X&lt;b)=\Phi\!\left(\tfrac{b-\mu}{\sigma}\right)-\Phi\!\left(\tfrac{a-\mu}{\sigma}\right)\)</p>
+      <p>\(\Phi(-z)=1-\Phi(z)\). Empirical rule: \(68\%\) within \(1\sigma\), \(95\%\) within \(2\sigma\) (exactly \(1.96\)), \(99.7\%\) within \(3\sigma\).</p>
+      <p>Any linear function of a normal is normal: \(aX+b\sim N(a\mu+b,\ a^2\sigma^2)\).</p>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="s2-06">
+  <div class="code">S2.06<em>Week 6</em></div>
+  <div class="body">
+    <h3>Joint continuous random variables</h3>
+    <div class="fx">
+      <p><b>Joint PDF:</b> \(f_{X,Y}(x,y)\ge0\) with \(\iint f_{X,Y}=1\); \(P((X,Y)\in A)=\iint_A f_{X,Y}(x,y)\,dx\,dy\).</p>
+      <p><b>Marginals:</b> \(f_X(x)=\displaystyle\int f_{X,Y}(x,y)\,dy\), \(\quad f_Y(y)=\int f_{X,Y}(x,y)\,dx\)</p>
+      <p><b>Conditional:</b> \(f_{X\mid Y}(x\mid y)=\dfrac{f_{X,Y}(x,y)}{f_Y(y)}\), \(\ f_Y(y)&gt;0\)</p>
+      <p><b>Independence:</b> \(f_{X,Y}(x,y)=f_X(x)f_Y(y)\) on the whole plane.</p>
+    </div>
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <ul>
+        <li>The <b>limits of integration</b> carry the information about the support. Sketch the region before integrating; that is where most marks are lost.</li>
+        <li>Independence requires the joint density to factor <b>and</b> the support to be a product region.</li>
+      </ul>
+    </div>
+    <p><b>From data to distribution:</b> a histogram with area normalised to 1 estimates the density; the empirical CDF estimates \(F\). Choosing a parametric family and then estimating its parameters is the bridge into <a href="#s2-09">S2.09</a>.</p>
+  </div>
+</div>
+
+<div class="clause" id="s2-07">
+  <div class="code">S2.07<em>Week 7</em></div>
+  <div class="body">
+    <h3>Samples, statistics and limit theorems</h3>
+    <div class="def">
+      <span class="tag">Random sample</span>
+      <p>\(X_1,\dots,X_n\) are <b>i.i.d.</b> if they are mutually independent and share a distribution. A <b>statistic</b> is any function of the sample containing no unknown parameters; being a function of random variables, it has its own distribution — the <b>sampling distribution</b>.</p>
+    </div>
+    <div class="fx">
+      <p>\(\bar X=\dfrac1n\sum X_i\): \(\quad E[\bar X]=\mu,\qquad \operatorname{Var}(\bar X)=\dfrac{\sigma^2}{n},\qquad \mathrm{SE}=\dfrac{\sigma}{\sqrt n}\)</p>
+      <p>\(S^2=\dfrac{1}{n-1}\sum(X_i-\bar X)^2\): \(\quad E[S^2]=\sigma^2\) (this is why the divisor is \(n-1\)).</p>
+    </div>
+    <div class="thm">
+      <span class="tag">Weak law of large numbers</span>
+      <p>For i.i.d. \(X_i\) with finite mean \(\mu\), for every \(\varepsilon&gt;0\): \(P(|\bar X_n-\mu|&gt;\varepsilon)\to0\) as \(n\to\infty\). The sample mean concentrates on the population mean; Chebyshev proves it when \(\sigma^2&lt;\infty\).</p>
+    </div>
+    <p><b>Empirical distribution function</b> \(\hat F_n(x)=\frac1n\#\{i:X_i\le x\}\) is an unbiased, consistent estimator of \(F(x)\), and converges to \(F\) uniformly. Sample quantiles, the histogram and the boxplot are all functionals of \(\hat F_n\).</p>
+  </div>
+</div>
+
+<div class="clause" id="s2-08">
+  <div class="code">S2.08<em>Week 8</em></div>
+  <div class="body">
+    <h3>Moment generating functions and the CLT</h3>
+    <div class="def">
+      <span class="tag">MGF</span>
+      <p>\(M_X(t)=E[e^{tX}]\), where it exists in a neighbourhood of \(t=0\).</p>
+    </div>
+    <div class="fx">
+      <p><b>Moments:</b> \(\ E[X^k]=M_X^{(k)}(0)\); in particular \(E[X]=M'(0)\) and \(\operatorname{Var}(X)=M''(0)-[M'(0)]^2\).</p>
+      <p><b>Linear map:</b> \(M_{aX+b}(t)=e^{bt}M_X(at)\)</p>
+      <p><b>Sums of independents:</b> \(M_{X+Y}(t)=M_X(t)M_Y(t)\)</p>
+      <p><b>Uniqueness:</b> if two MGFs agree on an interval around 0, the distributions are identical — this is how sums of independent variables are identified.</p>
+    </div>
+
+    <div class="thm">
+      <span class="tag">Central limit theorem</span>
+      <p>For i.i.d. \(X_1,\dots,X_n\) with mean \(\mu\) and finite variance \(\sigma^2\),</p>
+      <p>\[Z_n=\frac{\bar X_n-\mu}{\sigma/\sqrt n}=\frac{\sum X_i-n\mu}{\sigma\sqrt n}\ \xrightarrow{d}\ N(0,1).\]</p>
+      <p>Nothing is assumed about the shape of the parent distribution beyond a finite variance. \(n\ge30\) is the usual rule of thumb; strongly skewed parents need more. The LLN says \(\bar X\) goes to \(\mu\); the CLT says how the error is distributed.</p>
+    </div>
+    <p><b>Continuity correction</b> when approximating a discrete variable by a normal: \(P(X\le k)\approx P(Y\le k+0.5)\), \(P(X\ge k)\approx P(Y\ge k-0.5)\).</p>
+
+    <h4>Sampling from a normal population — the four results everything else uses</h4>
+    <div class="wrap"><table class="tbl">
+      <caption>\(X_1,\dots,X_n\overset{iid}{\sim}N(\mu,\sigma^2)\)</caption>
+      <thead><tr><th>Statistic</th><th>Distribution</th><th>Used for</th></tr></thead>
+      <tbody>
+        <tr><td>\(\bar X\)</td><td>\(N\!\left(\mu,\ \sigma^2/n\right)\) exactly, for any \(n\)</td><td>\(z\)-inference on \(\mu\)</td></tr>
+        <tr><td>\(\dfrac{(n-1)S^2}{\sigma^2}\)</td><td>\(\chi^2_{n-1}\)</td><td>inference on \(\sigma^2\)</td></tr>
+        <tr><td>\(\dfrac{\bar X-\mu}{S/\sqrt n}\)</td><td>\(t_{n-1}\)</td><td>inference on \(\mu\), \(\sigma\) unknown</td></tr>
+        <tr><td>\(\dfrac{S_1^2/\sigma_1^2}{S_2^2/\sigma_2^2}\)</td><td>\(F_{n_1-1,\ n_2-1}\)</td><td>comparing two variances</td></tr>
+      </tbody>
+    </table></div>
+    <p>\(\bar X\) and \(S^2\) are <b>independent</b> when sampling from a normal — a property unique to the normal, and what makes the \(t\) statistic work. The \(t\) distribution is symmetric, heavier-tailed than \(N(0,1)\), and converges to it as \(\mathrm{df}\to\infty\). \(\chi^2_k\) is right-skewed on \((0,\infty)\) with mean \(k\) and variance \(2k\).</p>
+  </div>
+</div>
+
+<div class="clause" id="s2-09">
+  <div class="code">S2.09<em>Week 9</em></div>
+  <div class="body">
+    <h3>Point estimation</h3>
+    <div class="def">
+      <span class="tag">Vocabulary</span>
+      <p>An <b>estimator</b> \(\hat\theta=T(X_1,\dots,X_n)\) is a random variable; an <b>estimate</b> is the number it takes on the observed sample. The <b>estimation error</b> is \(\hat\theta-\theta\).</p>
+    </div>
+
+    <div class="fx">
+      <p><b>Bias:</b> \(\ \mathrm{Bias}(\hat\theta)=E[\hat\theta]-\theta\); unbiased when this is \(0\) for every \(\theta\).</p>
+      <p><b>Mean squared error:</b> \(\ \mathrm{MSE}(\hat\theta)=E[(\hat\theta-\theta)^2]=\operatorname{Var}(\hat\theta)+\mathrm{Bias}(\hat\theta)^2\)</p>
+    </div>
+    <ul>
+      <li><b>Consistency:</b> \(\hat\theta_n\to\theta\) in probability. Sufficient condition: bias \(\to0\) and variance \(\to0\).</li>
+      <li><b>Efficiency:</b> among unbiased estimators, the one with smaller variance is preferred.</li>
+      <li>Standard results: \(\bar X\) is unbiased for \(\mu\); \(S^2\) (divisor \(n-1\)) is unbiased for \(\sigma^2\); the version with divisor \(n\) is biased downward by a factor \(\frac{n-1}{n}\). \(S\) is <b>not</b> unbiased for \(\sigma\) — unbiasedness does not survive non-linear transformation.</li>
+    </ul>
+
+    <div class="thm">
+      <span class="tag">Method of moments (MME)</span>
+      <p>Equate population moments to sample moments and solve for the parameters:</p>
+      <p>\[E[X]=\bar X,\qquad E[X^2]=\tfrac1n\sum X_i^2,\ \dots\]</p>
+      <p>Use as many equations as there are parameters. Simple, always available, but can produce estimates outside the parameter space.</p>
+    </div>
+
+    <div class="thm">
+      <span class="tag">Maximum likelihood (MLE)</span>
+      <p>The <b>likelihood</b> is the joint density/PMF read as a function of the parameter:</p>
+      <p>\[L(\theta)=\prod_{i=1}^{n}f(x_i;\theta),\qquad \ell(\theta)=\log L(\theta)=\sum_{i=1}^{n}\log f(x_i;\theta)\]</p>
+      <p><b>Procedure:</b> write \(L\) → take \(\log\) → set \(\dfrac{d\ell}{d\theta}=0\) → solve → verify it is a maximum (second derivative negative, or check the boundary).</p>
+      <p><b>Invariance:</b> if \(\hat\theta\) is the MLE of \(\theta\) then \(g(\hat\theta)\) is the MLE of \(g(\theta)\). MLEs are consistent and asymptotically normal, but may be biased in finite samples.</p>
+    </div>
+
+    <div class="wrap"><table class="tbl">
+      <caption>Standard MLEs</caption>
+      <thead><tr><th>Model</th><th>MLE</th></tr></thead>
+      <tbody>
+        <tr><td>Bernoulli\((p)\) / Binomial</td><td>\(\hat p=\bar X\)</td></tr>
+        <tr><td>Poisson\((\lambda)\)</td><td>\(\hat\lambda=\bar X\)</td></tr>
+        <tr><td>Exponential\((\lambda)\)</td><td>\(\hat\lambda=1/\bar X\)</td></tr>
+        <tr><td>\(N(\mu,\sigma^2)\)</td><td>\(\hat\mu=\bar X\), \(\ \hat\sigma^2=\frac1n\sum(X_i-\bar X)^2\) (biased)</td></tr>
+        <tr><td>Uniform\((0,\theta)\)</td><td>\(\hat\theta=\max X_i\) — boundary case, derivative method fails</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <p>The uniform is the standard trick question: \(L(\theta)=\theta^{-n}\) for \(\theta\ge\max x_i\) and \(0\) otherwise, so \(L\) is decreasing wherever it is positive and the maximum sits at the left boundary. Differentiating gives nothing.</p>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="s2-10">
+  <div class="code">S2.10<em>Week 9</em></div>
+  <div class="body">
+    <h3>Confidence intervals</h3>
+    <div class="def">
+      <span class="tag">Meaning</span>
+      <p>A \(100(1-\alpha)\%\) confidence interval is an interval built from the sample such that, <b>over repeated sampling</b>, \(100(1-\alpha)\%\) of such intervals contain the true parameter. The parameter is fixed; the interval is random. It is wrong to say "there is a 95% probability that \(\mu\) lies in this particular interval".</p>
+    </div>
+
+    <div class="wrap"><table class="tbl">
+      <caption>Standard intervals</caption>
+      <thead><tr><th>Parameter</th><th>Conditions</th><th>Interval</th></tr></thead>
+      <tbody>
+        <tr><td>\(\mu\)</td><td>\(\sigma\) known, normal or large \(n\)</td><td>\(\bar x\pm z_{\alpha/2}\dfrac{\sigma}{\sqrt n}\)</td></tr>
+        <tr><td>\(\mu\)</td><td>\(\sigma\) unknown, normal population</td><td>\(\bar x\pm t_{\alpha/2,\,n-1}\dfrac{s}{\sqrt n}\)</td></tr>
+        <tr><td>\(p\)</td><td>large \(n\), \(n\hat p\) and \(n(1-\hat p)\ge10\)</td><td>\(\hat p\pm z_{\alpha/2}\sqrt{\dfrac{\hat p(1-\hat p)}{n}}\)</td></tr>
+        <tr><td>\(\sigma^2\)</td><td>normal population</td><td>\(\left(\dfrac{(n-1)s^2}{\chi^2_{\alpha/2,\,n-1}},\ \dfrac{(n-1)s^2}{\chi^2_{1-\alpha/2,\,n-1}}\right)\)</td></tr>
+        <tr><td>\(\mu_1-\mu_2\)</td><td>independent samples, pooled variance</td><td>\((\bar x_1-\bar x_2)\pm t_{\alpha/2,\,\nu}\,s_p\sqrt{\tfrac1{n_1}+\tfrac1{n_2}}\)</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="fx">
+      <p><b>Margin of error:</b> \(E=z_{\alpha/2}\dfrac{\sigma}{\sqrt n}\ \Rightarrow\ n=\left(\dfrac{z_{\alpha/2}\sigma}{E}\right)^2\), rounded <b>up</b>.</p>
+      <p>Common critical values: \(z_{0.05}=1.645\), \(z_{0.025}=1.96\), \(z_{0.005}=2.576\).</p>
+    </div>
+    <p>Width shrinks like \(1/\sqrt n\) — quartering the width needs sixteen times the data. Raising confidence widens the interval.</p>
+  </div>
+</div>
+
+<div class="clause" id="s2-11">
+  <div class="code">S2.11<em>Week 10</em></div>
+  <div class="body">
+    <h3>Bayesian estimation</h3>
+    <div class="def">
+      <span class="tag">The framework</span>
+      <p>The parameter is treated as a random variable with a <b>prior</b> \(\pi(\theta)\) expressing belief before data. After observing \(x\):</p>
+      <p>\[\pi(\theta\mid x)=\frac{f(x\mid\theta)\pi(\theta)}{\int f(x\mid\theta)\pi(\theta)\,d\theta}\ \propto\ \underbrace{f(x\mid\theta)}_{\text{likelihood}}\ \underbrace{\pi(\theta)}_{\text{prior}}\]</p>
+      <p>The denominator is a normalising constant; identify the posterior by recognising the shape of the numerator.</p>
+    </div>
+    <ul>
+      <li><b>Posterior mean</b> \(E[\theta\mid x]\) minimises squared-error loss and is the usual Bayes estimator.</li>
+      <li><b>MAP estimate</b> is the mode of the posterior; with a flat prior it coincides with the MLE.</li>
+      <li>A <b>credible interval</b> genuinely does contain \(\theta\) with the stated posterior probability — unlike a confidence interval.</li>
+      <li>As \(n\) grows the likelihood dominates and the prior washes out.</li>
+    </ul>
+    <div class="wrap"><table class="tbl">
+      <caption>Conjugate pairs — prior and posterior in the same family</caption>
+      <thead><tr><th>Likelihood</th><th>Prior</th><th>Posterior</th></tr></thead>
+      <tbody>
+        <tr><td>Bernoulli / Binomial\((n,p)\)</td><td>Beta\((\alpha,\beta)\)</td><td>Beta\((\alpha+\sum x_i,\ \beta+n-\sum x_i)\)</td></tr>
+        <tr><td>Poisson\((\lambda)\)</td><td>Gamma\((\alpha,\beta)\)</td><td>Gamma\((\alpha+\sum x_i,\ \beta+n)\)</td></tr>
+        <tr><td>Exponential\((\lambda)\)</td><td>Gamma\((\alpha,\beta)\)</td><td>Gamma\((\alpha+n,\ \beta+\sum x_i)\)</td></tr>
+        <tr><td>\(N(\mu,\sigma^2)\), \(\sigma^2\) known</td><td>\(N(\mu_0,\tau^2)\)</td><td>Normal, mean a precision-weighted average of \(\mu_0\) and \(\bar x\)</td></tr>
+      </tbody>
+    </table></div>
+    <p>Beta\((\alpha,\beta)\) has mean \(\dfrac{\alpha}{\alpha+\beta}\); Gamma\((\alpha,\beta)\) has mean \(\dfrac{\alpha}{\beta}\). Those two facts answer most posterior-mean questions without integration.</p>
+  </div>
+</div>
+
+<div class="clause" id="s2-12">
+  <div class="code">S2.12<em>Week 11</em></div>
+  <div class="body">
+    <h3>Hypothesis testing — the framework</h3>
+    <div class="def">
+      <span class="tag">Setup</span>
+      <p><b>Null hypothesis</b> \(H_0\): the default, always containing equality. <b>Alternative</b> \(H_1\): what you need evidence for. A hypothesis is <b>simple</b> if it specifies the distribution completely, otherwise <b>composite</b>.</p>
+      <p>Choose a <b>test statistic</b> whose distribution under \(H_0\) is known, then a <b>rejection region</b>. Reject \(H_0\) when the observed statistic falls in it.</p>
+    </div>
+
+    <div class="wrap"><table class="tbl">
+      <caption>The two errors</caption>
+      <thead><tr><th></th><th>\(H_0\) true</th><th>\(H_0\) false</th></tr></thead>
+      <tbody>
+        <tr><th>Reject \(H_0\)</th><td><b>Type I error</b>, probability \(\alpha\)</td><td>Correct — probability \(1-\beta\) = <b>power</b></td></tr>
+        <tr><th>Fail to reject</th><td>Correct, probability \(1-\alpha\)</td><td><b>Type II error</b>, probability \(\beta\)</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><b>Size</b> of a test \(=\alpha=P(\text{reject }H_0\mid H_0\text{ true})\), chosen in advance (0.05, 0.01).</li>
+      <li><b>Power</b> \(=1-\beta\) increases with larger \(n\), larger true effect, larger \(\alpha\), and smaller \(\sigma\).</li>
+      <li>For fixed \(n\), lowering \(\alpha\) raises \(\beta\). Only more data improves both.</li>
+    </ul>
+
+    <div class="def">
+      <span class="tag">p-value</span>
+      <p>The probability, computed <b>assuming \(H_0\) is true</b>, of obtaining a test statistic at least as extreme as the one observed.</p>
+      <p><b>Decision rule:</b> reject \(H_0\) iff \(p\le\alpha\).</p>
+      <p>One-tailed: \(p=P(Z\ge z_{\text{obs}})\) (right tail) or \(P(Z\le z_{\text{obs}})\) (left). Two-tailed: \(p=2P(Z\ge|z_{\text{obs}}|)\).</p>
+    </div>
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <ul>
+        <li>The p-value is <b>not</b> \(P(H_0\text{ true})\) and not the probability the result was due to chance.</li>
+        <li>"Fail to reject" is not "accept" — absence of evidence is not evidence of absence.</li>
+        <li>Statistical significance is not practical importance; a huge \(n\) makes trivial effects significant.</li>
+        <li>Set \(\alpha\) and the tail direction <b>before</b> seeing the data.</li>
+      </ul>
+    </div>
+    <p><b>Duality with confidence intervals:</b> a two-tailed test of \(H_0:\mu=\mu_0\) at level \(\alpha\) rejects exactly when \(\mu_0\) falls outside the \(100(1-\alpha)\%\) confidence interval.</p>
+
+    <div class="thm">
+      <span class="tag">Neyman–Pearson and likelihood ratio tests</span>
+      <p>For two <b>simple</b> hypotheses, the most powerful test of size \(\alpha\) rejects when \(\dfrac{L(\theta_1)}{L(\theta_0)}&gt;k\), with \(k\) chosen so the size is \(\alpha\).</p>
+      <p>For composite hypotheses the <b>generalised likelihood ratio</b> is \(\Lambda=\dfrac{\sup_{\theta\in\Theta_0}L(\theta)}{\sup_{\theta\in\Theta}L(\theta)}\in(0,1]\); reject for small \(\Lambda\). Asymptotically \(-2\ln\Lambda\sim\chi^2_r\), where \(r\) is the number of constrained parameters.</p>
+    </div>
+  </div>
+</div>
+
+<div class="clause" id="s2-13">
+  <div class="code">S2.13<em>Weeks 11–12</em></div>
+  <div class="body">
+    <h3>The test battery</h3>
+    <p class="lead">For each test know three things: the statistic, its null distribution, and the conditions. That is twelve facts total.</p>
+
+    <h4>Tests about means</h4>
+    <div class="fx">
+      <p><b>One-sample \(z\)</b> (\(\sigma\) known, or large \(n\)): \(\ z=\dfrac{\bar x-\mu_0}{\sigma/\sqrt n}\sim N(0,1)\)</p>
+      <p><b>One-sample \(t\)</b> (\(\sigma\) unknown, normal population): \(\ t=\dfrac{\bar x-\mu_0}{s/\sqrt n}\sim t_{n-1}\)</p>
+      <p><b>Two-sample \(z\)</b> (both \(\sigma\) known): \(\ z=\dfrac{(\bar x_1-\bar x_2)-\delta_0}{\sqrt{\sigma_1^2/n_1+\sigma_2^2/n_2}}\)</p>
+      <p><b>Two-sample pooled \(t\)</b> (equal unknown variances): \(\ t=\dfrac{(\bar x_1-\bar x_2)-\delta_0}{s_p\sqrt{\tfrac1{n_1}+\tfrac1{n_2}}}\sim t_{n_1+n_2-2}\), &nbsp; \(s_p^2=\dfrac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}\)</p>
+      <p><b>Welch \(t\)</b> (unequal variances): same numerator, denominator \(\sqrt{s_1^2/n_1+s_2^2/n_2}\), with approximate df.</p>
+      <p><b>Paired \(t\)</b>: form differences \(d_i\), then \(t=\dfrac{\bar d-\delta_0}{s_d/\sqrt n}\sim t_{n-1}\).</p>
+      <p><b>Proportion:</b> \(\ z=\dfrac{\hat p-p_0}{\sqrt{p_0(1-p_0)/n}}\) — use \(p_0\), not \(\hat p\), in the standard error.</p>
+    </div>
+
+    <h4>Tests about variances</h4>
+    <div class="fx">
+      <p><b>One variance:</b> \(\ \chi^2=\dfrac{(n-1)s^2}{\sigma_0^2}\sim\chi^2_{n-1}\)</p>
+      <p><b>Two variances:</b> \(\ F=\dfrac{s_1^2}{s_2^2}\sim F_{n_1-1,\,n_2-1}\) under \(H_0:\sigma_1^2=\sigma_2^2\). Put the larger \(s^2\) on top for a right-tailed test.</p>
+    </div>
+
+    <h4>Chi-square tests on counts</h4>
+    <div class="fx">
+      <p>\(\ \chi^2=\displaystyle\sum\frac{(O_i-E_i)^2}{E_i}\), always <b>right-tailed</b>.</p>
+      <p><b>Goodness of fit:</b> \(\mathrm{df}=k-1-m\), where \(k\) is the number of categories and \(m\) the number of parameters estimated from the data.</p>
+      <p><b>Independence / homogeneity</b> in an \(r\times c\) table: \(E_{ij}=\dfrac{(\text{row }i)(\text{col }j)}{n}\), \(\ \mathrm{df}=(r-1)(c-1)\).</p>
+      <p>Validity: all \(E_i\ge5\) (pool sparse categories otherwise).</p>
+    </div>
+    <p><b>Continuous goodness of fit:</b> bin the data and apply the chi-square test, or use the Kolmogorov–Smirnov statistic \(D=\sup_x|\hat F_n(x)-F_0(x)|\), which compares the empirical CDF with the hypothesised one.</p>
+
+    <div class="trap">
+      <span class="tag">Watch for</span>
+      <ul>
+        <li>Paired versus independent samples: before/after on the <b>same</b> units is paired. Using a two-sample test on paired data throws away the pairing and loses power.</li>
+        <li>Degrees of freedom are where marks disappear. Write them down before computing anything.</li>
+        <li>The chi-square and \(F\) tests use one tail; the \(z\) and \(t\) tests may use one or two depending on \(H_1\).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PART V ============ -->
+<section class="part" id="p5">
+  <div class="pnum">Part V · Appendix</div>
+  <h2>Lookup tables</h2>
+  <p>The four pages worth photographing on your phone.</p>
+</section>
+
+<div class="clause" id="a-01">
+  <div class="code">A.01<em>Reference</em></div>
+  <div class="body">
+    <h3>Distribution table</h3>
+    <div class="wrap"><table class="tbl">
+      <caption>Discrete distributions</caption>
+      <thead><tr><th>Name</th><th>PMF</th><th>Mean</th><th>Variance</th><th>MGF</th><th>Models</th></tr></thead>
+      <tbody>
+        <tr><td>Bernoulli\((p)\)</td><td>\(p^x(1-p)^{1-x}\), \(x\in\{0,1\}\)</td><td>\(p\)</td><td>\(p(1-p)\)</td><td>\(1-p+pe^t\)</td><td>single trial</td></tr>
+        <tr><td>Binomial\((n,p)\)</td><td>\(\binom{n}{x}p^x(1-p)^{n-x}\)</td><td>\(np\)</td><td>\(np(1-p)\)</td><td>\((1-p+pe^t)^n\)</td><td>successes in \(n\) fixed trials</td></tr>
+        <tr><td>Geometric\((p)\)</td><td>\((1-p)^{x-1}p\), \(x\ge1\)</td><td>\(1/p\)</td><td>\(\frac{1-p}{p^2}\)</td><td>\(\frac{pe^t}{1-(1-p)e^t}\)</td><td>trials until first success</td></tr>
+        <tr><td>Poisson\((\lambda)\)</td><td>\(\frac{e^{-\lambda}\lambda^x}{x!}\)</td><td>\(\lambda\)</td><td>\(\lambda\)</td><td>\(e^{\lambda(e^t-1)}\)</td><td>counts in fixed time/space</td></tr>
+        <tr><td>Discrete uniform</td><td>\(1/n\)</td><td>\(\frac{n+1}{2}\)</td><td>\(\frac{n^2-1}{12}\)</td><td>—</td><td>equally likely outcomes</td></tr>
+        <tr><td>Hypergeometric</td><td>\(\frac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}\)</td><td>\(n\frac{K}{N}\)</td><td>\(n\frac{K}{N}\frac{N-K}{N}\frac{N-n}{N-1}\)</td><td>—</td><td>sampling without replacement</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="wrap"><table class="tbl">
+      <caption>Continuous distributions</caption>
+      <thead><tr><th>Name</th><th>PDF</th><th>Mean</th><th>Variance</th><th>MGF</th></tr></thead>
+      <tbody>
+        <tr><td>Uniform\((a,b)\)</td><td>\(\frac{1}{b-a}\)</td><td>\(\frac{a+b}{2}\)</td><td>\(\frac{(b-a)^2}{12}\)</td><td>\(\frac{e^{tb}-e^{ta}}{t(b-a)}\)</td></tr>
+        <tr><td>Exponential\((\lambda)\)</td><td>\(\lambda e^{-\lambda x}\), \(x\ge0\)</td><td>\(1/\lambda\)</td><td>\(1/\lambda^2\)</td><td>\(\frac{\lambda}{\lambda-t}\), \(t&lt;\lambda\)</td></tr>
+        <tr><td>Normal\((\mu,\sigma^2)\)</td><td>\(\frac{1}{\sigma\sqrt{2\pi}}e^{-(x-\mu)^2/2\sigma^2}\)</td><td>\(\mu\)</td><td>\(\sigma^2\)</td><td>\(e^{\mu t+\sigma^2t^2/2}\)</td></tr>
+        <tr><td>Gamma\((\alpha,\beta)\)</td><td>\(\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}\)</td><td>\(\alpha/\beta\)</td><td>\(\alpha/\beta^2\)</td><td>\(\left(\frac{\beta}{\beta-t}\right)^\alpha\)</td></tr>
+        <tr><td>Beta\((\alpha,\beta)\)</td><td>\(\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}\), \(0&lt;x&lt;1\)</td><td>\(\frac{\alpha}{\alpha+\beta}\)</td><td>\(\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}\)</td><td>—</td></tr>
+        <tr><td>\(\chi^2_k\)</td><td>Gamma\((k/2,1/2)\)</td><td>\(k\)</td><td>\(2k\)</td><td>\((1-2t)^{-k/2}\)</td></tr>
+        <tr><td>\(t_k\)</td><td>symmetric, heavy-tailed</td><td>\(0\) (\(k&gt;1\))</td><td>\(\frac{k}{k-2}\) (\(k&gt;2\))</td><td>does not exist</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<div class="clause" id="a-02">
+  <div class="code">A.02<em>Reference</em></div>
+  <div class="body">
+    <h3>Test selection map</h3>
+    <div class="wrap"><table class="tbl">
+      <caption>What is being asked → which test</caption>
+      <thead><tr><th>Question</th><th>Conditions</th><th>Test</th><th>df</th></tr></thead>
+      <tbody>
+        <tr><td>Is the mean equal to \(\mu_0\)?</td><td>\(\sigma\) known</td><td>one-sample \(z\)</td><td>—</td></tr>
+        <tr><td>Is the mean equal to \(\mu_0\)?</td><td>\(\sigma\) unknown</td><td>one-sample \(t\)</td><td>\(n-1\)</td></tr>
+        <tr><td>Do two independent groups differ in mean?</td><td>equal variances</td><td>pooled \(t\)</td><td>\(n_1+n_2-2\)</td></tr>
+        <tr><td>Do two independent groups differ in mean?</td><td>unequal variances</td><td>Welch \(t\)</td><td>approx.</td></tr>
+        <tr><td>Did the same units change?</td><td>paired data</td><td>paired \(t\)</td><td>\(n-1\)</td></tr>
+        <tr><td>Is a proportion equal to \(p_0\)?</td><td>large \(n\)</td><td>\(z\) for proportion</td><td>—</td></tr>
+        <tr><td>Is the variance equal to \(\sigma_0^2\)?</td><td>normal population</td><td>\(\chi^2\)</td><td>\(n-1\)</td></tr>
+        <tr><td>Are two variances equal?</td><td>normal populations</td><td>\(F\)</td><td>\(n_1-1,\ n_2-1\)</td></tr>
+        <tr><td>Do counts match a claimed distribution?</td><td>\(E_i\ge5\)</td><td>\(\chi^2\) goodness of fit</td><td>\(k-1-m\)</td></tr>
+        <tr><td>Are two categorical variables related?</td><td>\(E_{ij}\ge5\)</td><td>\(\chi^2\) independence</td><td>\((r-1)(c-1)\)</td></tr>
+        <tr><td>Which of two simple hypotheses?</td><td>simple vs simple</td><td>Neyman–Pearson LRT</td><td>—</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<div class="clause" id="a-03">
+  <div class="code">A.03<em>Reference</em></div>
+  <div class="body">
+    <h3>Notation key</h3>
+    <div class="wrap"><table class="tbl">
+      <caption>Population versus sample</caption>
+      <thead><tr><th>Quantity</th><th>Population (parameter)</th><th>Sample (statistic)</th></tr></thead>
+      <tbody>
+        <tr><td>Mean</td><td>\(\mu\)</td><td>\(\bar x\)</td></tr>
+        <tr><td>Variance</td><td>\(\sigma^2\)</td><td>\(s^2\)</td></tr>
+        <tr><td>SD</td><td>\(\sigma\)</td><td>\(s\)</td></tr>
+        <tr><td>Proportion</td><td>\(p\)</td><td>\(\hat p\)</td></tr>
+        <tr><td>Correlation</td><td>\(\rho\)</td><td>\(r\)</td></tr>
+        <tr><td>Size</td><td>\(N\)</td><td>\(n\)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="wrap"><table class="tbl">
+      <caption>Symbols</caption>
+      <thead><tr><th>Symbol</th><th>Reads as</th></tr></thead>
+      <tbody>
+        <tr><td>\(\in,\subseteq,\varnothing,\mathcal{P}(A)\)</td><td>element of, subset of, empty set, power set</td></tr>
+        <tr><td>\(\mathcal{N}(A),\ \mathcal{C}(A)\)</td><td>null space, column space of \(A\)</td></tr>
+        <tr><td>\(\operatorname{span},\ \dim,\ \operatorname{rank}\)</td><td>span, dimension, rank</td></tr>
+        <tr><td>\(\ker T,\ \operatorname{im}T\)</td><td>kernel, image of a transformation</td></tr>
+        <tr><td>\(\langle\mathbf{u},\mathbf{v}\rangle,\ \|\mathbf{v}\|,\ U^\perp\)</td><td>inner product, norm, orthogonal complement</td></tr>
+        <tr><td>\(f_X,\ F_X,\ p_X\)</td><td>density, CDF, PMF of \(X\)</td></tr>
+        <tr><td>\(\Phi(z),\ z_\alpha\)</td><td>standard normal CDF, upper \(\alpha\) critical value</td></tr>
+        <tr><td>\(\xrightarrow{d}\)</td><td>converges in distribution</td></tr>
+        <tr><td>\(\perp\)</td><td>orthogonal to / independent of</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<div class="clause" id="a-04">
+  <div class="code">A.04<em>Daily drill</em></div>
+  <div class="body">
+    <h3>Blank-page checklist</h3>
+    <p class="lead">Each morning, write these from memory before opening anything. What you cannot produce is your study list for the day.</p>
+    <div class="wrap"><table class="tbl">
+      <thead><tr><th>Course</th><th>Reproduce from memory</th></tr></thead>
+      <tbody>
+        <tr><th>M1</th><td>Six forms of a line · point-to-line distance · quadratic formula and its derivation by completing the square · discriminant cases · sum and product of roots · division algorithm, remainder and factor theorems</td></tr>
+        <tr><th>S1</th><td>Mean, median, mode and their skew ordering · \(s^2\) both forms · the \(1.5\,\mathrm{IQR}\) fence · covariance, \(r\), and the regression slope \(b_1=rs_y/s_x\) · \(^nP_r\), \(^nC_r\), repeats formula · addition rule · conditional probability, total probability, Bayes</td></tr>
+        <tr><th>M2</th><td>The invertibility equivalences · consistency by rank · rank–nullity · how to read row space, column space and null space off the RREF · Cauchy–Schwarz · projection formula and \(P=A(A^TA)^{-1}A^T\) · Gram–Schmidt · properties of an orthogonal matrix</td></tr>
+        <tr><th>S2</th><td>\(\operatorname{Var}=E[X^2]-\mu^2\) and \(\operatorname{Var}(X+Y)\) · Markov and Chebyshev · \(E[\bar X],\operatorname{Var}(\bar X)\) · CLT statement · the four normal-sampling results · MSE decomposition · MLE procedure · the four CI formulas · Type I/II, power, p-value definition · the test battery with df</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+</div><!-- /shell -->
+</body>
+</html>
