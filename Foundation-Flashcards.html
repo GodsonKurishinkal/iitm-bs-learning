@@ -9,28 +9,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#ECEFF2; --card:#FFFFFF; --ink:#0F1B29; --ink2:#33465C;
-  --muted:#7C8DA0; --rule:#C9D2DB;
-  --blue:#1B5A8A; --blue-t:#E8EFF5; --blue-b:#D2E0EB;
-  --ox:#7C2D2D; --ox-t:#F6EBEB; --ox-b:#E2C9C9;
-  --green:#1F6B4A; --green-t:#E6F2EC; --green-b:#C6E0D3;
-  --accent-ink:#0F1B29;
+  --paper:#F1F1F1; --card:#FFFFFF; --ink:#111111; --ink2:#3C3C3C;
+  --muted:#767676; --rule:#CDCDCD;
+  --blue:#1A1A1A; --blue-t:#ECECEC; --blue-b:#C2C2C2;
+  --ox:#616161; --ox-t:#E3E3E3; --ox-b:#BCBCBC;
+  --green:#2B2B2B; --green-t:#E8E8E8; --green-b:#C6C6C6;
+  --accent-ink:#111111; --on-accent:#FFFFFF;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --paper:#0D141C; --card:#141F2B; --ink:#E4EBF2; --ink2:#A9BACB;
-    --muted:#7C8DA0; --rule:#26364A;
-    --blue:#5EA3D6; --blue-t:#16283A; --blue-b:#24425E;
-    --ox:#D98A8A; --ox-t:#2C1A1A; --ox-b:#4A2A2A;
-    --green:#6FC49B; --green-t:#12281F; --green-b:#255141;
+    --paper:#0F0F0F; --card:#1B1B1B; --ink:#EDEDED; --ink2:#B6B6B6;
+    --muted:#8A8A8A; --rule:#333333;
+    --blue:#E2E2E2; --blue-t:#262626; --blue-b:#464646;
+    --ox:#A6A6A6; --ox-t:#212121; --ox-b:#3C3C3C;
+    --green:#F2F2F2; --green-t:#2A2A2A; --green-b:#4E4E4E;
+    --on-accent:#111111;
   }
 }
 :root[data-theme="dark"]{
-  --paper:#0D141C; --card:#141F2B; --ink:#E4EBF2; --ink2:#A9BACB;
-  --muted:#7C8DA0; --rule:#26364A;
-  --blue:#5EA3D6; --blue-t:#16283A; --blue-b:#24425E;
-  --ox:#D98A8A; --ox-t:#2C1A1A; --ox-b:#4A2A2A;
-  --green:#6FC49B; --green-t:#12281F; --green-b:#255141;
+  --paper:#0F0F0F; --card:#1B1B1B; --ink:#EDEDED; --ink2:#B6B6B6;
+  --muted:#8A8A8A; --rule:#333333;
+  --blue:#E2E2E2; --blue-t:#262626; --blue-b:#464646;
+  --ox:#A6A6A6; --ox-t:#212121; --ox-b:#3C3C3C;
+  --green:#F2F2F2; --green-t:#2A2A2A; --green-b:#4E4E4E;
+  --on-accent:#111111;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -47,9 +49,9 @@ h1,h2,h3,button,select,.mono{font-family:Archivo,system-ui,sans-serif}
   font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
 }
 .bar-in .brand{font-weight:600;color:#fff;margin-right:auto;letter-spacing:.14em;text-decoration:none}
-.bar-in a.ref{color:#9FB4C8;text-decoration:none;padding:3px 7px;border:1px solid #3D5670;border-radius:2px}
+.bar-in a.ref{color:#B4B4B4;text-decoration:none;padding:3px 7px;border:1px solid #444444;border-radius:2px}
 .bar-in a.ref:hover{color:#fff}
-.tbtn{background:none;border:1px solid #3D5670;border-radius:2px;cursor:pointer;font-size:13px;padding:2px 7px}
+.tbtn{background:none;border:1px solid #444444;border-radius:2px;cursor:pointer;font-size:13px;padding:2px 7px;filter:grayscale(1)}
 
 .shell{max-width:860px;margin:0 auto;padding:22px 20px 90px}
 
@@ -110,8 +112,8 @@ select:focus{outline:none;border-color:var(--blue)}
 .btn-again:hover{border-color:var(--ox);color:var(--ox)}
 .btn-got{border-color:var(--green-b);color:var(--green);background:var(--green-t)}
 .btn-got:hover{border-color:var(--green);color:var(--green)}
-.btn-flip{background:var(--blue);border-color:var(--blue);color:#fff}
-.btn-flip:hover{opacity:.9;color:#fff}
+.btn-flip{background:var(--blue);border-color:var(--blue);color:var(--on-accent)}
+.btn-flip:hover{opacity:.85;color:var(--on-accent)}
 
 .nav{display:flex;gap:9px;margin-top:9px;align-items:center}
 .nav .btn{flex:none;padding:9px 15px;font-size:13px}
