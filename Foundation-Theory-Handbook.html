@@ -27,8 +27,42 @@ window.MathJax = {
   --blue-t:#E8EFF5;
   --ox:#7C2D2D;
   --ox-t:#F6EBEB;
+  --fx-b:#D2E0EB;
+  --trap-b:#E2C9C9;
+  --accent-ink:#0F1B29;
   --rail:104px;
   --gap:28px;
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#12181F;
+    --card:#1B232C;
+    --ink:#E7ECF2;
+    --ink2:#B7C3D0;
+    --muted:#8592A1;
+    --rule:#2C3742;
+    --blue:#6FB2E6;
+    --blue-t:#182631;
+    --ox:#E28A8A;
+    --ox-t:#332020;
+    --fx-b:#26384A;
+    --trap-b:#4A2E2E;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#12181F;
+  --card:#1B232C;
+  --ink:#E7ECF2;
+  --ink2:#B7C3D0;
+  --muted:#8592A1;
+  --rule:#2C3742;
+  --blue:#6FB2E6;
+  --blue-t:#182631;
+  --ox:#E28A8A;
+  --ox-t:#332020;
+  --fx-b:#26384A;
+  --trap-b:#4A2E2E;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -46,10 +80,20 @@ body{
 /* ---------- top bar ---------- */
 .bar{
   position:sticky;top:0;z-index:50;
-  background:var(--ink);
+  background:var(--accent-ink);
   color:#DCE4EC;
   border-bottom:2px solid var(--blue);
 }
+.progress-track{position:absolute;left:0;right:0;bottom:-2px;height:2px;background:rgba(255,255,255,.1)}
+.progress-fill{height:100%;width:0%;background:#5FA8DE;transition:width .25s ease}
+.bar-in .progress-text{color:#9FB4C8;white-space:nowrap}
+.theme-toggle,.resume-nav-btn{
+  background:none;border:1px solid transparent;color:#9FB4C8;
+  font-family:inherit;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
+  padding:3px 7px;border-radius:2px;cursor:pointer;
+}
+.theme-toggle:hover,.theme-toggle:focus-visible,
+.resume-nav-btn:hover,.resume-nav-btn:focus-visible{color:#fff;border-color:#3D5670;outline:none}
 .bar-in{
   max-width:1080px;margin:0 auto;
   padding:9px 24px;
@@ -108,7 +152,7 @@ body{
 .toc-col a:hover,.toc-col a:focus-visible{color:var(--blue);border-bottom-color:var(--blue);outline:none}
 
 /* ---------- part divider ---------- */
-.part{margin:76px 0 0;border-top:3px solid var(--ink);padding-top:14px}
+.part{margin:76px 0 0;border-top:3px solid var(--accent-ink);padding-top:14px;scroll-margin-top:64px}
 .part .pnum{
   font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.2em;
   text-transform:uppercase;color:var(--blue);font-weight:600;
@@ -123,6 +167,7 @@ body{
 .clause{
   display:grid;grid-template-columns:var(--rail) minmax(0,1fr);
   gap:var(--gap);margin-top:44px;align-items:start;
+  scroll-margin-top:64px;
 }
 .clause > .code{
   position:sticky;top:56px;
@@ -157,13 +202,13 @@ body{
 }
 .def p:last-child,.thm p:last-child,.trap p:last-child{margin-bottom:0}
 .trap{
-  background:var(--ox-t);border:1px solid #E2C9C9;border-left:3px solid var(--ox);
-  padding:14px 18px;margin:0 0 16px;color:#4A2020;
+  background:var(--ox-t);border:1px solid var(--trap-b);border-left:3px solid var(--ox);
+  padding:14px 18px;margin:0 0 16px;
 }
 .trap .tag{color:var(--ox)}
 .trap ul{margin:0;padding-left:18px}
 .fx{
-  background:var(--blue-t);border:1px solid #D2E0EB;padding:12px 16px;margin:0 0 16px;
+  background:var(--blue-t);border:1px solid var(--fx-b);padding:12px 16px;margin:0 0 16px;
   overflow-x:auto;
 }
 .fx p{margin:0 0 6px}
@@ -178,8 +223,8 @@ body{
 }
 .tbl th,.tbl td{border:1px solid var(--rule);padding:8px 11px;text-align:left;vertical-align:top}
 .tbl thead th{
-  background:var(--ink);color:#E6EDF3;font-family:Archivo,sans-serif;font-weight:600;
-  font-size:12.5px;letter-spacing:.02em;border-color:var(--ink);
+  background:var(--accent-ink);color:#E6EDF3;font-family:Archivo,sans-serif;font-weight:600;
+  font-size:12.5px;letter-spacing:.02em;border-color:var(--accent-ink);
 }
 .tbl tbody th{background:var(--blue-t);font-weight:600;font-family:Archivo,sans-serif;font-size:13.5px}
 .wrap{overflow-x:auto;margin-bottom:18px}
@@ -187,9 +232,43 @@ body{
 
 kbd{
   font-family:"IBM Plex Mono",monospace;font-size:.86em;background:var(--blue-t);
-  border:1px solid #D2E0EB;padding:1px 5px;border-radius:2px;color:var(--blue);
+  border:1px solid var(--fx-b);padding:1px 5px;border-radius:2px;color:var(--blue);
 }
 mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
+
+/* ---------- resume banner ---------- */
+.resume-banner{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  margin-top:20px;padding:12px 18px;background:var(--blue-t);border:1px solid var(--fx-b);
+  font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink2);
+}
+.resume-banner[hidden]{display:none}
+.resume-banner b{color:var(--ink);font-weight:600}
+.resume-banner .resume-go{
+  margin-left:auto;background:var(--accent-ink);color:#fff;border:none;
+  font-family:inherit;font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  padding:6px 12px;border-radius:2px;cursor:pointer;
+}
+.resume-banner .resume-go:hover{opacity:.85}
+.resume-banner .resume-dismiss{
+  background:none;border:none;color:var(--muted);cursor:pointer;font-size:16px;line-height:1;padding:0 2px;
+}
+.resume-banner .resume-dismiss:hover{color:var(--ink)}
+
+/* ---------- floating resume ---------- */
+.float-resume{
+  position:fixed;right:22px;bottom:22px;z-index:60;
+  background:var(--accent-ink);color:#fff;border:none;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  padding:10px 16px;border-radius:20px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.28);
+}
+.float-resume:hover{opacity:.9}
+
+/* ---------- TOC progress ---------- */
+.toc-col .cid-row{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.toc-col .part-pct{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted)}
+.toc-col li.is-read a{color:var(--ink)}
+.toc-col li.is-read a::after{content:" \2713";color:var(--blue);font-family:"IBM Plex Mono",monospace;font-size:10px}
 
 /* ---------- responsive ---------- */
 @media (max-width:820px){
@@ -205,10 +284,15 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
 
 /* ---------- print ---------- */
 @media print{
-  :root{--paper:#fff;--card:#fff;--rail:88px;--gap:20px}
+  :root{
+    --paper:#fff;--card:#fff;--rail:88px;--gap:20px;
+    --ink:#0F1B29;--ink2:#33465C;--muted:#7C8DA0;--rule:#C9D2DB;
+    --blue:#1B5A8A;--blue-t:#E8EFF5;--ox:#7C2D2D;--ox-t:#F6EBEB;
+    --fx-b:#D2E0EB;--trap-b:#E2C9C9;--accent-ink:#0F1B29;
+  }
   body{background:#fff;font-size:10.2pt;line-height:1.42}
   .bar,.toc-col a{position:static}
-  .bar{display:none}
+  .bar,.progress-track,.resume-banner,.float-resume{display:none}
   .shell{max-width:none;padding:0}
   .cover{padding:0 0 20px}
   .part{break-before:page;page-break-before:always;margin-top:0}
@@ -230,10 +314,20 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
     <a href="#p3">M2</a>
     <a href="#p4">S2</a>
     <a href="#p5">Appx</a>
+    <span class="mono progress-text" id="progressText">0% read</span>
+    <button type="button" class="resume-nav-btn" id="resumeNavBtn" hidden>Resume</button>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">&#127769;</button>
   </div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
 </nav>
 
 <div class="shell">
+
+<div class="resume-banner" id="resumeBanner" hidden>
+  <span>&#128278; Continue where you left off &mdash; <b class="resume-label"></b></span>
+  <button type="button" class="resume-go">Jump there</button>
+  <button type="button" class="resume-dismiss" aria-label="Dismiss">&times;</button>
+</div>
 
 <header class="cover">
   <div class="eyebrow">IIT Madras BSc · Foundation Level · Theory Only</div>
@@ -251,8 +345,8 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
   <h2>Contents</h2>
   <div class="toc-grid">
 
-    <div class="toc-col">
-      <div class="cid">Part I · M1</div>
+    <div class="toc-col" data-part="m1">
+      <div class="cid-row"><div class="cid">Part I · M1</div><span class="part-pct"></span></div>
       <h3>Mathematics I</h3>
       <ol>
         <li><span>M1.01</span><a href="#m1-01">Number systems</a></li>
@@ -266,8 +360,8 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
       </ol>
     </div>
 
-    <div class="toc-col">
-      <div class="cid">Part II · S1</div>
+    <div class="toc-col" data-part="s1">
+      <div class="cid-row"><div class="cid">Part II · S1</div><span class="part-pct"></span></div>
       <h3>Statistics I</h3>
       <ol>
         <li><span>S1.01</span><a href="#s1-01">Data &amp; scales</a></li>
@@ -280,8 +374,8 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
       </ol>
     </div>
 
-    <div class="toc-col">
-      <div class="cid">Part III · M2</div>
+    <div class="toc-col" data-part="m2">
+      <div class="cid-row"><div class="cid">Part III · M2</div><span class="part-pct"></span></div>
       <h3>Mathematics II</h3>
       <ol>
         <li><span>M2.01</span><a href="#m2-01">Vectors &amp; matrices</a></li>
@@ -299,8 +393,8 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
       </ol>
     </div>
 
-    <div class="toc-col">
-      <div class="cid">Part IV · S2</div>
+    <div class="toc-col" data-part="s2">
+      <div class="cid-row"><div class="cid">Part IV · S2</div><span class="part-pct"></span></div>
       <h3>Statistics II</h3>
       <ol>
         <li><span>S2.01</span><a href="#s2-01">Joint discrete distributions</a></li>
@@ -319,8 +413,8 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
       </ol>
     </div>
 
-    <div class="toc-col">
-      <div class="cid">Part V</div>
+    <div class="toc-col" data-part="a">
+      <div class="cid-row"><div class="cid">Part V</div><span class="part-pct"></span></div>
       <h3>Appendix</h3>
       <ol>
         <li><span>A.01</span><a href="#a-01">Distribution table</a></li>
@@ -1990,5 +2084,176 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
 </div>
 
 </div><!-- /shell -->
+
+<button type="button" class="float-resume" id="floatResume" hidden>&#8618; Resume</button>
+
+<script>
+(function(){
+  var LS_READ = 'fth_read_v1';
+  var LS_LAST = 'fth_last_v1';
+  var LS_THEME = 'fth_theme_v1';
+
+  var clauses = Array.prototype.slice.call(document.querySelectorAll('.clause[id]'));
+  var total = clauses.length;
+
+  function loadRead(){
+    try{
+      var raw = localStorage.getItem(LS_READ);
+      return raw ? new Set(JSON.parse(raw)) : new Set();
+    }catch(e){ return new Set(); }
+  }
+  function saveRead(set){
+    try{ localStorage.setItem(LS_READ, JSON.stringify(Array.from(set))); }catch(e){}
+  }
+  function saveLast(id){
+    try{ localStorage.setItem(LS_LAST, id); }catch(e){}
+  }
+
+  var readSet = loadRead();
+  var lastId = null;
+  try{ lastId = localStorage.getItem(LS_LAST); }catch(e){}
+  var initialLastId = lastId;
+
+  /* ---------- theme ---------- */
+  var root = document.documentElement;
+  var themeBtn = document.getElementById('themeToggle');
+  function applyTheme(t){
+    if(t === 'dark' || t === 'light'){
+      root.setAttribute('data-theme', t);
+      root.style.colorScheme = t;
+    } else {
+      root.removeAttribute('data-theme');
+      root.style.colorScheme = 'light dark';
+    }
+    var effectiveDark = t === 'dark' || (t !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if(themeBtn) themeBtn.textContent = effectiveDark ? '🌙' : '☀️';
+  }
+  var savedTheme = null;
+  try{ savedTheme = localStorage.getItem(LS_THEME); }catch(e){}
+  applyTheme(savedTheme);
+  if(themeBtn){
+    themeBtn.addEventListener('click', function(){
+      var current = root.getAttribute('data-theme');
+      var isDark = current ? current === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = isDark ? 'light' : 'dark';
+      applyTheme(next);
+      try{ localStorage.setItem(LS_THEME, next); }catch(e){}
+    });
+  }
+
+  /* ---------- progress + TOC UI ---------- */
+  var fill = document.getElementById('progressFill');
+  var pctText = document.getElementById('progressText');
+  var tocLinks = Array.prototype.slice.call(document.querySelectorAll('.toc-col a[href^="#"]'));
+  var partCols = Array.prototype.slice.call(document.querySelectorAll('.toc-col[data-part]'));
+  var resumeNavBtn = document.getElementById('resumeNavBtn');
+  var floatResume = document.getElementById('floatResume');
+
+  function updateUI(){
+    var readCount = 0;
+    clauses.forEach(function(c){ if(readSet.has(c.id)) readCount++; });
+    var pct = total ? Math.round(readCount / total * 100) : 0;
+    if(fill) fill.style.width = pct + '%';
+    if(pctText) pctText.textContent = pct + '% read';
+
+    tocLinks.forEach(function(a){
+      var id = a.getAttribute('href').slice(1);
+      var li = a.closest('li');
+      if(li) li.classList.toggle('is-read', readSet.has(id));
+    });
+
+    partCols.forEach(function(col){
+      var prefix = col.getAttribute('data-part') + '-';
+      var ids = clauses.filter(function(c){ return c.id.indexOf(prefix) === 0; }).map(function(c){ return c.id; });
+      var read = ids.filter(function(id){ return readSet.has(id); }).length;
+      var pctEl = col.querySelector('.part-pct');
+      if(pctEl) pctEl.textContent = ids.length ? Math.round(read / ids.length * 100) + '%' : '';
+    });
+
+    if(resumeNavBtn) resumeNavBtn.hidden = !lastId;
+    if(floatResume) floatResume.hidden = !lastId;
+  }
+
+  /* ---------- read tracking ---------- */
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      var changed = false;
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var id = entry.target.id;
+          if(!readSet.has(id)){ readSet.add(id); changed = true; }
+          lastId = id;
+        }
+      });
+      if(changed) saveRead(readSet);
+      if(lastId) saveLast(lastId);
+      updateUI();
+    }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+    clauses.forEach(function(c){ io.observe(c); });
+  }
+
+  /* ---------- resume banner + jump helpers ---------- */
+  var banner = document.getElementById('resumeBanner');
+
+  function clauseLabel(id){
+    var el = document.getElementById(id);
+    if(!el) return id;
+    var code = el.querySelector('.code');
+    var h3 = el.querySelector('h3');
+    var codeText = (code && code.childNodes[0]) ? code.childNodes[0].textContent.trim() : '';
+    var title = h3 ? h3.textContent.trim() : '';
+    return codeText ? (codeText + ' — ' + title) : title;
+  }
+
+  function jumpTo(id){
+    var el = document.getElementById(id);
+    if(el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  if(initialLastId && document.getElementById(initialLastId) && !location.hash && banner){
+    var labelEl = banner.querySelector('.resume-label');
+    if(labelEl) labelEl.textContent = clauseLabel(initialLastId);
+    banner.hidden = false;
+    banner.querySelector('.resume-go').addEventListener('click', function(){
+      jumpTo(initialLastId);
+      banner.hidden = true;
+    });
+    banner.querySelector('.resume-dismiss').addEventListener('click', function(){
+      banner.hidden = true;
+    });
+  }
+
+  if(floatResume){
+    floatResume.addEventListener('click', function(){ if(lastId) jumpTo(lastId); });
+  }
+  if(resumeNavBtn){
+    resumeNavBtn.addEventListener('click', function(){ if(lastId) jumpTo(lastId); });
+  }
+
+  /* ---------- keyboard navigation (j/k between sections) ---------- */
+  document.addEventListener('keydown', function(e){
+    if(e.metaKey || e.ctrlKey || e.altKey) return;
+    var tag = (document.activeElement && document.activeElement.tagName) || '';
+    if(tag === 'INPUT' || tag === 'TEXTAREA' || (document.activeElement && document.activeElement.isContentEditable)) return;
+    if(e.key !== 'j' && e.key !== 'k') return;
+
+    var idx = lastId ? clauses.findIndex(function(c){ return c.id === lastId; }) : -1;
+    if(idx === -1){
+      var refTop = window.scrollY + 80;
+      var best = 0, bestDist = Infinity;
+      clauses.forEach(function(c, i){
+        var d = Math.abs(c.getBoundingClientRect().top + window.scrollY - refTop);
+        if(d < bestDist){ bestDist = d; best = i; }
+      });
+      idx = best;
+    }
+    var nextIdx = e.key === 'j' ? Math.min(idx + 1, clauses.length - 1) : Math.max(idx - 1, 0);
+    jumpTo(clauses[nextIdx].id);
+  });
+
+  updateUI();
+})();
+</script>
+
 </body>
 </html>
