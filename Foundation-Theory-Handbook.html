@@ -440,7 +440,8 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
       <ul>
         <li>\(\in\) versus \(\subseteq\). \(\{1\}\subseteq\{1,2\}\) but \(\{1\}\notin\{1,2\}\).</li>
         <li>\(\varnothing\) and \(\{\varnothing\}\) are different: the second has one element.</li>
-        <li>A countable union of countable sets is countable — an infinite set can have the same size as a proper subset. That is the definition of infinite, not a paradox.</li>
+        <li>An infinite set can be in bijection with a <b>proper subset</b> of itself (\(\mathbb{N}\) with the even numbers). That is the <b>definition</b> of infinite, not a paradox.</li>
+        <li>Separately: a countable union of countable sets is still countable, and \(\mathbb{Q}\) is countable even though it is dense in \(\mathbb{R}\). "Densely packed" and "uncountable" are unrelated properties.</li>
       </ul>
     </div>
   </div>
@@ -528,7 +529,7 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
       <p><b>Midpoint:</b> \(\left(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2}\right)\) &nbsp;·&nbsp; <b>Centroid:</b> \(\left(\frac{x_1+x_2+x_3}{3},\frac{y_1+y_2+y_3}{3}\right)\)</p>
       <p><b>Area of triangle:</b> \(\Delta=\tfrac12\left|x_1(y_2-y_3)+x_2(y_3-y_1)+x_3(y_1-y_2)\right|\)</p>
     </div>
-    <p>Three points are <b>collinear</b> iff \(\Delta=0\), equivalently iff the slopes of any two of the three segments are equal.</p>
+    <p>Three points are <b>collinear</b> iff \(\Delta=0\) — equivalently, iff the slopes of any two of the three segments are equal, provided none of the segments is vertical. The area test needs no such caveat, so prefer it.</p>
     <div class="trap">
       <span class="tag">Watch for</span>
       <ul>
@@ -903,7 +904,8 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
         <tr><td>\(r\) selections from \(n\) types, repetition allowed, order matters</td><td>\(n^r\)</td></tr>
         <tr><td>\(r\) selections from \(n\) types, repetition allowed, order does not</td><td>\(\binom{n+r-1}{r}\)</td></tr>
         <tr><td>Circular arrangements of \(n\) distinct objects</td><td>\((n-1)!\) &nbsp;(\(\tfrac{(n-1)!}{2}\) if reflections identified)</td></tr>
-        <tr><td>Split \(n\) into groups of sizes \(n_1,\dots,n_k\)</td><td>\(\dfrac{n!}{n_1!\cdots n_k!}\)</td></tr>
+        <tr><td>Split \(n\) into <b>labelled</b> groups of sizes \(n_1,\dots,n_k\)</td><td>\(\dfrac{n!}{n_1!\cdots n_k!}\)</td></tr>
+        <tr><td>Split \(n\) into <b>unlabelled</b> groups of sizes \(n_1,\dots,n_k\)</td><td>\(\dfrac{n!}{n_1!\cdots n_k!}\cdot\dfrac{1}{\prod_s m_s!}\), where \(m_s\) is how many groups share size \(s\)</td></tr>
       </tbody>
     </table></div>
 
@@ -920,6 +922,7 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
         <li>"At least one" is almost always easier as \(1-P(\text{none})\), or total minus the complement count.</li>
         <li>Items that must stay together: glue them into one block, arrange the blocks, then arrange within the block.</li>
         <li>Items that must be separated: arrange the others first, then place the restricted items into the gaps.</li>
+        <li>Dividing into groups: ask whether the groups are <b>distinguishable</b> (Group A and Group B, different rooms, different tasks) or <b>interchangeable</b>. Splitting 12 people into three labelled groups of 4 gives \(\frac{12!}{4!4!4!}\); into three unlabelled groups of 4 it is \(\frac{12!}{4!4!4!}\cdot\frac{1}{3!}\), because the three equal-sized groups can be permuted among themselves without changing the split. Only <b>equal</b> sizes are interchangeable: sizes \(5,4,3\) unlabelled still give \(\frac{12!}{5!4!3!}\), while \(3,3,2,2,2\) needs \(\div\,2!\,3!\).</li>
       </ul>
     </div>
   </div>
@@ -1061,7 +1064,7 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
 
     <div class="def">
       <span class="tag">Elementary row operations</span>
-      <p>(1) Swap two rows \(R_i\leftrightarrow R_j\). (2) Scale a row \(R_i\to cR_i\), \(c\neq0\). (3) Add a multiple of one row to another, \(R_i\to R_i+cR_j\). Each is reversible and each is realised by left-multiplying by an <b>elementary matrix</b>. Row operations change the row space? No — they <b>preserve</b> the row space and the null space, and preserve dependence relations among columns.</p>
+      <p>(1) Swap two rows \(R_i\leftrightarrow R_j\). (2) Scale a row \(R_i\to cR_i\), \(c\neq0\). (3) Add a multiple of one row to another, \(R_i\to R_i+cR_j\). Each is reversible and each is realised by left-multiplying by an <b>elementary matrix</b>. Row operations <b>preserve</b> the row space and the null space, and preserve the dependence relations among the columns — but they <b>change</b> the column space itself. That asymmetry is the reason a column-space basis must be read off the <b>original</b> matrix; see <a href="#m2-06">M2.06</a>.</p>
     </div>
 
     <div class="def">
@@ -1868,7 +1871,7 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
       <ul>
         <li>Paired versus independent samples: before/after on the <b>same</b> units is paired. Using a two-sample test on paired data throws away the pairing and loses power.</li>
         <li>Degrees of freedom are where marks disappear. Write them down before computing anything.</li>
-        <li>The chi-square and \(F\) tests use one tail; the \(z\) and \(t\) tests may use one or two depending on \(H_1\).</li>
+        <li>Tails: the chi-square tests <b>on counts</b> (goodness of fit, independence) are always right-tailed, because any deviation in either direction inflates \(\sum(O-E)^2/E\). But the chi-square test for a <b>single variance</b> and the \(F\) test for <b>two variances</b> follow \(H_1\) like any other test — a two-sided alternative needs <b>both</b> tails (reject if \(\chi^2&lt;\chi^2_{1-\alpha/2,\,n-1}\) or \(\chi^2&gt;\chi^2_{\alpha/2,\,n-1}\)); with the larger \(s^2\) on top, the \(F\) test compares against \(F_{\alpha/2}\). This is the same two-sided structure as the \(\sigma^2\) interval in <a href="#s2-10">S2.10</a>. The \(z\) and \(t\) tests likewise use one or two tails depending on \(H_1\).</li>
       </ul>
     </div>
   </div>
