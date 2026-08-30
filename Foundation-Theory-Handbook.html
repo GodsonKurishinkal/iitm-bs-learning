@@ -352,7 +352,7 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
       <tbody>
         <tr><td>Natural</td><td>\(\mathbb{N}=\{1,2,3,\dots\}\)</td><td>\(+,\times\)</td><td>\(3-5\)</td></tr>
         <tr><td>Integers</td><td>\(\mathbb{Z}\)</td><td>\(+,-,\times\)</td><td>\(3\div 5\)</td></tr>
-        <tr><td>Rational</td><td>\(\mathbb{Q}=\{p/q: q\neq 0\}\)</td><td>\(+,-,\times,\div\)</td><td>\(\sqrt{2}\)</td></tr>
+        <tr><td>Rational</td><td>\(\mathbb{Q}=\{p/q: p,q\in\mathbb{Z},\ q\neq 0\}\)</td><td>\(+,-,\times,\div\)</td><td>\(\sqrt{2}\)</td></tr>
         <tr><td>Real</td><td>\(\mathbb{R}\)</td><td>all four, limits</td><td>\(\sqrt{-1}\)</td></tr>
         <tr><td>Complex</td><td>\(\mathbb{C}=\{a+ib\}\)</td><td>all four, all roots</td><td>ordering</td></tr>
       </tbody>
@@ -661,7 +661,7 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
     <ul>
       <li>\(\deg(p\pm q)\le\max(\deg p,\deg q)\) — equality can fail if leading terms cancel.</li>
       <li>\(\deg(pq)=\deg p+\deg q\).</li>
-      <li>Division of \(p\) by \(q\): \(\deg(\text{quotient})=\deg p-\deg q\), \(\deg(\text{remainder})&lt;\deg q\).</li>
+      <li>Division of \(p\) by \(q\): when \(\deg p\ge\deg q\), \(\deg(\text{quotient})=\deg p-\deg q\); always \(\deg(\text{remainder})&lt;\deg q\).</li>
     </ul>
 
     <div class="thm">
@@ -946,7 +946,7 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
       <p>\(P(\varnothing)=0\), \(\quad P(A^c)=1-P(A)\), \(\quad 0\le P(A)\le 1\)</p>
       <p>\(A\subseteq B\Rightarrow P(A)\le P(B)\) &nbsp;(monotonicity)</p>
       <p><b>Addition rule:</b> \(P(A\cup B)=P(A)+P(B)-P(A\cap B)\)</p>
-      <p><b>Three events:</b> \(P(A\cup B\cup C)=\sum P(A)-\sum P(A\cap B)+P(A\cap B\cap C)\)</p>
+      <p><b>Three events:</b> \(P(A\cup B\cup C)=P(A)+P(B)+P(C)-P(A\cap B)-P(A\cap C)-P(B\cap C)+P(A\cap B\cap C)\)</p>
       <p>\(P(A\setminus B)=P(A)-P(A\cap B)\) &nbsp;·&nbsp; <b>Boole:</b> \(P(\bigcup A_i)\le\sum P(A_i)\)</p>
     </div>
 
@@ -1168,7 +1168,7 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
 
     <div class="thm">
       <span class="tag">Subspace test</span>
-      <p>A non-empty \(W\subseteq V\) is a subspace iff (i) \(\mathbf{0}\in W\), (ii) \(W\) is closed under addition, (iii) \(W\) is closed under scalar multiplication. Equivalently: \(a\mathbf{u}+b\mathbf{v}\in W\) for all \(\mathbf{u},\mathbf{v}\in W\), \(a,b\in F\).</p>
+      <p>A subset \(W\subseteq V\) is a subspace iff (i) \(\mathbf{0}\in W\), (ii) \(W\) is closed under addition, (iii) \(W\) is closed under scalar multiplication. Equivalently: \(a\mathbf{u}+b\mathbf{v}\in W\) for all \(\mathbf{u},\mathbf{v}\in W\), \(a,b\in F\).</p>
     </div>
 
     <div class="def">
@@ -1344,7 +1344,7 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
 
     <div class="thm">
       <span class="tag">Key inequalities and identities</span>
-      <p><b>Cauchy–Schwarz:</b> \(|\langle\mathbf{u},\mathbf{v}\rangle|\le\|\mathbf{u}\|\,\|\mathbf{v}\|\), equality iff \(\mathbf{u},\mathbf{v}\) are parallel. This is what makes the angle formula well defined.<br>
+      <p><b>Cauchy–Schwarz:</b> \(|\langle\mathbf{u},\mathbf{v}\rangle|\le\|\mathbf{u}\|\,\|\mathbf{v}\|\), equality iff \(\mathbf{u},\mathbf{v}\) are linearly dependent. This is what makes the angle formula well defined.<br>
       <b>Triangle inequality</b> follows from it.<br>
       <b>Pythagoras:</b> \(\mathbf{u}\perp\mathbf{v}\Rightarrow\|\mathbf{u}+\mathbf{v}\|^2=\|\mathbf{u}\|^2+\|\mathbf{v}\|^2\).<br>
       <b>Parallelogram law:</b> \(\|\mathbf{u}+\mathbf{v}\|^2+\|\mathbf{u}-\mathbf{v}\|^2=2\|\mathbf{u}\|^2+2\|\mathbf{v}\|^2\).</p>
@@ -1382,7 +1382,7 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
       <span class="tag">Gram–Schmidt</span>
       <p>Given an independent set \(\{\mathbf{v}_1,\dots,\mathbf{v}_k\}\), build an orthogonal set:</p>
       <p>\[\mathbf{w}_1=\mathbf{v}_1,\qquad \mathbf{w}_j=\mathbf{v}_j-\sum_{i=1}^{j-1}\frac{\langle\mathbf{v}_j,\mathbf{w}_i\rangle}{\langle\mathbf{w}_i,\mathbf{w}_i\rangle}\mathbf{w}_i\]</p>
-      <p>Then normalise: \(\mathbf{q}_j=\mathbf{w}_j/\|\mathbf{w}_j\|\). At every stage \(\operatorname{span}\{\mathbf{w}_1,\dots,\mathbf{w}_j\}=\operatorname{span}\{\mathbf{v}_1,\dots,\mathbf{v}_j\}\). In words: <b>subtract off everything already accounted for by the previous directions</b>. Writing \(A=QR\) with \(Q\) orthonormal and \(R\) upper triangular records the same computation.</p>
+      <p>Then normalise: \(\mathbf{q}_j=\mathbf{w}_j/\|\mathbf{w}_j\|\). At every stage \(\operatorname{span}\{\mathbf{w}_1,\dots,\mathbf{w}_j\}=\operatorname{span}\{\mathbf{v}_1,\dots,\mathbf{v}_j\}\). In words: <b>subtract off everything already accounted for by the previous directions</b>. Writing \(A=QR\) with \(Q\) having orthonormal columns and \(R\) upper triangular records the same computation.</p>
     </div>
     <div class="trap">
       <span class="tag">Watch for</span>
@@ -1580,7 +1580,7 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
     <div class="fx">
       <p><b>Uniform</b> \(U(a,b)\): \(f=\frac{1}{b-a}\) on \([a,b]\); \(\mu=\frac{a+b}{2}\), \(\sigma^2=\frac{(b-a)^2}{12}\).</p>
       <p><b>Exponential</b>\((\lambda)\): \(f=\lambda e^{-\lambda x},x\ge0\); \(F=1-e^{-\lambda x}\); \(\mu=1/\lambda\), \(\sigma^2=1/\lambda^2\).</p>
-      <p><b>Normal</b> \(N(\mu,\sigma^2)\): \(f=\frac{1}{\sigma\sqrt{2\pi}}e^{-(x-\mu)^2/2\sigma^2}\); symmetric, bell-shaped, mean = median = mode.</p>
+      <p><b>Normal</b> \(N(\mu,\sigma^2)\): \(f=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\); symmetric, bell-shaped, mean = median = mode.</p>
     </div>
     <div class="thm">
       <span class="tag">Memorylessness</span>
@@ -1743,7 +1743,7 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
         <tr><td>\(\mu\)</td><td>\(\sigma\) unknown, normal population</td><td>\(\bar x\pm t_{\alpha/2,\,n-1}\dfrac{s}{\sqrt n}\)</td></tr>
         <tr><td>\(p\)</td><td>large \(n\), \(n\hat p\) and \(n(1-\hat p)\ge10\)</td><td>\(\hat p\pm z_{\alpha/2}\sqrt{\dfrac{\hat p(1-\hat p)}{n}}\)</td></tr>
         <tr><td>\(\sigma^2\)</td><td>normal population</td><td>\(\left(\dfrac{(n-1)s^2}{\chi^2_{\alpha/2,\,n-1}},\ \dfrac{(n-1)s^2}{\chi^2_{1-\alpha/2,\,n-1}}\right)\)</td></tr>
-        <tr><td>\(\mu_1-\mu_2\)</td><td>independent samples, pooled variance</td><td>\((\bar x_1-\bar x_2)\pm t_{\alpha/2,\,\nu}\,s_p\sqrt{\tfrac1{n_1}+\tfrac1{n_2}}\)</td></tr>
+        <tr><td>\(\mu_1-\mu_2\)</td><td>independent samples, pooled variance</td><td>\((\bar x_1-\bar x_2)\pm t_{\alpha/2,\,n_1+n_2-2}\,s_p\sqrt{\tfrac1{n_1}+\tfrac1{n_2}}\)</td></tr>
       </tbody>
     </table></div>
 
@@ -1838,7 +1838,7 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
   <div class="code">S2.13<em>Weeks 11–12</em></div>
   <div class="body">
     <h3>The test battery</h3>
-    <p class="lead">For each test know three things: the statistic, its null distribution, and the conditions. That is twelve facts total.</p>
+    <p class="lead">For each test know three things: the statistic, its null distribution, and the conditions. Twelve tests, thirty-six facts.</p>
 
     <h4>Tests about means</h4>
     <div class="fx">
@@ -1861,7 +1861,7 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
     <div class="fx">
       <p>\(\ \chi^2=\displaystyle\sum\frac{(O_i-E_i)^2}{E_i}\), always <b>right-tailed</b>.</p>
       <p><b>Goodness of fit:</b> \(\mathrm{df}=k-1-m\), where \(k\) is the number of categories and \(m\) the number of parameters estimated from the data.</p>
-      <p><b>Independence / homogeneity</b> in an \(r\times c\) table: \(E_{ij}=\dfrac{(\text{row }i)(\text{col }j)}{n}\), \(\ \mathrm{df}=(r-1)(c-1)\).</p>
+      <p><b>Independence / homogeneity</b> in an \(r\times c\) table: \(E_{ij}=\dfrac{(\text{row }i\text{ total})(\text{col }j\text{ total})}{n}\), \(\ \mathrm{df}=(r-1)(c-1)\).</p>
       <p>Validity: all \(E_i\ge5\) (pool sparse categories otherwise).</p>
     </div>
     <p><b>Continuous goodness of fit:</b> bin the data and apply the chi-square test, or use the Kolmogorov–Smirnov statistic \(D=\sup_x|\hat F_n(x)-F_0(x)|\), which compares the empirical CDF with the hypothesised one.</p>
@@ -1896,7 +1896,7 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
         <tr><td>Binomial\((n,p)\)</td><td>\(\binom{n}{x}p^x(1-p)^{n-x}\)</td><td>\(np\)</td><td>\(np(1-p)\)</td><td>\((1-p+pe^t)^n\)</td><td>successes in \(n\) fixed trials</td></tr>
         <tr><td>Geometric\((p)\)</td><td>\((1-p)^{x-1}p\), \(x\ge1\)</td><td>\(1/p\)</td><td>\(\frac{1-p}{p^2}\)</td><td>\(\frac{pe^t}{1-(1-p)e^t}\)</td><td>trials until first success</td></tr>
         <tr><td>Poisson\((\lambda)\)</td><td>\(\frac{e^{-\lambda}\lambda^x}{x!}\)</td><td>\(\lambda\)</td><td>\(\lambda\)</td><td>\(e^{\lambda(e^t-1)}\)</td><td>counts in fixed time/space</td></tr>
-        <tr><td>Discrete uniform</td><td>\(1/n\)</td><td>\(\frac{n+1}{2}\)</td><td>\(\frac{n^2-1}{12}\)</td><td>—</td><td>equally likely outcomes</td></tr>
+        <tr><td>Discrete uniform</td><td>\(1/n\), \(x\in\{1,\dots,n\}\)</td><td>\(\frac{n+1}{2}\)</td><td>\(\frac{n^2-1}{12}\)</td><td>—</td><td>equally likely outcomes</td></tr>
         <tr><td>Hypergeometric</td><td>\(\frac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}\)</td><td>\(n\frac{K}{N}\)</td><td>\(n\frac{K}{N}\frac{N-K}{N}\frac{N-n}{N-1}\)</td><td>—</td><td>sampling without replacement</td></tr>
       </tbody>
     </table></div>
@@ -1907,8 +1907,8 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
       <tbody>
         <tr><td>Uniform\((a,b)\)</td><td>\(\frac{1}{b-a}\)</td><td>\(\frac{a+b}{2}\)</td><td>\(\frac{(b-a)^2}{12}\)</td><td>\(\frac{e^{tb}-e^{ta}}{t(b-a)}\)</td></tr>
         <tr><td>Exponential\((\lambda)\)</td><td>\(\lambda e^{-\lambda x}\), \(x\ge0\)</td><td>\(1/\lambda\)</td><td>\(1/\lambda^2\)</td><td>\(\frac{\lambda}{\lambda-t}\), \(t&lt;\lambda\)</td></tr>
-        <tr><td>Normal\((\mu,\sigma^2)\)</td><td>\(\frac{1}{\sigma\sqrt{2\pi}}e^{-(x-\mu)^2/2\sigma^2}\)</td><td>\(\mu\)</td><td>\(\sigma^2\)</td><td>\(e^{\mu t+\sigma^2t^2/2}\)</td></tr>
-        <tr><td>Gamma\((\alpha,\beta)\)</td><td>\(\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}\)</td><td>\(\alpha/\beta\)</td><td>\(\alpha/\beta^2\)</td><td>\(\left(\frac{\beta}{\beta-t}\right)^\alpha\)</td></tr>
+        <tr><td>Normal\((\mu,\sigma^2)\)</td><td>\(\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\)</td><td>\(\mu\)</td><td>\(\sigma^2\)</td><td>\(e^{\mu t+\sigma^2t^2/2}\)</td></tr>
+        <tr><td>Gamma\((\alpha,\beta)\)</td><td>\(\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}\)</td><td>\(\alpha/\beta\)</td><td>\(\alpha/\beta^2\)</td><td>\(\left(\frac{\beta}{\beta-t}\right)^\alpha\), \(t&lt;\beta\)</td></tr>
         <tr><td>Beta\((\alpha,\beta)\)</td><td>\(\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}\), \(0&lt;x&lt;1\)</td><td>\(\frac{\alpha}{\alpha+\beta}\)</td><td>\(\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}\)</td><td>—</td></tr>
         <tr><td>\(\chi^2_k\)</td><td>Gamma\((k/2,1/2)\)</td><td>\(k\)</td><td>\(2k\)</td><td>\((1-2t)^{-k/2}\)</td></tr>
         <tr><td>\(t_k\)</td><td>symmetric, heavy-tailed</td><td>\(0\) (\(k&gt;1\))</td><td>\(\frac{k}{k-2}\) (\(k&gt;2\))</td><td>does not exist</td></tr>
@@ -1986,7 +1986,7 @@ mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
         <tr><th>M1</th><td>Six forms of a line · point-to-line distance · quadratic formula and its derivation by completing the square · discriminant cases · sum and product of roots · division algorithm, remainder and factor theorems</td></tr>
         <tr><th>S1</th><td>Mean, median, mode and their skew ordering · \(s^2\) both forms · the \(1.5\,\mathrm{IQR}\) fence · covariance, \(r\), and the regression slope \(b_1=rs_y/s_x\) · \(^nP_r\), \(^nC_r\), repeats formula · addition rule · conditional probability, total probability, Bayes</td></tr>
         <tr><th>M2</th><td>The invertibility equivalences · consistency by rank · rank–nullity · how to read row space, column space and null space off the RREF · Cauchy–Schwarz · projection formula and \(P=A(A^TA)^{-1}A^T\) · Gram–Schmidt · properties of an orthogonal matrix</td></tr>
-        <tr><th>S2</th><td>\(\operatorname{Var}=E[X^2]-\mu^2\) and \(\operatorname{Var}(X+Y)\) · Markov and Chebyshev · \(E[\bar X],\operatorname{Var}(\bar X)\) · CLT statement · the four normal-sampling results · MSE decomposition · MLE procedure · the four CI formulas · Type I/II, power, p-value definition · the test battery with df</td></tr>
+        <tr><th>S2</th><td>\(\operatorname{Var}=E[X^2]-\mu^2\) and \(\operatorname{Var}(X+Y)\) · Markov and Chebyshev · \(E[\bar X],\operatorname{Var}(\bar X)\) · CLT statement · the four normal-sampling results · MSE decomposition · MLE procedure · the five CI formulas · Type I/II, power, p-value definition · the test battery with df</td></tr>
       </tbody>
     </table></div>
   </div>
